@@ -32,7 +32,7 @@ const TeacherCard = ({teacher,setSelectedTeacher,setShowTeacherDetail}:{teacher:
               </div>
             </div>
             <p className='w-full h-[80px]'>{teacher.charactor}</p>
-            <Button text='See More' />
+            <Button text='See More' clickHandler={()=>{}} />
           </div>
         </div>
     </div>
