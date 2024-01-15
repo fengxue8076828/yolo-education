@@ -1,0 +1,33 @@
+export const Teacher = {
+    name:"teacher",
+    title:"Teacher",
+    type:"document",
+    fields:[
+        {
+            name:"name",
+            title:"Name",
+            type:"string",
+        },
+        {
+            name:"title",
+            title:"Title",
+            type:"string",
+        },
+        {
+            name:"charactor",
+            title:"Charactor",
+            type:"string"
+        },
+        {
+            name:"description",
+            title:"Description",
+            type:"array",
+            of:[{type:"block"}]
+        },
+        {
+            name:"image",
+            title:"Image",
+            type:"image"
+        }
+    ]
+}

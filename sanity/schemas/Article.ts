@@ -1,0 +1,28 @@
+export const Article = {
+    name:"article",
+    title:"Article",
+    type:"document",
+    fields:[
+        {
+            name:"title",
+            title:"Title",
+            type:"string",
+        },
+        {
+            name:"slug",
+            title:"Slug",
+            type:"slug"
+        },
+        {
+            name:"content",
+            title:"Content",
+            type:"array",
+            of:[{type:"block"}]
+        },
+        {
+            name:"image",
+            title:"Image",
+            type:"image",
+        }
+    ]
+}
