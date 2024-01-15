@@ -28,7 +28,7 @@ const RegisterForm = () => {
                 
             </div>
             <div className='self-center'>
-                <Button text='Submit' />
+                <Button text='Submit' clickHandler={()=>{}} />
             </div>
             
         </form>
