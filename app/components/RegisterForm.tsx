@@ -28,7 +28,7 @@ const RegisterForm = () => {
                 
             </div>
             <div className='self-center'>
-                <Button text='Submit' clickHandler={()=>{}} />
+                <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color'>Submit</button>
             </div>
             
         </form>

@@ -3,7 +3,6 @@ import ListHeader from '@/app/components/ListHeader'
 import PriceBox from '@/app/components/PriceBox'
 import Image from 'next/image'
 import course from '@/public/course.png'
-import Button from '@/app/components/Button'
 import RegisterForm from '@/app/components/RegisterForm'
 import { PiCalendarBlankLight, PiPencilBold } from "react-icons/pi";
 import { CiClock2 } from "react-icons/ci";
