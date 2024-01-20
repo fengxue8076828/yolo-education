@@ -25,13 +25,14 @@ export interface CourseType {
     price:string,
     image:string,
     category:CategoryType,
-    startDate:Date
+    startDate:string[],
     classTime:string,
     classLocation:string,
     lectures:number,
     duration:string,
     quizzes:number,
-    teacher:TeacherType
+    teacher:TeacherType,
+    location:string,
 
 }
 export interface ChapterType {
@@ -70,6 +71,26 @@ export interface FeatureType {
     title:string,
     content:string
 }
+export interface TestimonialType {
+    _id:string,
+    name:string,
+    content:PortableTextBlock[],
+    image:string
+}
+
+export interface RegistrationType {
+    _type:string,
+    name:string,
+    email:string,
+    message:string,
+    type:string,
+    activityName:string,
+    startDate?:string
+}
+
+export interface TagType {
+    name:string
+}
 export async function getTeachers():Promise<TeacherType[]> {
     const query = `*[_type=="teacher"]`
     const data = await client.fetch(query)
@@ -87,6 +108,24 @@ export async function getCoursesOnWindow():Promise<CourseType[]> {
         title,
         image,
         startDate,
+        price,
+        "teacher":teacher->{
+            name,
+            image
+        },
+    }`
+    const data = await client.fetch(query)
+    return data 
+}
+
+export async function getCoursesByName(keyword:string):Promise<CourseType[]> {
+    const query = `*[_type=="course" && (name match "${keyword}")]{
+        _id,
+        name,
+        title,
+        image,
+        startDate,
+        price,
         "teacher":teacher->{
             name,
             image
@@ -108,6 +147,7 @@ export async function getCoursesByCategory(id:string):Promise<CourseType[]>{
         title,
         image,
         startDate,
+        price,
         "teacher":teacher->{
             name,
             image
@@ -202,6 +242,17 @@ export async function getHeaderText():Promise<HeaderTextType>{
 
 export async function getFeatures():Promise<FeatureType[]>{
     const query = `*[_type=="feature"]`
+    const data = await client.fetch(query)
+    return data
+}
+
+export async function getTestimonials():Promise<TestimonialType[]>{
+    const query = `*[_type=="testimonial"]`
+    const data = await client.fetch(query)
+    return data
+}
+export async function getTags():Promise<TagType[]>{
+    const query = `*[_type=="tag"]`
     const data = await client.fetch(query)
     return data
 }

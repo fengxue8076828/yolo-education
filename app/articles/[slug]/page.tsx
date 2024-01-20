@@ -18,6 +18,7 @@ import Link from 'next/link'
 import { getArticleBySlug } from '@/sanity/lib/queries'
 import Searchbox from '@/app/components/Searchbox'
 import SearchSideBox from '@/app/components/SearchSideBox'
+import Search from '@/app/components/Search'
 
 
 const Article = async({params}:{params:{slug:string}}) => {
@@ -33,7 +34,7 @@ const Article = async({params}:{params:{slug:string}}) => {
             </div>
             <PortableText value={article.content} />
         </div>           
-        <SearchSideBox />
+        <Search />
     </div>
 </div>
   )

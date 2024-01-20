@@ -14,7 +14,7 @@ const Courses = async() => {
         <ListHeader text="OUR COURSES" />
         <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
           <div className='w-full lg:w-[80%]'>
-            <Tagbox />
+            <Tagbox index={"0"} />
             <CourseList categories={categories} />
           </div>           
           <Search />

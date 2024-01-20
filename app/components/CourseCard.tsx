@@ -8,6 +8,8 @@ import teacher from '@/public/teacher.png'
 import { CourseType } from '@/sanity/lib/queries';
 import { urlFor } from '@/sanity/lib/client';
 import { useRouter } from 'next/navigation';
+import { HiMiniCurrencyDollar } from "react-icons/hi2";
+
 const CourseCard = ({course}:{course:CourseType}) => {
   const router = useRouter()
   const navigateToCourse = (id:string) => {
@@ -22,12 +24,12 @@ const CourseCard = ({course}:{course:CourseType}) => {
         </div>
         <div className='px-5 pt-8 pb-3 flex justify-between items-center'>
             <div className='flex justify-between items-center gap-1'>
-                <FaRegCalendarAlt />
-                <p>{course.startDate.toString()}</p>
+                <HiMiniCurrencyDollar className="text-3xl text-golden" />
+                <p>{course.price} HUF</p>
             </div>
             <div className='flex items-center gap-3 rounded-full pr-5 bg-ternary-color overflow-hidden'>
-              <div className='rounded-full overflow-hidden'>
-                <Image src={urlFor(course.teacher.image).url()} width={40} height={40} alt='teacher' /> 
+              <div className='rounded-full overflow-hidden relative w-[40px] h-[40px]'>
+                <Image src={urlFor(course.teacher.image).url()} alt='teacher' layout='fill' /> 
               </div>
               <h3 className='text-white'>{course.teacher.name}</h3>
             </div>

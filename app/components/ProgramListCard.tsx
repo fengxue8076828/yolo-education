@@ -19,7 +19,7 @@ const ProgramListCard = ({program}:{program:ProgramType}) => {
     const formattedTime = format(programTime,"HH:mm")
   return (
     <div className='min-w-64 rounded bg-white hover:shadow-xl hover:scale-105 hover:transition cursor-pointer flex' onClick={()=>gotoDetail()}>
-        <div className='w-[60%] md:w-[40%] lg:w-[30%] relative'>
+        <div className='w-[50%] md:w-[40%] lg:w-[30%] relative'>
             <Image className='object-cover' fill src={urlFor(program.image).url()} alt='course' />
         </div>
         <div className='p-10 flex flex-col gap-7 items-start'>
@@ -32,8 +32,8 @@ const ProgramListCard = ({program}:{program:ProgramType}) => {
                 <p>{formattedDate} {formattedTime}</p>
             </div>
             <div className='flex items-center gap-3 rounded-full pr-5 bg-ternary-color overflow-hidden w-[150px]'>
-                <div className='rounded-full overflow-hidden'>
-                    <Image src={urlFor(program.teacher.image).url()} width={40} height={40} alt='teacher' /> 
+                <div className='rounded-full overflow-hidden relative w-[40px] h-[40px]'>
+                    <Image src={urlFor(program.teacher.image).url()} layout='fill' alt='teacher' /> 
                 </div>
                 <h3 className='text-white text-base'>{program.teacher.name}</h3>
             </div>

@@ -6,14 +6,20 @@ import logo from '@/app/yolo-logo.png'
 import Menu from './Menu'
 import Searchbox from './Searchbox'
 import MenuDropdown from './MenuDropdown'
+import Link from 'next/link'
 
 const Menubar = () => {
   const [dropdownOpen,setDropdownOpen] = useState(false)
   return (
     <div className='bg-primary-color px-10 py-3 flex justify-between items-center relative'>
         <div className='flex items-center gap-1'>
-            <Image src={logo} alt='logo' width={30} height={30}></Image>
-            <h2 className='text-ternary-color text-xl'>优乐教育</h2>
+          <Link href="/">
+            <div className='flex gap-1'>
+              <Image src={logo} alt='logo' width={30} height={30}></Image>
+              <h2 className='text-ternary-color text-xl'>优乐教育</h2>
+            </div>
+            
+          </Link>
         </div>
         <Searchbox />
         <Menu dropdownOpened={dropdownOpen} setDropdownOpened={setDropdownOpen} />

@@ -13,8 +13,8 @@ const TeacherCard = ({teacher,setSelectedTeacher,setShowTeacherDetail}:{teacher:
   return (
     <div className='group flex-1 cursor-pointer my-5 h-[300px] relative [perspective:50rem]' onClick={handleSelectTeacher}>
         <div className='w-full group-hover:[transform:rotateY(180deg)] transition-all duration-700  bg-white absolute [backface-visibility:hidden] rounded-xl h-[300px]'>
-          <div className='w-full rounded-xl h-[170px] overflow-hidden'>
-            <Image className='object-cover object-center' src={urlFor(teacher.image).url()} alt={teacher.title} width={800} height={800} />
+          <div className='w-full rounded-xl h-[170px] overflow-hidden relative'>
+            <Image className='object-cover object-top' src={urlFor(teacher.image).url()} alt={teacher.title} layout='fill' />
           </div>  
           <div className='py-8'>
               <h4 className='font-bold text-xl'>{teacher.name}</h4>
@@ -25,7 +25,10 @@ const TeacherCard = ({teacher,setSelectedTeacher,setShowTeacherDetail}:{teacher:
         <div className='[transform:rotateY(-180deg)] group-hover:[transform:rotateY(0deg)] transition-all duration-700  bg-middle-blue absolute w-full h-[300px] [backface-visibility:hidden] rounded-xl overflow-hidden p-5'>
           <div className='flex flex-col gap-7 justify-between'>
             <div className='flex gap-3 items-center'>
-              <Image className='w-[70px] rounded-full' src={urlFor(teacher.image).url()} alt={teacher.title} width={300} height={300} />
+              <div className='w-[70px] h-[70px] rounded-full relative overflow-hidden'>
+                <Image className='object-cover object-top' src={urlFor(teacher.image).url()} alt={teacher.title} layout='fill' />
+              </div>
+              
               <div>
                 <h3 className='font-extrabold text-lg'>{teacher.name}</h3>
                 <p className='text-sm'>{teacher.title}</p>

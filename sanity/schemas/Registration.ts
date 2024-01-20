@@ -1,0 +1,37 @@
+export const Registration = {
+    name:"registration",
+    title:"Registration",
+    type:"document",
+    fields:[
+        {
+            name:"name",
+            title:"Name",
+            type:"string",
+        },
+        {
+            name:"email",
+            title:"Email",
+            type:"string",
+        },
+        {
+            name:"message",
+            title:"Message",
+            type:"string",
+        },
+        {
+            name:"type",
+            title:"Type",
+            type:"string",
+        },
+        {
+            name:"activityName",
+            title:"ActivityName",
+            type:"string",
+        },
+        {
+            name:"startDate",
+            title:"StartDate",
+            type:"string"
+        }
+    ]
+}

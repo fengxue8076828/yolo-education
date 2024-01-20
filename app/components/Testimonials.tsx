@@ -1,7 +1,9 @@
 import React from 'react'
 import TestimonialCard from './TestimonialCard'
+import { getTestimonials } from '@/sanity/lib/queries'
 
-const Testimonials = () => {
+const Testimonials = async() => {
+  const testimonials = await getTestimonials()
   return (
     <div id='testimonials' className='py-8 px-5 flex flex-col items-center md:px-10 md:py-20'>
       <div className='flex justify-center w-full items-center'>
@@ -11,10 +13,11 @@ const Testimonials = () => {
         </div>
       </div>
       <div className='w-full mt-10 md:mt-20 flex justify-between flex-wrap flex-1 gap-10'>
-          <TestimonialCard />
-          <TestimonialCard />
-          <TestimonialCard />
-          <TestimonialCard />
+        {
+          testimonials.map(testimonial=>(
+            <TestimonialCard key={testimonial._id} testimonial={testimonial} />
+          ))
+        }
       </div>     
   </div>
   )

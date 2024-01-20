@@ -1,0 +1,23 @@
+export const Testimonial = {
+  name:"testimonial",
+  title:"Testimonial",
+  type:"document",
+  fields:[
+    {
+      name:"name",
+      title:"Name",
+      type:"string"
+    },
+    {
+      name:"content",
+      title:"Content",
+      type:"array",
+      of:[{type:"block"}]
+    },
+    {
+      name:"image",
+      title:"Image",
+      type:"image"
+    }
+  ]
+}

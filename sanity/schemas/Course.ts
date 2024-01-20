@@ -49,7 +49,8 @@ export const Course =  {
         {
             name:"startDate",
             title:"StartDate",
-            type:"date"
+            type:"array",
+            of:[{type:"date"}]
         },
         {
             name:"classTime",
@@ -89,6 +90,11 @@ export const Course =  {
             name:"onWindow",
             title:"onWindow",
             type:"boolean"
+        },
+        {
+            name:"location",
+            title:"Location",
+            type:"string"
         }
     ]
 }

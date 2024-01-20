@@ -7,3 +7,11 @@
   margin: 0;
   padding: 0;
 }
+.monday {
+  background-color: lightgreen;
+}
+
+.otherDays {
+  background-color: gray;
+  pointer-events: none; /* Makes the tile unclickable */
+}

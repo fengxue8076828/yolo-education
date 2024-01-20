@@ -37,7 +37,12 @@ const config: Config = {
         'half':'50%',
         'less-half':'48%',
         'three-quarter':'75%',
-      }
+      },
+      width:{
+        'half':'50%',
+        'less-half':'48%',
+        'three-quarter':'75%',
+      },     
     },
   },
   plugins: [],

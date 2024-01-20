@@ -7,7 +7,10 @@ import {Program} from './schemas/Program'
 import {Article} from './schemas/Article'
 import {HeaderText} from './schemas/HeaderText'
 import { Feature } from './schemas/Feature'
+import { Testimonial } from './schemas/Testimonial'
+import { Registration } from './schemas/Registration'
+import { Tag } from './schemas/Tag'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [Category,Teacher,Course,Chapter,Program,Article,HeaderText,Feature],
+  types: [Category,Teacher,Course,Chapter,Program,Article,HeaderText,Feature,Testimonial,Registration,Tag],
 }
