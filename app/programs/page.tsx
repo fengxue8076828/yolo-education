@@ -12,7 +12,7 @@ const Programs = async() => {
     <ListHeader text="OUR PROGRAMS" />
     <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
       <div className='w-full lg:w-[80%]'>
-        <Tagbox />
+        <Tagbox index='0' />
         <ProgramList programs={programs} />
       </div>           
       <Search />
