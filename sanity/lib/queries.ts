@@ -91,6 +91,29 @@ export interface RegistrationType {
 export interface TagType {
     name:string
 }
+
+export interface LinkType {
+    text:string,
+    url:string
+}
+
+export interface FooterGroupType {
+    title:string,
+    links:LinkType[]
+}
+
+export interface Footertype {
+    groups:FooterGroupType[],
+    telephone:string,
+    mobilephone:string,
+    address:string,
+    wechat:string,
+    twitter:string,
+    facebook:string,
+    instagram:string,
+    youtube:string,
+    description:string
+}
 export async function getTeachers():Promise<TeacherType[]> {
     const query = `*[_type=="teacher"]`
     const data = await client.fetch(query)
@@ -255,4 +278,9 @@ export async function getTags():Promise<TagType[]>{
     const query = `*[_type=="tag"]`
     const data = await client.fetch(query)
     return data
+}
+export async function getFooter():Promise<Footertype>{
+    const query = `*[_type=="footer"]`
+    const data = await client.fetch(query)
+    return data[0]
 }

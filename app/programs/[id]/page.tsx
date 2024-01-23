@@ -93,7 +93,7 @@ const ProgramDetail = async({params}:{params:{id:string}}) => {
                     </div>
                     <div id='program-register' className='mt-16'>
                     <div className='flex flex-col gap-1  my-16'>
-                        <h1 className='text-2xl font-extrabold mb-3'>Register this course</h1>
+                        <h1 className='text-2xl font-extrabold mb-3'>Register this Program</h1>
                         <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                     </div>
                         <RegisterForm type='program' activityName={program.name} />

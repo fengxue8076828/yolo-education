@@ -16,8 +16,6 @@ const Menu = ({dropdownOpened,setDropdownOpened}:MenuProps) => {
           <Link className='hover:text-ternary-color' href='/courses'>COURSES</Link>
           <Link className='hover:text-ternary-color' href='/programs'>PROGRAMS</Link>
           <Link className='hover:text-ternary-color' href='/articles/about-us'>ABOUT US</Link>
-          <div className='w-0 border border-black h-5'></div>
-          <Link className='hover:text-ternary-color' href={""}>BLOG</Link>
       </div>
       <div className='lg:hidden text-3xl cursor-pointer' onClick={()=>setDropdownOpened(pre=>!pre)}>
         {

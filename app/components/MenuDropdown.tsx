@@ -13,8 +13,6 @@ const MenuDropdown = ({
         <Link className='hover:text-ternary-color' href='/courses'>COURSES</Link>
         <Link className='hover:text-ternary-color' href='/programs'>PROGRAMS</Link>
         <Link className='hover:text-ternary-color' href={'/articles/about-us'}>ABOUT</Link>
-        <span className='w-[50px] h-[2px] bg-slate-500'></span>
-        <Link className='hover:text-ternary-color' href={''}>BLOG</Link>
       </div>
     </div>
   )
