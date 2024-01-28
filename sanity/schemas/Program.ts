@@ -43,7 +43,10 @@ export const Program = {
         {
             name:"image",
             title:"Image",
-            type:"image"
+            type:"image",
+            options:{
+                hotspot:true
+            }
         },
         {
             name:"twitterLink",

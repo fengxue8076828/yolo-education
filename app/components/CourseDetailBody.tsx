@@ -12,7 +12,10 @@ const CourseDetailBody = ({course,chapters}:{course:CourseType,chapters:ChapterT
   return (
     <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
     <div className='w-full lg:w-[80%] bg-white p-5 md:p-16 rounded flex flex-col '>
-        <Image className='w-full mb-10' src={urlFor(course.image).url()} alt='course' width={800} height={800} />
+        <div className='w-full h-[450px] mb-10 relative'>
+          <Image className='object-cover' src={urlFor(course.image).url()} alt='course' layout='fill' />
+        </div>
+        
         <CourseDetailTagsContainer course={course} chapters={chapters} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
         <div>
 

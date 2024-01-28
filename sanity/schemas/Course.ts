@@ -38,7 +38,10 @@ export const Course =  {
         {
             name:"image",
             title:"Image",
-            type:"image"
+            type:"image",
+            options:{
+                hotspot:true,
+            }
         },
         {
             name:"category",

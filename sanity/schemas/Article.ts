@@ -23,6 +23,9 @@ export const Article = {
             name:"image",
             title:"Image",
             type:"image",
+            options:{
+                hotspot:true
+            }
         }
     ]
 }

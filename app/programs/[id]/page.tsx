@@ -28,7 +28,10 @@ const ProgramDetail = async({params}:{params:{id:string}}) => {
     <ListHeader text='PROGRAM DETAIL' />
     <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
         <div className='w-full lg:w-[80%] bg-white p-5 md:p-16 rounded flex flex-col items-center'>
-            <Image className='w-full mb-10' src={urlFor(program.image).url()} alt='course' width={800} height={800} />
+            <div className='w-full h-[400px] mb-10 relative'>
+                <Image className='object-cover' src={urlFor(program.image).url()} alt='course' layout='fill' />
+            </div>
+            
             <div className='min-h-[80vh] pt-16 w-full'>
                 <div className='flex flex-col'>
                     <div className='flex flex-wrap gap-10 gap-y-3 md:gap-16 md:gap-y-5 items-center'>

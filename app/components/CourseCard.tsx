@@ -17,7 +17,10 @@ const CourseCard = ({course}:{course:CourseType}) => {
   }
   return (
     <div className='min-w-64 rounded bg-white hover:shadow-xl hover:scale-105 hover:transition cursor-pointer' onClick={()=>navigateToCourse(course._id)}>
-        <Image className='w-full' src={urlFor(course.image).url()} alt='course' width={100} height={60} />
+        <div className='w-full h-[160px] relative'>
+          <Image className='object-cover' src={urlFor(course.image).url()} alt='course' layout='fill' />
+        </div>
+        
         <div className='px-5 py-8'>
             <h4 className='font-bold'>{course.name}</h4>
             <p className='font-thin'>{course.title}</p>

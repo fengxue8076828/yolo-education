@@ -7,7 +7,7 @@ export const client = createClient({
   dataset,
   projectId,
   useCdn:true,
-  token:"skVikxp1Og5y1PZq7e3Sq7bkQqVuDFsyrnOQkScKO4RvnrkU5wbsh1W2gHY91sDQw3yzdUCvzyOBTyLFwgsRZs0Kl4AOZx78SKcJiUaA1Chw1qRcIBr23YqdlRPrHb3ZOgxE1bH7Dmtft21bUdJdgzhDb8c4ss5Y8sIoGafyku0PLdCxcLfl"
+  token:"sktjnZBVrwxN9wq3XeorH3jvZmjp4WIzZPifjNuUfsA9EVCNTLmgEZ9zENmS1R3fAJKIZTme5AG0klG8RBGuH39KTkb8mUyOOkZNQSOdXDKK6c8TvRGZ0rjb7RqgpLLSWlGvPAek7CU3RO0Xqt919uCTd8Nn6MdhMfbkidoYwrysjILURBcg"  
 })
 
 const imageBuilder = imageUrlBuilder(client)
