@@ -1,13 +1,15 @@
 import React from 'react'
 import ProgramListCard from './ProgramListCard'
-import { ProgramType } from '@/sanity/lib/queries'
+import { ProgramType,ProgramCategoryType } from '@/sanity/lib/queries'
+import { Category } from '@/sanity/schemas/Category'
+import ProgramListContainer from './ProgramListContainer'
 
-const ProgramList = ({programs}:{programs:ProgramType[]}) => {
+const ProgramList = ({categories}:{categories:ProgramCategoryType[]}) => {
   return (
-    <div className='flex w-full flex-col gap-10'>
+    <div className='flex w-full flex-col gap-10 bg-white p-10'>
       {
-        programs.map(program=>(
-          <ProgramListCard key={program._id} program={program} />
+        categories.map(category=>(
+          <ProgramListContainer key={category._id} category={category} />
         ))
       }
     </div>

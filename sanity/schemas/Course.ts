@@ -2,13 +2,14 @@ import {Rule} from '@sanity/types'
 
 export const Course =  {
     name:"course",
-    title:"Course",
+    title:"Tanfolyam",
     type:"document",
     fields:[
         {
             name:"name",
-            title:"Name",
-            type:"string"
+            title:"Név",
+            type:"string",
+            validate:(Rule:Rule)=>Rule.required()
         },
         {
             name:"slug",
@@ -20,84 +21,91 @@ export const Course =  {
             }
         },
         {
-            name:"title",
-            title:"Title",
+            name:"subTitle",
+            title:"Felirat",
             type:"string",
         },
         {
             name:"description",
-            title:"Description",
+            title:"Leírás",
             type:"array",
-            of:[{type:"block"}]
+            of:[{type:"block"}],
+            validate:(Rule:Rule)=>Rule.required()
         },
         {
             name:"price",
-            title:"Price",
+            title:"Ár",
             type:"string",
+            validate:(Rule:Rule)=>Rule.integer().positive()
         },
         {
             name:"image",
-            title:"Image",
+            title:"Kép",
             type:"image",
             options:{
                 hotspot:true,
-            }
+            },
+            validate:(Rule:Rule)=>Rule.required()
         },
         {
             name:"category",
-            title:"Category",
+            title:"Kategória",
             type:"reference",
-            to:[{type:"category"}]
+            to:[{type:"category"}],
+            validate:(Rule:Rule)=>Rule.required()
         },
         {
             name:"startDate",
-            title:"StartDate",
+            title:"Kezdő dátum",
             type:"array",
-            of:[{type:"date"}]
+            of:[{type:"date"}],
+            validate:(Rule:Rule)=>Rule.required()
         },
         {
             name:"classTime",
-            title:"ClassTime",
-            type:"string"
-        },
-        {
-            name:"classLocation",
-            title:"ClassLocation",
-            type:"string"
+            title:"Osztály ideje",
+            type:"string",
+            description:"Az óra kezdési időpontja.formátum ÓÓ:PP - ÓÓ:PP egy nap egy héten pl. 17:30 - 19:00 minden hétfőn",
+            validate:(Rule:Rule)=>Rule.required()
         },
         {
             name:"lectures",
-            title:"Lectures",
+            title:"Előadások",
             type:"number",
             validation: (Rule:Rule) => Rule.min(1),
             initialValue: 1
         },
         {
             name:"duration",
-            title:"Duration",
-            type:"string",
+            title:"Időtartam (hetekben)",
+            type:"number",
+            description:"A tanfolyam heteinek száma",
+            validation:(Rule:Rule) => Rule.integer().positive()
+
         },
         {
             name:"quizzes",
-            title:"Quizzes",
+            title:"Kvízek",
             type:"number",
-            validation:(Rule:Rule) => Rule.min(1)
+            validation:(Rule:Rule) => Rule.integer().positive()
         },
         {
             name:"teacher",
-            title:"Teacher",
+            title:"Kvízek",
             type:"reference",
-            to:[{type:"teacher"}]
+            to:[{type:"teacher"}],
+            validate:(Rule:Rule)=>Rule.required()
         },
         {
             name:"onWindow",
-            title:"onWindow",
+            title:"az ablakon",
             type:"boolean"
         },
         {
             name:"location",
-            title:"Location",
-            type:"string"
+            title:"Elhelyezkedés",
+            type:"string",
+            validate:(Rule:Rule)=>Rule.required()
         }
     ]
 }

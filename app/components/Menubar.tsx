@@ -21,7 +21,7 @@ const Menubar = () => {
             
           </Link>
         </div>
-        <Searchbox />
+        <Searchbox type="course" />
         <Menu dropdownOpened={dropdownOpen} setDropdownOpened={setDropdownOpen} />
         <MenuDropdown dropdownOpen={dropdownOpen} />
     </div>

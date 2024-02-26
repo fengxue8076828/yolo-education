@@ -34,7 +34,7 @@ const Teachers = () => {
 
             <div className='flex justify-between w-full items-center'>
                 <div className='flex flex-col gap-1 md:gap-5'>
-                    <h1 className='text-2xl md:text-4xl font-bold mt-1'>Our <span className='text-ternary-color'>Skilled</span> Teachers</h1>
+                    <h1 className='text-2xl md:text-4xl font-bold mt-1'>Szakképzett <span className='text-ternary-color'>tanáraink</span></h1>
                     <span className='w-[50px] h-[2px] md:w-[70px] md:h-[5px] bg-ternary-color'></span>
                 </div>
                 <div className='flex gap-3'>
@@ -50,6 +50,7 @@ const Teachers = () => {
                     slidesPerView={4}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => setSwiper(swiper)}
+                    loop={true}
                     breakpoints={{
                         320: {
                         slidesPerView: 1,

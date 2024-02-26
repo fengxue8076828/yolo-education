@@ -12,7 +12,7 @@ const TestimonialCard = ({testimonial}:{testimonial:TestimonialType}) => {
     <motion.div
     initial={{opacity:0}}
     whileInView={{opacity:1,transition:{duration:1}}}
-     className='max-w-full lg:max-w-less-half'>
+     className='max-w-full'>
         <h3 className='text-xl font-extrabold'>{testimonial.name}</h3>
         <div className='w-full h-[40px] relative'>
             <div className='absolute w-[30px] h-[40px] bg-middle-blue left-[70px] bottom-0'>
@@ -24,7 +24,7 @@ const TestimonialCard = ({testimonial}:{testimonial:TestimonialType}) => {
             <div className='absolute top-[-50px] right-[30px] w-[80px] h-[80px] rounded-lg overflow-hidden outline outline-8 outline-white'>
                 <Image src={urlFor(testimonial.image).url()}  layout='fill' alt='testimonial' />
             </div>
-            <div className='p-7 text-sm max-w-three-quarter'>
+            <div className='p-7 text-sm max-w-three-quarter min-h-36'>
               <PortableText  value={testimonial.content} />
             </div>
         </div>

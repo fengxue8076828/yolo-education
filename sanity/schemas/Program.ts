@@ -1,3 +1,5 @@
+import { Rule } from "@sanity/types"
+
 export const Program = {
     name:"program",
     title:"Program",
@@ -67,6 +69,13 @@ export const Program = {
             name:"price",
             title:"Price",
             type:"string"
+        },
+        {
+            name:"category",
+            title:"kategória",
+            type:"reference",
+            to:[{type:"programCategory"}],
+            validate:(Rule:Rule) => Rule.required()
         }
     ]
 }

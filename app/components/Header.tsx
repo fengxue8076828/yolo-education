@@ -7,6 +7,8 @@ import Link from 'next/link'
 import { getHeaderText } from '@/sanity/lib/queries'
 import { PortableText } from '@portabletext/react'
 
+export const revalidate = 60
+
 const Header = async() => {
   const headerText = await getHeaderText()
   return (
@@ -22,12 +24,12 @@ const Header = async() => {
               <Image src={chineseBooks} alt='chinese books' width={200} height={250} />
             </div>         
             <div>
-              <h2 className='text-xl md:text-2xl text-ternary-color'>Yolo Education</h2>
+              <h2 className='text-xl md:text-2xl text-ternary-color'>Yolo Oktatás</h2>
               <p className='max-w-prose my-5 mb-10'>
                 {headerText.content}
               </p>
               <Link href="/courses"  className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color'>
-                Explore Courses
+              Tanfolyamok felfedezése
               </Link>
             </div>  
           </div>

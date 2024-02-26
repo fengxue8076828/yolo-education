@@ -23,7 +23,7 @@ const CourseCard = ({course}:{course:CourseType}) => {
         
         <div className='px-5 py-8'>
             <h4 className='font-bold'>{course.name}</h4>
-            <p className='font-thin'>{course.title}</p>
+            <p className='font-thin text-xs'>{course.subTitle}</p>
         </div>
         <div className='px-5 pt-8 pb-3 flex justify-between items-center'>
             <div className='flex justify-between items-center gap-1'>

@@ -67,15 +67,28 @@ const RegisterForm = ({selectedDate,type,activityName}:RegisterFormPropsType) =>
         <Toaster />
         <form action="" className='flex flex-col gap-5' onSubmit={handleSubmit}>
             <div className='flex items-center gap-5'>
+                <label htmlFor="email" className='w-[100px]'>címe:</label>
+                <input type="email" id='email' className='border border-1 border-ternary-color flex-1 p-1' value={activityName} disabled />
+            </div>
+            {
+                type === "course" && (
+                    <div className='flex items-center gap-5'>
+                        <label htmlFor="email" className='w-[100px]'>dátuma:</label>
+                        <input type="email" id='email' className='border border-1 border-ternary-color flex-1 p-1' value={selectedDate} disabled />
+                    </div>
+                )
+            }
+            
+            <div className='flex items-center gap-5'>
                 <label htmlFor="email" className='w-[100px]'>Email:</label>
                 <input type="email" id='email' className='border border-1 border-ternary-color flex-1 p-1' value={email} onChange={(e)=>setEmail(e.target.value)} />
             </div>
             <div className='flex items-center gap-5'>
-                <label htmlFor='name' className='w-[100px]'>Name:</label>
+                <label htmlFor='name' className='w-[100px]'>Név:</label>
                 <input type='text' id='name'  className='border border-1 border-ternary-color flex-1 p-1' value={name} onChange={(e)=>setName(e.target.value)}/>
             </div>
             <div className='flex items-center gap-5'>
-                <label htmlFor='message' id='message' className='w-[100px]'>Message:</label>
+                <label htmlFor='message' id='message' className='w-[100px]'>Üzenet:</label>
                 <textarea className='border border-1 border-ternary-color flex-1 p-1' rows={5} value={message} onChange={(e)=>setMessage(e.target.value)}></textarea>
             </div>
             <div className='flex items-center gap-5'>
@@ -83,12 +96,12 @@ const RegisterForm = ({selectedDate,type,activityName}:RegisterFormPropsType) =>
                 </div>
                 <div className='flex gap-2 text-sm'>
                     <input type='checkbox' checked={agreeTerms} onChange={handleCheckAgreeTerms} />
-                    <p>I agree with these</p><Link className='text-dark-blue underline' href="/articles/exermpt">terms</Link>
+                    <p>ezekkel egyetértek</p><Link className='text-dark-blue underline' href="/articles/exermpt">feltételeket</Link>
                 </div>
                 
             </div>
             <div className='self-center'>
-                <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color'>Submit</button>
+                <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color'>Beküldés</button>
             </div>
             
         </form>

@@ -1,3 +1,5 @@
+import {Rule} from "@sanity/types"
+
 export const Tag = {
     name:"tag",
     title:"Tag",
@@ -5,8 +7,15 @@ export const Tag = {
     fields:[
         {
             name:"name",
-            title:"Name",
-            type:"string"
+            title:"Név",
+            type:"string",
+            validate:(Rule:Rule)=>Rule.required()
+        },
+        {
+            name:"type",
+            title:"Típus",
+            type:"string",
+            validate:(Rule:Rule)=>Rule.required()
         }
     ]
 }

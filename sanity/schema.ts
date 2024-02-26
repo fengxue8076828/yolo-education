@@ -13,7 +13,11 @@ import { Tag } from './schemas/Tag'
 import { Link } from './schemas/Link'
 import { FooterGroup } from './schemas/FooterGroup'
 import { Footer } from './schemas/Footer'
+import { MenuItem } from './schemas/MenuItem'
+import {Introduction} from './schemas/Introduction'
+import { Youtube } from './schemas/Youtube'
+import { ProgramCategory } from './schemas/ProgramCategory'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [Category,Teacher,Course,Chapter,Program,Article,HeaderText,Feature,Testimonial,Registration,Tag,Link,FooterGroup,Footer],
+  types: [Category,Teacher,Course,Chapter,Program,Article,HeaderText,Feature,Testimonial,Registration,Tag,Link,FooterGroup,Footer,MenuItem,Introduction,Youtube,ProgramCategory],
 }

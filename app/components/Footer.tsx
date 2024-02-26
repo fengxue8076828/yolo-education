@@ -11,6 +11,8 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaMobileButton } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 
+export const revalidate = 60
+
 
 const Footer = async() => {
     const footer = await getFooter()

@@ -11,7 +11,10 @@ export const Article = {
         {
             name:"slug",
             title:"Slug",
-            type:"slug"
+            type:"slug",
+            options:{
+                source:"title"
+            }
         },
         {
             name:"content",

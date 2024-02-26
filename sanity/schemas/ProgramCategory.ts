@@ -1,6 +1,6 @@
-export const Category = {
-    name:"category",
-    title:"Kategória",
+export const ProgramCategory = {
+    name:"programCategory",
+    title:"program kategória",
     type:"document",
     fields:[
         {

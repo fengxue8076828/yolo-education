@@ -17,6 +17,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import Link from 'next/link'
 
+export const revalidate = 60
 
 const ProgramDetail = async({params}:{params:{id:string}}) => {
     const program = await getProgramById(params.id)
@@ -25,7 +26,7 @@ const ProgramDetail = async({params}:{params:{id:string}}) => {
     const formattedTime = format(programTime,'HH:mm')
   return (
     <div className='bg-shallow-blue min-h-[100vh]'>
-    <ListHeader text='PROGRAM DETAIL' />
+    <ListHeader text={program.name} />
     <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
         <div className='w-full lg:w-[80%] bg-white p-5 md:p-16 rounded flex flex-col items-center'>
             <div className='w-full h-[400px] mb-10 relative'>
@@ -50,35 +51,35 @@ const ProgramDetail = async({params}:{params:{id:string}}) => {
                     <div className='flex flex-col md:flex-row flex-wrap mb-16 gap-16'>
                         <div className='flex flex-col gap-10 flex-1'>
                             <div className='text-2xl flex flex-col gap-2'>
-                                <h2 className='font-extrabold'>Program Info</h2>
+                                <h2 className='font-extrabold'>program információk:</h2>
                                 <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                             </div>
                             <div className='flex flex-col gap-5'>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
-                                    <h3 className='text-lg'><span className='font-extrabold'>Teacher : </span>{program.teacher.name}
+                                    <h3 className='text-lg'><span className='font-extrabold'>Tanár:</span>{program.teacher.name}
                                     </h3>
                                 </div>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
-                                    <h3 className='text-lg'><span className='font-extrabold'>name : </span>{program.name}
+                                    <h3 className='text-lg'><span className='font-extrabold'>Név : </span>{program.name}
                                     </h3>
                                 </div>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
-                                    <h3 className='text-lg'><span className='font-extrabold'>subject : </span>{program.subject}
+                                    <h3 className='text-lg'><span className='font-extrabold'>tantárgy : </span>{program.subject}
                                     </h3>
                                 </div>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
-                                    <h3 className='text-lg'><span>location : </span>{program.location}
+                                    <h3 className='text-lg'><span>elhelyezkedés : </span>{program.location}
                                     </h3>
                                 </div>
                             </div>
                         </div>
                         <div className='flex flex-col gap-10 flex-1'>
                             <div className='text-2xl flex flex-col gap-2'>
-                                <h2 className='font-extrabold'>Find this program on:</h2>
+                                <h2 className='font-extrabold'>Keresse meg ezt a programot:</h2>
                                 <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                             </div>
                             <div className='flex gap-10'>
@@ -96,7 +97,7 @@ const ProgramDetail = async({params}:{params:{id:string}}) => {
                     </div>
                     <div id='program-register' className='mt-16'>
                     <div className='flex flex-col gap-1  my-16'>
-                        <h1 className='text-2xl font-extrabold mb-3'>Register this Program</h1>
+                        <h1 className='text-2xl font-extrabold mb-3'>Regisztrálja ezt a programot</h1>
                         <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                     </div>
                         <RegisterForm type='program' activityName={program.name} />

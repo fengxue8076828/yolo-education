@@ -10,12 +10,14 @@ import CourseDetailTagsContainer from '@/app/components/CourseDetailTagsContaine
 import RegisterForm from '@/app/components/RegisterForm'
 import CourseDetailBody from '@/app/components/CourseDetailBody'
 
+export const revalidate = 60
+
 const CourseDetail = async({params}:{params:{id:string}}) => {
     const course = await getCourseById(params.id)
     const chapters = await getChaptersByCourse(params.id)
   return (
     <div className='bg-shallow-blue min-h-[100vh]'>
-        <ListHeader text='COURSE DETAIL' />
+        <ListHeader text={course.name} />
         <CourseDetailBody course={course} chapters={chapters} />
         {/* <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
             <div className='w-full lg:w-[80%] bg-white p-5 md:p-16 rounded flex flex-col '>

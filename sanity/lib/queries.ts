@@ -19,7 +19,7 @@ export interface TeacherType {
 export interface CourseType {
     _id:string,
     name:string,
-    title:string
+    subTitle:string
     slug:string,
     description:PortableTextBlock[],
     price:string,
@@ -27,9 +27,8 @@ export interface CourseType {
     category:CategoryType,
     startDate:string[],
     classTime:string,
-    classLocation:string,
     lectures:number,
-    duration:string,
+    duration:number,
     quizzes:number,
     teacher:TeacherType,
     location:string,
@@ -114,6 +113,30 @@ export interface Footertype {
     youtube:string,
     description:string
 }
+
+export interface MenuitemType{
+    _id:string,
+    serial:number,
+    text:string,
+    parent:MenuitemType | null,
+    link:string,
+}
+
+export interface YoutubeType{
+    title:string,
+    text:string,
+    youtubeChannelUrl:string,
+}
+
+export interface IntroductionType{
+    title:string,
+    text:string
+}
+
+export interface ProgramCategoryType{
+    _id:string,
+    name:string
+}
 export async function getTeachers():Promise<TeacherType[]> {
     const query = `*[_type=="teacher"]`
     const data = await client.fetch(query)
@@ -128,7 +151,7 @@ export async function getCoursesOnWindow():Promise<CourseType[]> {
     const query = `*[_type=="course" && onWindow==true ]{
         _id,
         name,
-        title,
+        subTitle,
         image,
         startDate,
         price,
@@ -145,7 +168,7 @@ export async function getCoursesByName(keyword:string):Promise<CourseType[]> {
     const query = `*[_type=="course" && (name match "${keyword}")]{
         _id,
         name,
-        title,
+        subTitle,
         image,
         startDate,
         price,
@@ -167,7 +190,7 @@ export async function getCoursesByCategory(id:string):Promise<CourseType[]>{
     const query = `*[_type=="course" && category._ref=="${id}"]{
         _id,
         name,
-        title,
+        subTitle,
         image,
         startDate,
         price,
@@ -184,13 +207,13 @@ export async function getCourseById(id:string):Promise<CourseType>{
     {
         _id,
         name,
-        title,
+        subTitle,
         image,
         startDate,
         description,
         startData,
         classTime,
-        classLocation,
+        location,
         price,
         lectures,
         duration,
@@ -215,6 +238,12 @@ export async function getChaptersByCourse(id:string):Promise<ChapterType[]>{
     return data
 }
 
+export async function getProgramCategories():Promise<ProgramCategoryType[]>{
+    const query = `*[_type=="programCategory"]`
+    const data = await client.fetch(query)
+    return data
+}
+
 export async function getPrograms():Promise<ProgramType[]>{
     const query = `*[_type=="program"] | order(time){
         _id,
@@ -231,6 +260,42 @@ export async function getPrograms():Promise<ProgramType[]>{
     }`
     const data = await client.fetch(query)
     return data  
+}
+
+export async function getProgramsByName(keyword:string):Promise<ProgramType[]> {
+    const query = `*[_type=="program" && (name match "${keyword}")]{
+        _id,
+        name,
+        subject,
+        time,
+        location,
+        image,
+        description,
+        "teacher":teacher->{
+            name,
+            image   
+        }
+    }`
+    const data = await client.fetch(query)
+    return data 
+}
+
+export async function getProgramsByCategory(id:string):Promise<ProgramType[]>{
+    const query = `*[_type=="program" && category._ref=="${id}"] | order(time){
+        _id,
+        name,
+        subject,
+        time,
+        location,
+        image,
+        description,
+        "teacher":teacher->{
+            name,
+            image   
+        }
+    }`
+    const data = await client.fetch(query)
+    return data
 }
 
 export async function getProgramById(id:string):Promise<ProgramType>{
@@ -274,8 +339,8 @@ export async function getTestimonials():Promise<TestimonialType[]>{
     const data = await client.fetch(query)
     return data
 }
-export async function getTags():Promise<TagType[]>{
-    const query = `*[_type=="tag"]`
+export async function getTags(type:string):Promise<TagType[]>{
+    const query = `*[_type=="tag" && type=="${type}"]`
     const data = await client.fetch(query)
     return data
 }
@@ -283,4 +348,38 @@ export async function getFooter():Promise<Footertype>{
     const query = `*[_type=="footer"]`
     const data = await client.fetch(query)
     return data[0]
+}
+
+export async function getTopMenu():Promise<MenuitemType[]>{
+    const query = `*[_type=="menuitem" && parent==null] | order(serial)`
+    const data = await client.fetch(query)
+    return data
+}
+
+export async function getSubMenu(menuId:string):Promise<MenuitemType[]>{
+    const query = `*[_type=="menuitem" && parent._ref=="${menuId}"] | order(serial)`
+    const data = await client.fetch(query)
+    return data
+}
+
+export async function getIntroduction():Promise<IntroductionType|null>{
+    const query = `*[_type=="introduction"]`
+    const data = await client.fetch(query)
+    if(data && data.length > 0){
+        return data[0]
+    }   
+    else{
+        return null
+    }
+}
+
+export async function getYoutube():Promise<YoutubeType|null>{
+    const query = `*[_type=="youtube"]`
+    const data = await client.fetch(query)
+    if(data && data.length > 0){
+        return data[0]
+    }   
+    else{
+        return null
+    }
 }

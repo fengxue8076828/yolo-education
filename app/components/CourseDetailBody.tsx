@@ -20,7 +20,8 @@ const CourseDetailBody = ({course,chapters}:{course:CourseType,chapters:ChapterT
         <div>
 
         <div id='course-register' className='flex flex-col gap-1  my-16'>
-          <h1 className='text-2xl font-extrabold mb-3'>Register this course</h1>
+          
+          <h1 className='text-2xl font-extrabold mb-3'>Regisztráljon erre a tanfolyamra</h1>
           <span className='w-[50px] h-[2px] bg-ternary-color'></span>
         </div>
           <RegisterForm selectedDate={selectedDate} type='course' activityName={course.name} />

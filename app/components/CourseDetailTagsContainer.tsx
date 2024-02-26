@@ -16,7 +16,7 @@ import Link from 'next/link';
 
 
 const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate}:{course:CourseType,chapters:ChapterType[],selectedDate:string,setSelectedDate:(date:string)=>void}) => {
-    const tags=["Overview","Syllbus","Teacher","Information"]
+    const tags=["Áttekintés","Tanmenet","Tanár","A tanfolyam kezdési dátuma"]
     const [selectedTag,setSelectedTag] = useState(0)
     const [selectedChapters,setSelectedChapters] = useState<number[]>([0])
     const dates = course.startDate
@@ -53,33 +53,32 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
                 <div className='flex flex-wrap gap-10 gap-y-3 md:gap-16 md:gap-y-5 items-center'>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Name : </span>{course.name}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Név : </span>{course.name}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Teacher : </span>{course.teacher.name}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Tanár : </span>{course.teacher.name}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Lectures : </span>{course.lectures}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Előadások : </span>{course.lectures}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Duration : </span>{course.duration}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Időtartam : </span>{course.duration}hét(ig)</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Quizzes : </span>{course.quizzes}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Kvízek : </span>{course.quizzes}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Location : </span>{course.location}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Elhelyezkedés : </span>{course.location}</h4>
                     </div>
                 </div>
                 <div className='flex flex-col md:flex-row items-stretch gap-5 pt-16 justify-between w-full md:w-[80%] md:items-center'>
                     <div className='text-base md:text-xl flex flex-col gap-3'>
-                        <h4><span className='font-extrabold'>Category : </span>{course.category.name}</h4>
-                        <h4><span className='font-extrabold'>Tags : </span>Hungarian A1</h4>
+                        <h4><span className='font-extrabold'>Kategória : </span>{course.category.name}</h4>
                     </div>
                     <div className='flex flex-col items-stretch'>
                         <Button text='Register' clickHandler={()=>{router.push("#course-register")}}/>
@@ -97,7 +96,7 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
                 chapters.map((chapter,chapterIndex)=>(
                     <div key={chapter._id} className='my-10'>
                         <div className='flex items-center mb-5 gap-3'>
-                            <h3 className='text-xl font-extrabold'>Chapter {chapter.sequence}</h3>
+                            <h3 className='text-xl font-extrabold'>Fejezet {chapter.sequence}</h3>
                             {
                                 selectedChapters.includes(chapterIndex)?<IoIosArrowUp className='text-xl cursor-pointer' onClick={()=>setSelectedChapters(selectedChapters.filter(chapter=>chapter!=chapterIndex))} />:<IoIosArrowDown className='text-xl cursor-pointer' onClick={()=>setSelectedChapters([...selectedChapters,chapterIndex])} />
                             }
@@ -127,12 +126,12 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
         <div className={`${selectedTag == 3?"block":"hidden"} min-h-[80vh] pt-16 w-full flex flex-col gap-10`}>
             <div className='flex gap-3 items-center'>
                 <MdPlayArrow className="text-2xl text-golden" />
-                <h3 className='text-xl'>课程名称: {course.name}</h3>
+                <h3 className='text-xl'>Tanfolyam címe: {course.name}</h3>
             </div>
             <div>
             <div className='flex gap-3 items-center'>
                 <MdPlayArrow className="text-2xl text-golden" />
-                <h3 className='text-xl'>选择开课时间:</h3>
+                <h3 className='text-xl'>Az óra kezdési időpontja:</h3>
             </div>
             </div>
             <div className='flex items-center gap-10'>
