@@ -34,7 +34,7 @@ const Article = async({params}:{params:{slug:string}}) => {
             </div>
             <PortableText value={article.content} />
         </div>           
-        <Search />
+        <Search type='course' />
     </div>
 </div>
   )
