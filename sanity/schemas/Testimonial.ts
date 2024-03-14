@@ -1,22 +1,22 @@
 export const Testimonial = {
   name:"testimonial",
-  title:"Testimonial",
+  title:"Ajánlólevél",
   type:"document",
   fields:[
     {
       name:"name",
-      title:"Name",
+      title:"Név",
       type:"string"
     },
     {
       name:"content",
-      title:"Content",
+      title:"Tartalom",
       type:"array",
       of:[{type:"block"}]
     },
     {
       name:"image",
-      title:"Image",
+      title:"Kép",
       type:"image",
       options:{
         hotspot:true

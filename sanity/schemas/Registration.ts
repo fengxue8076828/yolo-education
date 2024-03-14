@@ -1,11 +1,11 @@
 export const Registration = {
     name:"registration",
-    title:"Registration",
+    title:"Bejegyzés",
     type:"document",
     fields:[
         {
             name:"name",
-            title:"Name",
+            title:"Név",
             type:"string",
         },
         {
@@ -15,22 +15,22 @@ export const Registration = {
         },
         {
             name:"message",
-            title:"Message",
+            title:"Üzenet",
             type:"string",
         },
         {
             name:"type",
-            title:"Type",
+            title:"Típus",
             type:"string",
         },
         {
             name:"activityName",
-            title:"ActivityName",
+            title:"Tevékenységnév",
             type:"string",
         },
         {
             name:"startDate",
-            title:"StartDate",
+            title:"Kezdő dátum",
             type:"string"
         }
     ]

@@ -13,7 +13,7 @@ export const Course =  {
         },
         {
             name:"slug",
-            title:"Slug",
+            title:"Meztelen csiga",
             type:"slug",
             options:{
                 source:"name",

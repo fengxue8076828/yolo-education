@@ -7,17 +7,17 @@ export const Program = {
     fields:[
         {
             name:"name",
-            title:"Name",
+            title:"Név",
             type:"string",
         },
         {
             name:"subject",
-            title:"Subject",
+            title:"Tantárgy",
             type:"string",
         },
         {
             name:"time",
-            title:"Time",
+            title:"Idő",
             type:"datetime",
             options: {
                 dateFormat: 'YYYY-MM-DD',
@@ -27,24 +27,24 @@ export const Program = {
         },
         {
             name:"location",
-            title:"Location",
+            title:"Elhelyezkedés",
             type:"string"
         },
         {
             name:"teacher",
-            title:"Teacher",
+            title:"Tanár",
             type:"reference",
             to:[{type:"teacher"}]
         },
         {
             name:"description",
-            title:"Description",
+            title:"Leírás",
             type:"array",
             of:[{type:"block"}]
         },
         {
             name:"image",
-            title:"Image",
+            title:"Kép",
             type:"image",
             options:{
                 hotspot:true
@@ -67,7 +67,7 @@ export const Program = {
         },
         {
             name:"price",
-            title:"Price",
+            title:"Ár",
             type:"string"
         },
         {

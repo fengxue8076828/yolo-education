@@ -1,32 +1,32 @@
 export const Teacher = {
     name:"teacher",
-    title:"Teacher",
+    title:"Tanár",
     type:"document",
     fields:[
         {
             name:"name",
-            title:"Name",
+            title:"Név",
             type:"string",
         },
         {
             name:"title",
-            title:"Title",
+            title:"Cím",
             type:"string",
         },
         {
             name:"charactor",
-            title:"Charactor",
+            title:"Stílus",
             type:"string"
         },
         {
             name:"description",
-            title:"Description",
+            title:"Leírás",
             type:"array",
             of:[{type:"block"}]
         },
         {
             name:"image",
-            title:"Image",
+            title:"Kép",
             type:"image",
             options:{
                 hotspot:true,

@@ -1,16 +1,16 @@
 export const Feature = {
     name:"feature",
-    title:"Feature",
+    title:"Funkció",
     type:"document",
     fields:[
         {
             name:"title",
-            title:"Title",
+            title:"Cím",
             type:"string"
         },
         {
             name:"content",
-            title:"Content",
+            title:"Tartalom",
             type:"string"
         }
     ]

@@ -3,24 +3,24 @@ import { Preview } from "sanity"
 
 export const MenuItem = {
     name:"menuitem",
-    title:"Menuitem",
+    title:"Menü tétel",
     type:"document",
     fields:[
         {
             name:"serial",
-            title:"Serial",
+            title:"Sorozatszám",
             type:"number",
             validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"parent",
-            title:"Parent",
+            title:"Szülő",
             type:"reference",
             to:[{type:"menuitem"}]
         },
         {
             name:"text",
-            title:"Text",
+            title:"Szöveg",
             type:"string",
             validation:(Rule:Rule)=>Rule.required()
         },
@@ -39,7 +39,7 @@ export const MenuItem = {
             const { title, parentText } = selection;
             return {
               title: title,
-              subtitle: parentText ? `Parent: ${parentText}` : 'Top menu', // Displaying parent's name in the subtitle
+              subtitle: parentText ? `Szülő: ${parentText}` : 'Főmenü', // Displaying parent's name in the subtitle
             };
           },
         

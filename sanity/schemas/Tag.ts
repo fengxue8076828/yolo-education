@@ -2,7 +2,7 @@ import {Rule} from "@sanity/types"
 
 export const Tag = {
     name:"tag",
-    title:"Tag",
+    title:"Címke",
     type:"document",
     fields:[
         {

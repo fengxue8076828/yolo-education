@@ -1,16 +1,16 @@
 export const FooterGroup = {
     name:"footerGroup",
-    title:"FooterGroup",
+    title:"Lábléc csoport",
     type:"document",
     fields:[
         {
             name:"title",
-            title:"Title",
+            title:"Cím",
             type:"string"
         },
         {
             name:"links",
-            title:"Links",
+            title:"Linkek",
             type:"array",
             of:[{type:"link"}]
         }

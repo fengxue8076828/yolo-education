@@ -1,16 +1,16 @@
 export const Article = {
     name:"article",
-    title:"Article",
+    title:"Cikk",
     type:"document",
     fields:[
         {
             name:"title",
-            title:"Title",
+            title:"Cím",
             type:"string",
         },
         {
             name:"slug",
-            title:"Slug",
+            title:"Meztelen csiga",
             type:"slug",
             options:{
                 source:"title"
@@ -18,13 +18,13 @@ export const Article = {
         },
         {
             name:"content",
-            title:"Content",
+            title:"Tartalom",
             type:"array",
             of:[{type:"block"}]
         },
         {
             name:"image",
-            title:"Image",
+            title:"Kép",
             type:"image",
             options:{
                 hotspot:true

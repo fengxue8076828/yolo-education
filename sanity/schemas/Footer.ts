@@ -1,27 +1,27 @@
 export const Footer = {
     name:"footer",
-    title:"Footer",
+    title:"Lábléc",
     type:"document",
     fields:[
         {
             name:"groups",
-            title:"Groups",
+            title:"Csoportok",
             type:"array",
             of:[{type:"footerGroup"}]
         },
         {
             name:"telephone",
-            title:"Telephone",
+            title:"Telefon",
             type:"string"
         },
         {
             name:"mobilephone",
-            title:"Mobilephone",
+            title:"Mobiltelefon",
             type:"string"
         },
         {
             name:"address",
-            title:"Address",
+            title:"Cím",
             type:"string"
         },
         {
@@ -51,7 +51,7 @@ export const Footer = {
         },
         {
             name:"description",
-            title:"Description",
+            title:"Leírás",
             type:"string"
         }
     ]

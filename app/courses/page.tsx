@@ -11,7 +11,7 @@ const Courses = async() => {
   const categories = await getCategories()
   return (
     <div className='bg-shallow-blue min-h-[100vh]'>
-        <ListHeader text="OUR COURSES" />
+        <ListHeader text="TANFOLYAMAINK" />
         <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
           <div className='w-full lg:w-[80%]'>
             <Tagbox index={"-1"} type='course' />

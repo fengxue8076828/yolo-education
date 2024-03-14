@@ -1,16 +1,16 @@
 export const HeaderText = {
     name:"headerText",
-    title:"HeaderText",
+    title:"Fejléc",
     type:"document",
     fields:[
         {
             name:"slogan",
-            title:"Slogan",
+            title:"Szlogen",
             type:"string"
         },
         {
             name:"content",
-            title:"Content",
+            title:"Tartalom",
             type:"string"
         }
         

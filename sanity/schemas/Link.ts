@@ -5,7 +5,7 @@ export const Link = {
     fields:[
         {
             name:"text",
-            title:"Text",
+            title:"Szöveg",
             type:"string"
         },
         {
