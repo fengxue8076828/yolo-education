@@ -12,11 +12,11 @@ import 'react-calendar/dist/Calendar.css';
 import {format} from "date-fns"
 import { MdPlayArrow } from "react-icons/md";
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import PortableTextComponent from './PortableTextComponent';
 
 
 const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate}:{course:CourseType,chapters:ChapterType[],selectedDate:string,setSelectedDate:(date:string)=>void}) => {
-    const tags=["Áttekintés","Tanmenet","Tanár","A tanfolyam kezdési dátuma"]
+    const tags=["Áttekintés","Tanmenet","Tanár"]
     const [selectedTag,setSelectedTag] = useState(0)
     const [selectedChapters,setSelectedChapters] = useState<number[]>([0])
     const dates = course.startDate
@@ -36,7 +36,6 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
         }
         
     }
-    console.log(selectedDate)
   return (
     <div>        
         <div className='flex w-full text-xs md:text-base'>
@@ -76,18 +75,29 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
                         <h4 className='text-sm md:text-base'><span className='font-extrabold'>Elhelyezkedés : </span>{course.location}</h4>
                     </div>
                 </div>
-                <div className='flex flex-col md:flex-row items-stretch gap-5 pt-16 justify-between w-full md:w-[80%] md:items-center'>
+                <div className='flex flex-col md:flex-row items-stretch gap-5 pt-16 justify-between w-full md:w-[100%] md:items-center'>
                     <div className='text-base md:text-xl flex flex-col gap-3'>
                         <h4><span className='font-extrabold'>Kategória : </span>{course.category.name}</h4>
                     </div>
-                    <div className='flex flex-col items-stretch'>
+                    <div className='flex flex-col md:flex-row items-stretch gap-3'>
                         <Button text='Register' clickHandler={()=>{router.push("#course-register")}}/>
+                        <select className='border p-3' onChange={(e)=>setSelectedDate(e.target.value)}>
+                            <option value="">A tanfolyam kezdési dátuma</option>
+                            {
+                                course.startDate.map((date,index)=>(
+                                    <option key={index} value={date}>{date}</option>
+                                ))
+                            }
+                        </select>
                     </div>
                 </div>
                 <div className='w-full h-[1px] bg-slate-500 my-16'>
                 </div>
                 <div>
-                    <PortableText value={course.description} />
+                    <PortableText 
+                        value={course.description}
+                        components={PortableTextComponent}
+                     />
                 </div>         
             </div>
         </div>
@@ -102,7 +112,10 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
                             }
                         </div>
                         <div className={`${selectedChapters.includes(chapterIndex)?"block":"hidden"}`}>
-                            <PortableText value={chapter.content} />
+                            <PortableText 
+                                value={chapter.content}
+                                components={PortableTextComponent}
+                             />
                         </div>
                     </div>
                 ))
@@ -120,28 +133,11 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
                 </div>
             </div>
             <div className='w-full'>
-                <PortableText value={course.teacher.description} />
+                <PortableText 
+                    value={course.teacher.description}
+                    components={PortableTextComponent}
+                 />
             </div>
-        </div>
-        <div className={`${selectedTag == 3?"block":"hidden"} min-h-[80vh] pt-16 w-full flex flex-col gap-10`}>
-            <div className='flex gap-3 items-center'>
-                <MdPlayArrow className="text-2xl text-golden" />
-                <h3 className='text-xl'>Tanfolyam címe: {course.name}</h3>
-            </div>
-            <div>
-            <div className='flex gap-3 items-center'>
-                <MdPlayArrow className="text-2xl text-golden" />
-                <h3 className='text-xl'>Az óra kezdési időpontja:</h3>
-            </div>
-            </div>
-            <div className='flex items-center gap-10'>
-                <Calendar
-                locale='en-US'
-                onChange={chooseDate}
-                tileDisabled={tileDisabled}
-                />
-            </div>
-
         </div>
     </div>
   )

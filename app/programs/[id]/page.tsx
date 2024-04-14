@@ -16,6 +16,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import Link from 'next/link'
+import PortableTextComponent from '@/app/components/PortableTextComponent'
 
 export const revalidate = 60
 
@@ -46,7 +47,10 @@ const ProgramDetail = async({params}:{params:{id:string}}) => {
                         </div>
                     </div>
                     <div className='py-16'>
-                        <PortableText value={program.description} />
+                        <PortableText 
+                            value={program.description}
+                            components={PortableTextComponent}
+                         />
                     </div>
                     <div className='flex flex-col md:flex-row flex-wrap mb-16 gap-16'>
                         <div className='flex flex-col gap-10 flex-1'>

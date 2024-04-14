@@ -17,7 +17,10 @@ import { MenuItem } from './schemas/MenuItem'
 import {Introduction} from './schemas/Introduction'
 import { Youtube } from './schemas/Youtube'
 import { ProgramCategory } from './schemas/ProgramCategory'
+import { TeacherCategory } from './schemas/TeacherCategory'
+import { ForeignStudyCover } from './schemas/ForeignStudyCover'
+import { GalleryPicture } from './schemas/GalleryPicture'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [Category,Teacher,Course,Chapter,Program,Article,HeaderText,Feature,Testimonial,Registration,Tag,Link,FooterGroup,Footer,MenuItem,Introduction,Youtube,ProgramCategory],
+  types: [Category,Teacher,Course,Chapter,Program,Article,HeaderText,Feature,Testimonial,Registration,Tag,Link,FooterGroup,Footer,MenuItem,Introduction,Youtube,ProgramCategory,TeacherCategory,ForeignStudyCover,GalleryPicture],
 }

@@ -10,6 +10,7 @@ import { urlFor } from '@/sanity/lib/client';
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaMobileButton } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
+import { MdOutlineMail } from "react-icons/md";
 
 export const revalidate = 60
 
@@ -43,15 +44,19 @@ const Footer = async() => {
                         <span className='block w-[30px] h-[3px] bg-golden mb-2 lg:mb-5' />
                     </div>
                     <div className='flex flex-col gap-3'>
-                        <div className='flex gap-3'>
+                        <div className='flex gap-3 items-center'>
                             <BsFillTelephoneFill className='text-white text-lg' />
                             <h3>{footer.telephone}</h3>
                         </div>
-                        <div className='flex gap-3'>
+                        <div className='flex gap-3 items-center'>
                             <FaMobileButton className='text-white text-lg' />
                             <h3>{footer.mobilephone}</h3>
                         </div>
-                        <div className='flex gap-3'>
+                        <div className='flex gap-3 items-center'>
+                            <MdOutlineMail className='text-white text-lg' />
+                            <h3>{footer.email}</h3>
+                        </div>
+                        <div className='flex gap-3 items-center'>
                             <FaLocationDot className='text-white text-lg' />
                             <h3>{footer.address}</h3>
                         </div>                      

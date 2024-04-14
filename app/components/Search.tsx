@@ -15,7 +15,7 @@ const Search = ({type}:{type:string}) => {
         <span className='w-[50px] h-[2px] bg-ternary-color'></span>
       </div>
       <div className='flex flex-col gap-3 md:gap-7 md:flex-row lg:flex-col'>
-        <input type='text' className='border border-1 border-gray-500 px-3 py-3 rounded-lg w-full md:w-[400px] lg:w-full' placeholder={type=="course"?'találd meg a kurzust...':'megtalálja a programját'} value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
+        <input type='text' className='border border-1 border-gray-500 px-3 py-3 rounded-lg w-full md:w-[400px] lg:w-full' placeholder={type=="course"?'találd meg a kurzust...':type=="program"?'megtalálja a programját':'keress tanárt'} value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
         <button className='w-full md:w-[200px] lg:w-full px-3 py-3 bg-dark-blue text-white rounded-lg' onClick={()=>router.push(`/${type}query/${searchText}/${0}`)}>Search</button>
       </div>
       

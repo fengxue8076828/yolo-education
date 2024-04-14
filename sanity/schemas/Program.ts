@@ -75,7 +75,7 @@ export const Program = {
             title:"kategória",
             type:"reference",
             to:[{type:"programCategory"}],
-            validate:(Rule:Rule) => Rule.required()
+            validation:(Rule:Rule) => Rule.required()
         }
     ]
 }

@@ -25,6 +25,11 @@ export const Footer = {
             type:"string"
         },
         {
+            name:"email",
+            title:"Email",
+            type:"string"
+        },
+        {
             name:"wechat",
             title:"Wechat",
             type:"image"

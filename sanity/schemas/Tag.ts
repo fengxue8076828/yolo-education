@@ -9,13 +9,13 @@ export const Tag = {
             name:"name",
             title:"Név",
             type:"string",
-            validate:(Rule:Rule)=>Rule.required()
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"type",
             title:"Típus",
             type:"string",
-            validate:(Rule:Rule)=>Rule.required()
+            validation:(Rule:Rule)=>Rule.required()
         }
     ]
 }

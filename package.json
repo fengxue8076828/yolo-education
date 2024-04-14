@@ -13,6 +13,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.23.4",
     "framer-motion": "^10.17.9",
+    "isotope-layout": "^3.0.6",
     "next": "14.0.4",
     "next-sanity": "^7.0.5",
     "react": "^18",
@@ -27,6 +28,7 @@
     "swiper": "^11.0.5"
   },
   "devDependencies": {
+    "@types/isotope-layout": "^3.0.13",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

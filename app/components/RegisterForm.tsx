@@ -96,7 +96,7 @@ const RegisterForm = ({selectedDate,type,activityName}:RegisterFormPropsType) =>
                 </div>
                 <div className='flex gap-2 text-sm'>
                     <input type='checkbox' checked={agreeTerms} onChange={handleCheckAgreeTerms} />
-                    <p>ezekkel egyetértek</p><Link className='text-dark-blue underline' href="/articles/exermpt">feltételeket</Link>
+                    <p>ezekkel egyetértek</p><Link className='text-dark-blue underline' href="/articles/jogi-nyilatkozat" target='_blank'>feltételeket</Link>
                 </div>
                 
             </div>

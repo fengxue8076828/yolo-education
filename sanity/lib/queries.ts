@@ -5,6 +5,10 @@ export interface CategoryType {
     _id:string,
     name:string,
 }
+export interface TeacherCategoryType {
+    _id:string,
+    name:string
+}
 
 export interface TeacherType {
     _id:string,
@@ -13,6 +17,7 @@ export interface TeacherType {
     charactor:string,
     description:PortableTextBlock[],
     image:string
+    teacherCategory:TeacherCategoryType
 
 }
 
@@ -105,6 +110,7 @@ export interface Footertype {
     groups:FooterGroupType[],
     telephone:string,
     mobilephone:string,
+    email:string,
     address:string,
     wechat:string,
     twitter:string,
@@ -137,10 +143,71 @@ export interface ProgramCategoryType{
     _id:string,
     name:string
 }
+
+export interface ForeignStudyCoverType{
+    _id:string,
+    subtitle:string,
+    slug:{
+        _type:"slug",
+        current:string
+    },
+    title:string, 
+    text:string,
+    content:PortableTextBlock[],
+    features:string[],
+    pictures:string[],
+    coverImage:string,
+}
+
+export interface GalleryPicture {
+    _id:string,
+    image:string,
+    title:string,
+    url:string,
+}
+
+export async function getGalleryPictures():Promise<GalleryPicture[]> {
+    const query = `*[_type=="galleryPicture"]`
+    const data = await client.fetch(query)
+    return data
+}
+    
+
+export async function getForeignStudyCovers():Promise<ForeignStudyCoverType[]> {
+    const query = `*[_type=="foreignStudyCover"]`
+    const data = await client.fetch(query)
+    return data
+}
+
+export async function getForeignStudyCoverBySlug(slug:string):Promise<ForeignStudyCoverType> {
+    const query = `*[_type=="foreignStudyCover" && slug.current=="${slug}"]`
+    const data = await client.fetch(query)
+    return data[0]
+}
+
 export async function getTeachers():Promise<TeacherType[]> {
     const query = `*[_type=="teacher"]`
     const data = await client.fetch(query)
     return data
+}
+
+export async function getTeachersByCategory(categoryId:string):Promise<TeacherType[]> {
+    const query = `*[_type=="teacher" && category._ref=="${categoryId}"]`
+    const data = await client.fetch(query)
+    return data
+}
+
+export async function getTeachersByName(keyword:string):Promise<TeacherType[]> {
+    const query = `*[_type=="teacher" && (title match "${keyword}")]`
+    const data = await client.fetch(query)
+    return data
+}
+
+export async function getTeacherById(id:string):Promise<TeacherType> {
+    const query = `*[_type=="teacher" && _id=="${id}"]`
+    const data = await client.fetch(query)
+    return data[0]
+
 }
 export async function getCourses():Promise<CourseType[]> {
     const query = `*[_type=="course"]`
@@ -161,6 +228,9 @@ export async function getCoursesOnWindow():Promise<CourseType[]> {
         },
     }`
     const data = await client.fetch(query)
+    if (data.length > 8){
+        return data.slice(0,8)
+    }
     return data 
 }
 
@@ -240,6 +310,12 @@ export async function getChaptersByCourse(id:string):Promise<ChapterType[]>{
 
 export async function getProgramCategories():Promise<ProgramCategoryType[]>{
     const query = `*[_type=="programCategory"]`
+    const data = await client.fetch(query)
+    return data
+}
+
+export async function getTeacherCategories():Promise<TeacherCategoryType[]>{
+    const query = `*[_type=="teacherCategory"]`
     const data = await client.fetch(query)
     return data
 }

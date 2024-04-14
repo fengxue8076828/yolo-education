@@ -5,7 +5,6 @@ import chineseBooks from '@/public/chinesebooks.png'
 import Button from './Button'
 import Link from 'next/link'
 import { getHeaderText } from '@/sanity/lib/queries'
-import { PortableText } from '@portabletext/react'
 
 export const revalidate = 60
 

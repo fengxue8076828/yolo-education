@@ -3,7 +3,6 @@ import { RegistrationType } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 
 export const POST = async(req:NextRequest) => {
-    console.log("helloooooooooooooooo")
     try{
         const {name,email,message,type,activityName,startDate} = await req.json()
         const registration:RegistrationType = {

@@ -3,6 +3,11 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaTrophy } from "react-icons/fa6";
 import { getFeatures } from '@/sanity/lib/queries';
 import { FaStar } from "react-icons/fa";
+import { SlBadge } from "react-icons/sl";
+
+import { FiAward } from "react-icons/fi";
+import { LuTrophy } from "react-icons/lu";
+import { FaRegStar } from "react-icons/fa";
 
 export const revalidate = 60
 
@@ -18,7 +23,10 @@ const Feathers = async() => {
                         <h3 className='text-sm font-bold lg:text-xl'>{feature.title}</h3>
                         <p className='text-xs mt-1 md:text-sm'>{feature.content}</p>
                     </div>
-                    <FaStar className='text-2xl md:text-4xl text-golden' />
+                    {
+                        index == 0?<FiAward className='text-2xl md:text-4xl text-golden' />:index == 1?<LuTrophy className='text-2xl md:text-4xl text-golden' />:<FaRegStar className='text-2xl md:text-4xl text-golden' />
+                    }
+                    
                 </div>                
             ))
         }

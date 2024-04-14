@@ -1,3 +1,5 @@
+import {Rule} from "@sanity/types"
+
 export const Teacher = {
     name:"teacher",
     title:"Tanár",
@@ -31,6 +33,13 @@ export const Teacher = {
             options:{
                 hotspot:true,
             }
+        },
+        {
+            name:"category",
+            title:"Tanári kategória",
+            type:"reference",
+            to:[{type:"teacherCategory"}],
+            validation:(Rule:Rule) => Rule.required()
         }
     ]
 }

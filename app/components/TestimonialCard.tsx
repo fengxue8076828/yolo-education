@@ -6,6 +6,7 @@ import {motion} from "framer-motion"
 import { TestimonialType } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/client'
 import { PortableText } from '@portabletext/react'
+import PortableTextComponent from './PortableTextComponent'
 
 const TestimonialCard = ({testimonial}:{testimonial:TestimonialType}) => {
   return (
@@ -25,7 +26,10 @@ const TestimonialCard = ({testimonial}:{testimonial:TestimonialType}) => {
                 <Image src={urlFor(testimonial.image).url()}  layout='fill' alt='testimonial' />
             </div>
             <div className='p-7 text-sm max-w-three-quarter min-h-36'>
-              <PortableText  value={testimonial.content} />
+              <PortableText  
+                value={testimonial.content}
+                components={PortableTextComponent}
+               />
             </div>
         </div>
     </motion.div>

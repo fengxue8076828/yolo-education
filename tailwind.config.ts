@@ -26,6 +26,8 @@ const config: Config = {
         'blue':'#C8E0F4',
         'darker-blue':'#273B4A',
         'golden':'#FDC800',
+        'lime':'#a2da6a',
+        'dark-lime':'#3faea3'
       },
       fontFamily:{
         'inherit':'inherit',

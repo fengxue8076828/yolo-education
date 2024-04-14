@@ -10,6 +10,7 @@ import { urlFor } from '@/sanity/lib/client';
 import {format} from "date-fns"
 import { PortableText } from '@portabletext/react';
 import { useRouter } from 'next/navigation';
+import PortableTextComponent from './PortableTextComponent';
 
 
 const ProgramCard = ({program}:{program:ProgramType}) => {
@@ -60,7 +61,10 @@ const ProgramCard = ({program}:{program:ProgramType}) => {
             </div>
             <div className='w-full md:w-2/3 flex flex-col gap-20'>
                 <div>
-                    <PortableText value={program.description} />
+                    <PortableText 
+                        value={program.description}
+                        components={PortableTextComponent}
+                     />
                 </div>
                 
                 {/* <p className='md:max-w-prose text-sm md:text-base'>

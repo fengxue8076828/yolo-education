@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import Image from 'next/image'
 import course from '@/public/course.png'
@@ -5,10 +7,28 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import Button from './Button';
 import { TeacherType } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/client';
-const TeacherCard = ({teacher,setSelectedTeacher,setShowTeacherDetail}:{teacher:TeacherType,setSelectedTeacher:(t:TeacherType)=>void,setShowTeacherDetail:(s:boolean)=>void}) => {
+import { useRouter } from 'next/navigation';
+const TeacherCard = (
+  {
+    teacher,
+    setSelectedTeacher,
+    setShowTeacherDetail
+  }:{
+    teacher:TeacherType,
+    setSelectedTeacher?:(t:TeacherType)=>void,
+    setShowTeacherDetail?:(s:boolean)=>void
+  }
+  ) => {
   const handleSelectTeacher = () => {
-    setSelectedTeacher(teacher)
-    setShowTeacherDetail(true)
+    if (setSelectedTeacher && setShowTeacherDetail) {
+      setSelectedTeacher(teacher)
+      setShowTeacherDetail(true)
+    }
+    
+  }
+  const router = useRouter()
+  const handleTeacherDetail = () => {
+    router.push(`/teachers/${teacher._id}`)
   }
   return (
     <div className='group flex-1 cursor-pointer my-5 h-[300px] relative [perspective:50rem]' onClick={handleSelectTeacher}>
@@ -35,7 +55,7 @@ const TeacherCard = ({teacher,setSelectedTeacher,setShowTeacherDetail}:{teacher:
               </div>
             </div>
             <p className='w-full h-[80px]'>{teacher.charactor}</p>
-            <Button text='See More' clickHandler={()=>{}} />
+            <Button text='See More' clickHandler={()=>handleTeacherDetail()} />
           </div>
         </div>
     </div>

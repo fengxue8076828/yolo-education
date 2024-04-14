@@ -9,7 +9,7 @@ export const Course =  {
             name:"name",
             title:"Név",
             type:"string",
-            validate:(Rule:Rule)=>Rule.required()
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"slug",
@@ -30,13 +30,13 @@ export const Course =  {
             title:"Leírás",
             type:"array",
             of:[{type:"block"}],
-            validate:(Rule:Rule)=>Rule.required()
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"price",
             title:"Ár",
             type:"string",
-            validate:(Rule:Rule)=>Rule.integer().positive()
+            validation:(Rule:Rule)=>Rule.integer().positive()
         },
         {
             name:"image",
@@ -45,28 +45,28 @@ export const Course =  {
             options:{
                 hotspot:true,
             },
-            validate:(Rule:Rule)=>Rule.required()
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"category",
             title:"Kategória",
             type:"reference",
             to:[{type:"category"}],
-            validate:(Rule:Rule)=>Rule.required()
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"startDate",
             title:"Kezdő dátum",
             type:"array",
             of:[{type:"date"}],
-            validate:(Rule:Rule)=>Rule.required()
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"classTime",
             title:"Osztály ideje",
             type:"string",
             description:"Az óra kezdési időpontja.formátum ÓÓ:PP - ÓÓ:PP egy nap egy héten pl. 17:30 - 19:00 minden hétfőn",
-            validate:(Rule:Rule)=>Rule.required()
+            validationvalidation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"lectures",
@@ -94,7 +94,7 @@ export const Course =  {
             title:"Kvízek",
             type:"reference",
             to:[{type:"teacher"}],
-            validate:(Rule:Rule)=>Rule.required()
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"onWindow",
@@ -105,7 +105,7 @@ export const Course =  {
             name:"location",
             title:"Elhelyezkedés",
             type:"string",
-            validate:(Rule:Rule)=>Rule.required()
+            validation:(Rule:Rule)=>Rule.required()
         }
     ]
 }

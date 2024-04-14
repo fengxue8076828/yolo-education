@@ -6,6 +6,7 @@ import { urlFor } from '@/sanity/lib/client'
 import { PortableText } from '@portabletext/react'
 import teacherPicture from "@/public/teacher.png"
 import {motion} from "framer-motion"
+import PortableTextComponent from './PortableTextComponent'
 
 const TeacherDetail = ({teacher,setShowTeacherDetail}:{teacher:TeacherType | null,setShowTeacherDetail:(s:boolean)=>void}) => {
   return (
@@ -27,7 +28,10 @@ const TeacherDetail = ({teacher,setShowTeacherDetail}:{teacher:TeacherType | nul
             </div>
             <div className='w-full'>
                 {
-                    teacher && <PortableText value={teacher.description} />
+                    teacher && <PortableText 
+                        value={teacher.description}
+                        components={PortableTextComponent}
+                     />
                 }
                 
             </div>
