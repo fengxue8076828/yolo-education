@@ -9,14 +9,16 @@ export interface RegisterFormPropsType {
     selectedDate?:string,
     type:string,
     activityName:string,
+    dates:string[]
 }
 
 
 
-const RegisterForm = ({selectedDate,type,activityName}:RegisterFormPropsType) => {
+const RegisterForm = ({type,activityName,dates}:RegisterFormPropsType) => {
     const [name,setName] = useState("")
     const [email,setEmail] = useState("")
     const [message,setMessage] = useState("")
+    const [selectedDate,setSelectedDate] = useState("")
     const [agreeTerms,setAgreeTerms] = useState(false)
     const handleCheckAgreeTerms = (event:React.ChangeEvent<HTMLInputElement>):void => {
         setAgreeTerms(event.target.checked)
@@ -68,34 +70,41 @@ const RegisterForm = ({selectedDate,type,activityName}:RegisterFormPropsType) =>
         <form action="" className='flex flex-col gap-5' onSubmit={handleSubmit}>
             <div className='flex items-center gap-5'>
                 <label htmlFor="email" className='w-[100px]'>címe:</label>
-                <input type="email" id='email' className='border border-1 border-ternary-color flex-1 p-1' value={activityName} disabled />
+                <input type="email" id='email' className='border border-1 border-ternary-color flex-1 p-2' value={activityName} disabled />
             </div>
             {
                 type === "course" && (
                     <div className='flex items-center gap-5'>
-                        <label htmlFor="email" className='w-[100px]'>dátuma:</label>
-                        <input type="email" id='email' className='border border-1 border-ternary-color flex-1 p-1' value={selectedDate} disabled />
+                        <label htmlFor="date" className='w-[100px]'>dátuma:</label>
+                        <select className='border border-ternary-color p-2'  onChange={(e)=>setSelectedDate(e.target.value)}>
+                            <option value="">A tanfolyam kezdési dátuma</option>
+                            {
+                                dates.map((date,index)=>(
+                                    <option key={index} value={date}>{date}</option>
+                                ))
+                            }
+                        </select>
                     </div>
                 )
             }
             
             <div className='flex items-center gap-5'>
                 <label htmlFor="email" className='w-[100px]'>Email:</label>
-                <input type="email" id='email' className='border border-1 border-ternary-color flex-1 p-1' value={email} onChange={(e)=>setEmail(e.target.value)} />
+                <input type="email" id='email' className='border border-1 border-ternary-color flex-1 p-2' value={email} onChange={(e)=>setEmail(e.target.value)} />
             </div>
             <div className='flex items-center gap-5'>
                 <label htmlFor='name' className='w-[100px]'>Név:</label>
-                <input type='text' id='name'  className='border border-1 border-ternary-color flex-1 p-1' value={name} onChange={(e)=>setName(e.target.value)}/>
+                <input type='text' id='name'  className='border border-1 border-ternary-color flex-1 p-2' value={name} onChange={(e)=>setName(e.target.value)}/>
             </div>
             <div className='flex items-center gap-5'>
                 <label htmlFor='message' id='message' className='w-[100px]'>Üzenet:</label>
-                <textarea className='border border-1 border-ternary-color flex-1 p-1' rows={5} value={message} onChange={(e)=>setMessage(e.target.value)}></textarea>
+                <textarea className='border border-1 border-black flex-1 p-2' rows={5} value={message} onChange={(e)=>setMessage(e.target.value)}></textarea>
             </div>
             <div className='flex items-center gap-5'>
                 <div className='w-[100px]'>
                 </div>
                 <div className='flex gap-2 text-sm'>
-                    <input type='checkbox' checked={agreeTerms} onChange={handleCheckAgreeTerms} />
+                    <input type='checkbox' checked={agreeTerms} className='border-ternary-color' onChange={handleCheckAgreeTerms} />
                     <p>ezekkel egyetértek</p><Link className='text-dark-blue underline' href="/articles/jogi-nyilatkozat" target='_blank'>feltételeket</Link>
                 </div>
                 

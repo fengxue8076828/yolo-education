@@ -7,28 +7,37 @@ import { PiHouseLineLight } from "react-icons/pi";
 import { PiUserCircleLight } from "react-icons/pi";
 import { PiHandshakeLight } from "react-icons/pi";
 
+import { MdPermDeviceInformation } from "react-icons/md";
+import { MdOutlinePlayLesson } from "react-icons/md";
+import { MdOutlineOndemandVideo } from "react-icons/md";
+import { GiCampingTent } from "react-icons/gi";
+import { FaChalkboardTeacher } from "react-icons/fa";
+import { LuHeartHandshake } from "react-icons/lu";
+
+
+
 
 
 const Navigator = () => {
   return (
     <div className='w-[40px] bg-middle-shallow-blue flex-col justify-around items-center hidden lg:flex lg:gap-7 lg:px-5 lg:py-7 fixed top-[20vh] left-0 z-30 rounded-e-2xl'>
         <Link href="#introduction">
-            <IoIosInformationCircleOutline className='text-xl md:text-3xl text-gray-500 cursor-pointer' />
+            <MdPermDeviceInformation className='text-xl md:text-3xl text-gray-500 cursor-pointer' />
         </Link>
         <Link href="#courses">
-            <PiStudentLight className='text-xl md:text-3xl text-gray-500 cursor-pointer' />
+            <MdOutlinePlayLesson className='text-xl md:text-3xl text-gray-500 cursor-pointer' />
         </Link>
         <Link href="#youtube">
-            <PiYoutubeLogoLight className='text-xl md:text-3xl  text-gray-500 cursor-pointer' />
+            <MdOutlineOndemandVideo className='text-xl md:text-3xl  text-gray-500 cursor-pointer' />
         </Link>
         <Link href="#programs">
-            <PiHouseLineLight className='text-xl md:text-3xl  text-gray-500 cursor-pointer' />
+            <GiCampingTent className='text-xl md:text-3xl  text-gray-500 cursor-pointer' />
         </Link>
         <Link href="#teachers">
-            <PiUserCircleLight className='text-xl md:text-3xl  text-gray-500 cursor-pointer' />
+            <FaChalkboardTeacher className='text-xl md:text-3xl  text-gray-500 cursor-pointer' />
         </Link>
         <Link href="#testimonials">
-            <PiHandshakeLight className='text-xl md:text-3xl  text-gray-500 cursor-pointer' />
+            <LuHeartHandshake className='text-xl md:text-3xl  text-gray-500 cursor-pointer' />
         </Link>
     </div>
   )

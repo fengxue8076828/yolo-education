@@ -8,7 +8,10 @@ const Programs = () => {
   const [programs,setPrograms] = useState<ProgramType[] | null>(null)
   useEffect(()=>{
     const fetchPrograms = async() => {
-      const p = await getPrograms()
+      let p = await getPrograms()
+      if(p.length > 3){
+        p = p.slice(0,3)
+      }
       setPrograms(p)
     }
     fetchPrograms()

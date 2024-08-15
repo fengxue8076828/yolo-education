@@ -40,7 +40,15 @@ export const Program = {
             name:"description",
             title:"Leírás",
             type:"array",
-            of:[{type:"block"}]
+            of:[
+                {
+                    type:"block",
+                },
+                {
+                    type:"image",
+                    options:{hotspots:true},
+                }
+            ]
         },
         {
             name:"image",

@@ -1,7 +1,19 @@
 import {PortableTextComponents} from '@portabletext/react'
 import Link from 'next/link'
+import { urlFor } from '@/sanity/lib/client'
 
 const PortableTextComponent:PortableTextComponents = {
+    types: {
+      image: ({ value }) => {
+        return (
+          <img
+            src={urlFor(value.asset).url()}
+            alt={value.alt || 'Image'}
+            style={{ maxWidth: '100%' }}
+          />
+        )
+    },
+    },
     marks: {
       link: ({children, value}) => {
         const rel = !value.href.startsWith('/') ? 'noreferrer noopener' : undefined

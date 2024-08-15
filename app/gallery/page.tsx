@@ -29,7 +29,7 @@ const Gallery = async({params}:{params:{slug:string}}) => {
                 ))
               }
             </div>
-            <Search type='course' />
+            <Search type='courseandprogram' />
         </div>
     </div>
   )

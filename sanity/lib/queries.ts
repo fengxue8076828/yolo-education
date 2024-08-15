@@ -34,7 +34,6 @@ export interface CourseType {
     classTime:string,
     lectures:number,
     duration:number,
-    quizzes:number,
     teacher:TeacherType,
     location:string,
 
@@ -64,7 +63,7 @@ export interface ArticleType {
     title:string,
     slug:string,
     content:PortableTextBlock[],
-    image:string
+    // image:string
 }
 export interface HeaderTextType {
     slogan:string,
@@ -113,7 +112,8 @@ export interface Footertype {
     email:string,
     address:string,
     wechat:string,
-    twitter:string,
+    tiktok:string,
+    xiaohongshu:string,
     facebook:string,
     instagram:string,
     youtube:string,
@@ -132,6 +132,7 @@ export interface YoutubeType{
     title:string,
     text:string,
     youtubeChannelUrl:string,
+    youtubeHomeUrl:string,
 }
 
 export interface IntroductionType{
@@ -142,6 +143,20 @@ export interface IntroductionType{
 export interface ProgramCategoryType{
     _id:string,
     name:string
+}
+
+export interface ExamCategoryType{
+    _id:string,
+    name:string
+}
+
+export interface ExamType{
+    _id:string,
+    name:string,
+    logo:string,
+    description:string,
+    category:ExamCategoryType,
+    link:string
 }
 
 export interface ForeignStudyCoverType{
@@ -165,6 +180,19 @@ export interface GalleryPicture {
     title:string,
     url:string,
 }
+
+export async function getExamCategories():Promise<ExamCategoryType[]> {
+    const query = `*[_type=="examCategory"]`
+    const data = await client.fetch(query)
+    return data
+}
+
+export async function getExamsByCategory(categoryId:string):Promise<ExamType[]> {
+    const query = `*[_type=="exam" && category._ref=="${categoryId}"]`
+    const data = await client.fetch(query)
+    return data
+}
+
 
 export async function getGalleryPictures():Promise<GalleryPicture[]> {
     const query = `*[_type=="galleryPicture"]`
@@ -197,8 +225,8 @@ export async function getTeachersByCategory(categoryId:string):Promise<TeacherTy
     return data
 }
 
-export async function getTeachersByName(keyword:string):Promise<TeacherType[]> {
-    const query = `*[_type=="teacher" && (title match "${keyword}")]`
+export async function getTeachersByTitle(keyword:string):Promise<TeacherType[]> {
+    const query = `*[_type=="teacher" && (title match "*${keyword}*")]`
     const data = await client.fetch(query)
     return data
 }
@@ -235,7 +263,7 @@ export async function getCoursesOnWindow():Promise<CourseType[]> {
 }
 
 export async function getCoursesByName(keyword:string):Promise<CourseType[]> {
-    const query = `*[_type=="course" && (name match "${keyword}")]{
+    const query = `*[_type=="course" && name match "*${keyword}*"]{
         _id,
         name,
         subTitle,
@@ -247,12 +275,29 @@ export async function getCoursesByName(keyword:string):Promise<CourseType[]> {
             image
         },
     }`
+    
     const data = await client.fetch(query)
     return data 
 }
 
 export async function getCategories():Promise<CategoryType[]>{
     const query = `*[_type=="category"]`
+    const data = await client.fetch(query)
+    return data
+}
+export async function getCoursesByTeacher(id:string):Promise<CourseType[]>{
+    const query = `*[_type=="course" && teacher._ref=="${id}"]{
+        _id,
+        name,
+        subTitle,
+        image,
+        startDate,
+        price,
+        "teacher":teacher->{
+            name,
+            image
+        },
+    }`
     const data = await client.fetch(query)
     return data
 }
@@ -287,7 +332,6 @@ export async function getCourseById(id:string):Promise<CourseType>{
         price,
         lectures,
         duration,
-        quizzes,
         "teacher":teacher->{
             name,
             title,
@@ -339,7 +383,7 @@ export async function getPrograms():Promise<ProgramType[]>{
 }
 
 export async function getProgramsByName(keyword:string):Promise<ProgramType[]> {
-    const query = `*[_type=="program" && (name match "${keyword}")]{
+    const query = `*[_type=="program" && (name match "*${keyword}*")]{
         _id,
         name,
         subject,

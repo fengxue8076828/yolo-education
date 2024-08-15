@@ -9,10 +9,12 @@ import CourseCard from '@/app/components/CourseCard'
 
 
 const CoursesQuery = async({params}:{params:{keyword:string,index:string}}) => {
-  const courses = await getCoursesByName(params.keyword)
+  const decodedKeyword = decodeURIComponent(params.keyword);
+  const courses = await getCoursesByName(decodedKeyword)
+  
   return (
     <div className='bg-shallow-blue min-h-[100vh]'>
-        <ListHeader text="OUR COURSES" />
+        <ListHeader text="TANFOLYAMAINK" />
         <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
           <div className='w-full lg:w-[80%]'>
             <Tagbox index={params.index} type='course' />

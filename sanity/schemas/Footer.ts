@@ -35,8 +35,13 @@ export const Footer = {
             type:"image"
         },
         {
-            name:"twitter",
-            title:"Twitter",
+            name:"tiktok",
+            title:"Tiktok",
+            type:'url'
+        },
+        {
+            name:"xiaohongshu",
+            title:"Xiaohongshu",
             type:'url'
         },
         {

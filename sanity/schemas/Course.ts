@@ -18,7 +18,8 @@ export const Course =  {
             options:{
                 source:"name",
                 maxLength:90
-            }
+            },
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"subTitle",
@@ -29,13 +30,21 @@ export const Course =  {
             name:"description",
             title:"Leírás",
             type:"array",
-            of:[{type:"block"}],
+            of:[
+                {
+                    type:"block",
+                },
+                {
+                    type:"image",
+                    options:{hotspots:true},
+                }
+            ],
             validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"price",
             title:"Ár",
-            type:"string",
+            type:"number",
             validation:(Rule:Rule)=>Rule.integer().positive()
         },
         {
@@ -58,15 +67,24 @@ export const Course =  {
             name:"startDate",
             title:"Kezdő dátum",
             type:"array",
-            of:[{type:"date"}],
-            validation:(Rule:Rule)=>Rule.required()
+            of:[
+                {
+                    type:"datetime",
+                    options: {
+                        dateFormat: 'YYYY-MM-DD',
+                        timeFormat: 'HH:mm',
+                        calendarTodayLabel: 'Today'
+                      }
+                }
+            ],
+            validation:(Rule:Rule)=>Rule.required().min(1)
         },
         {
             name:"classTime",
             title:"Osztály ideje",
             type:"string",
             description:"Az óra kezdési időpontja.formátum ÓÓ:PP - ÓÓ:PP egy nap egy héten pl. 17:30 - 19:00 minden hétfőn",
-            validationvalidation:(Rule:Rule)=>Rule.required()
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"lectures",
@@ -84,14 +102,8 @@ export const Course =  {
 
         },
         {
-            name:"quizzes",
-            title:"Kvízek",
-            type:"number",
-            validation:(Rule:Rule) => Rule.integer().positive()
-        },
-        {
             name:"teacher",
-            title:"Kvízek",
+            title:"Tanár",
             type:"reference",
             to:[{type:"teacher"}],
             validation:(Rule:Rule)=>Rule.required()

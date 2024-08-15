@@ -20,7 +20,9 @@ import { ProgramCategory } from './schemas/ProgramCategory'
 import { TeacherCategory } from './schemas/TeacherCategory'
 import { ForeignStudyCover } from './schemas/ForeignStudyCover'
 import { GalleryPicture } from './schemas/GalleryPicture'
+import { ExamCategory } from './schemas/ExamCategory'
+import { Exam } from './schemas/Exam'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [Category,Teacher,Course,Chapter,Program,Article,HeaderText,Feature,Testimonial,Registration,Tag,Link,FooterGroup,Footer,MenuItem,Introduction,Youtube,ProgramCategory,TeacherCategory,ForeignStudyCover,GalleryPicture],
+  types: [Category,Teacher,Course,Chapter,Program,Article,HeaderText,Feature,Testimonial,Registration,Tag,Link,FooterGroup,Footer,MenuItem,Introduction,Youtube,ProgramCategory,TeacherCategory,ForeignStudyCover,GalleryPicture,Exam,ExamCategory],
 }

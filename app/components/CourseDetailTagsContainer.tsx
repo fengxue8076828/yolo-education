@@ -15,8 +15,8 @@ import { useRouter } from 'next/navigation';
 import PortableTextComponent from './PortableTextComponent';
 
 
-const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate}:{course:CourseType,chapters:ChapterType[],selectedDate:string,setSelectedDate:(date:string)=>void}) => {
-    const tags=["Áttekintés","Tanmenet","Tanár"]
+const CourseDetailTagsContainer = ({course}:{course:CourseType}) => {
+    const tags=["Áttekintés","Tanár"]
     const [selectedTag,setSelectedTag] = useState(0)
     const [selectedChapters,setSelectedChapters] = useState<number[]>([0])
     const dates = course.startDate
@@ -26,16 +26,6 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
         const formattedDate = date.toISOString().split('T')[0]; // Format date to YYYY-MM-DD
         return dates.includes(formattedDate);
       }
-    const tileDisabled = ({ date, view }:{date:Date,view:string}) =>  {
-        return view === 'month' && !isDateClickable(date)
-    }
-    const chooseDate = (date:any,event:React.MouseEvent<HTMLButtonElement>) => {
-        if (date && date instanceof Date){
-            const d = format(date,"yyyy-MM-dd");
-            setSelectedDate(d)
-        }
-        
-    }
   return (
     <div>        
         <div className='flex w-full text-xs md:text-base'>
@@ -56,7 +46,7 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Tanár : </span>{course.teacher.name}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Tanfolyam dátuma : </span>{course.startDate}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
@@ -68,7 +58,7 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Kvízek : </span>{course.quizzes}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Tanár : </span>{course.teacher.name}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
@@ -80,15 +70,15 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
                         <h4><span className='font-extrabold'>Kategória : </span>{course.category.name}</h4>
                     </div>
                     <div className='flex flex-col md:flex-row items-stretch gap-3'>
-                        <Button text='Register' clickHandler={()=>{router.push("#course-register")}}/>
-                        <select className='border p-3' onChange={(e)=>setSelectedDate(e.target.value)}>
+                        <Button text='Register' clickHandler={()=>{router.push("#register")}}/>
+                        {/* <select className='border p-3' onChange={(e)=>setSelectedDate(e.target.value)}>
                             <option value="">A tanfolyam kezdési dátuma</option>
                             {
                                 course.startDate.map((date,index)=>(
                                     <option key={index} value={date}>{date}</option>
                                 ))
                             }
-                        </select>
+                        </select> */}
                     </div>
                 </div>
                 <div className='w-full h-[1px] bg-slate-500 my-16'>
@@ -101,7 +91,7 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
                 </div>         
             </div>
         </div>
-        <div className={`${selectedTag == 1?"block":"hidden"} min-h-[80vh] pt-16 w-full`}>
+        {/* <div className={`${selectedTag == 1?"block":"hidden"} min-h-[80vh] pt-16 w-full`}>
             {
                 chapters.map((chapter,chapterIndex)=>(
                     <div key={chapter._id} className='my-10'>
@@ -121,8 +111,8 @@ const CourseDetailTagsContainer = ({course,chapters,selectedDate,setSelectedDate
                 ))
             }
             
-        </div>
-        <div className={`${selectedTag == 2?"block":"hidden"} min-h-[80vh] pt-16 w-full flex flex-col gap-10`}>
+        </div> */}
+        <div className={`${selectedTag == 1?"block":"hidden"} min-h-[80vh] pt-16 w-full flex flex-col gap-10`}>
             <div className='flex items-center gap-10'>
                 <div className='w-[150px] h-[150px] relative rounded-full overflow-hidden'>
                     <Image src={urlFor(course.teacher.image).url()} alt={course.teacher.name}  className='object-cover object-top' layout='fill' />

@@ -11,6 +11,8 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaMobileButton } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdOutlineMail } from "react-icons/md";
+import { FaTiktok } from "react-icons/fa";
+import { SiXiaohongshu } from "react-icons/si";
 
 export const revalidate = 60
 
@@ -64,8 +66,8 @@ const Footer = async() => {
                 </div>
             </div>
             <div className='flex flex-row lg:flex-col gap-1 lg:gap-3 w-full lg:w-[300px] items-center lg:items-start'>
-                <div className='min-w-32'>
-                    <Image src={urlFor(footer.wechat).url()} width={100} height={100} alt='qrcode' />
+                <div className='min-w-32 bg-white p-1 flex'>
+                    <Image src={urlFor(footer.wechat).url()} width={150} height={150} alt='qrcode' className='m-auto' />
                 </div>
                 <p className='text-sm w-full'>
                 {footer.description}
@@ -74,19 +76,25 @@ const Footer = async() => {
         </div>
         <div className='flex items-center gap-10 mt-16'>
             <span className='border-[1px] border-white p-2 rounded-full cursor-pointer hover:bg-white hover:text-black transition-all'>
-                <Link href={footer.twitter}>
-                    <FaXTwitter className='text-2xl' />
+                <Link href={footer.tiktok} target='_blank'>
+                    <FaTiktok className='text-2xl' />
                 </Link>
                 
             </span>
             <span className='border-[1px] border-white p-2 rounded-full cursor-pointer hover:bg-white hover:text-black transition-all'>
-                <Link href={footer.facebook}>
+                <Link href={footer.xiaohongshu} target='_blank'>
+                    <SiXiaohongshu className='text-2xl' />
+                </Link>
+                
+            </span>
+            <span className='border-[1px] border-white p-2 rounded-full cursor-pointer hover:bg-white hover:text-black transition-all'>
+                <Link href={footer.facebook} target='_blank'>
                     <CgFacebook className='text-2xl'  />
                 </Link>
                 
             </span>
             <span className='border-[1px] border-white p-2 rounded-full cursor-pointer hover:bg-white hover:text-black transition-all'>
-                <Link href={footer.instagram}>
+                <Link href={footer.instagram} target='_blank'>
                     <BsInstagram className='text-2xl'  />
                 </Link>
                 

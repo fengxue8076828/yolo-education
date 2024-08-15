@@ -47,7 +47,7 @@ const Contact = async() => {
                     </div>
                   </div> 
                 </div>
-            <Search type='course' />
+            <Search type='courseandprogram' />
         </div>
     </div>
   )

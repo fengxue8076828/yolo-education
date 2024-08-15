@@ -30,17 +30,17 @@ const Teachers = () => {
         <motion.div
         initial={{opacity:0}}
         whileInView={{opacity:1,transition:{duration:1}}}
-         id='teachers' className='py-8 px-5 flex flex-col items-center md:px-10 md:py-20'>
+         id='teachers' className='py-8 px-5 flex flex-col items-center md:px-10 sm:py-20 md:py-25'>
 
-            <div className='flex justify-between w-full items-center'>
+            <div className='flex justify-start w-full items-center'>
                 <div className='flex flex-col gap-1 md:gap-5'>
                     <h1 className='text-2xl md:text-4xl font-bold mt-1'>Szakképzett <span className='text-ternary-color'>tanáraink</span></h1>
                     <span className='w-[50px] h-[2px] md:w-[70px] md:h-[5px] bg-ternary-color'></span>
                 </div>
-                <div className='flex gap-3'>
+                {/* <div className='flex gap-3'>
                     <BsArrowLeftSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=> swiper?.slidePrev()} />
                     <BsArrowRightSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiper?.slideNext()} />
-                </div>
+                </div> */}
             </div>
             <div 
                 className='w-full mt-10 px-20 md:px-0 md:mt-20 z-10'
@@ -81,6 +81,12 @@ const Teachers = () => {
                     ))
                 } */}
                 </Swiper> 
+            </div>
+            <div className='flex justify-center w-full items-center sm:mt-3 md:mt-5 lg:mt-10'>
+                <div className='flex gap-3'>
+                    <BsArrowLeftSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=> swiper?.slidePrev()} />
+                    <BsArrowRightSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiper?.slideNext()} />
+                </div>
             </div>
             {
                 showTeacherDetail&&<TeacherDetail teacher={selectedTeacher} setShowTeacherDetail={setShowTeacherDetail} />

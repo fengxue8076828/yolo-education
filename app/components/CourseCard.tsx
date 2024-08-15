@@ -21,7 +21,7 @@ const CourseCard = ({course}:{course:CourseType}) => {
           <Image className='object-cover' src={urlFor(course.image).url()} alt='course' layout='fill' />
         </div>
         
-        <div className='px-5 py-8'>
+        <div className='px-5 py-8 min-h-[130px]'>
             <h4 className='font-bold'>{course.name}</h4>
             <p className='font-thin text-xs'>{course.subTitle}</p>
         </div>

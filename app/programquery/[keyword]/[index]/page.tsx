@@ -7,10 +7,11 @@ import ProgramCard from '@/app/components/ProgramCard'
 
 
 const CoursesQuery = async({params}:{params:{keyword:string,index:string}}) => {
-  const programs = await getProgramsByName(params.keyword)
+  const decodedKeyword = decodeURIComponent(params.keyword);
+  const programs = await getProgramsByName(decodedKeyword)
   return (
     <div className='bg-shallow-blue min-h-[100vh]'>
-        <ListHeader text="OUR COURSES" />
+        <ListHeader text="PROGRAMJAINK" />
         <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
           <div className='w-full lg:w-[80%]'>
             <Tagbox index={params.index} type='program' />

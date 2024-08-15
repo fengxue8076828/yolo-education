@@ -16,7 +16,7 @@ const Tagbox = ({index,type}:{index:string,type:string}) => {
   },[type])
   return (
     <div className='bg-white px-7 py-5 mb-10 flex flex-wrap gap-5 text-xs rounded'>
-      <Link className={`${parseInt(selectedIndex)===-1?'bg-dark-blue text-white':'bg-middle-blue text-black'} px-5 py-3 rounded-3xl`} href={type=="course"?"/courses":type=="program"?"/programs":"/teachers"} onClick={()=>setSelectedIndex("-1")}>all</Link>
+      <Link className={`${parseInt(selectedIndex)===-1?'bg-dark-blue text-white':'bg-middle-blue text-black'} px-5 py-3 rounded-3xl`} href={type=="course"?"/courses":type=="program"?"/programs":"/teachers"} onClick={()=>setSelectedIndex("-1")}>minden</Link>
       {
         tags.length > 0 && tags.map((tag,i)=>(
           <Link key={i} className={`${parseInt(selectedIndex)===i?'bg-dark-blue text-white':'bg-middle-blue text-black'} px-5 py-3 rounded-3xl`} href={type==="course"?`/coursequery/${tag.name}/${i}`:type=="program"?`/programquery/${tag.name}/${i}`:`/teacherquery/${tag.name}/${i}`} onClick={()=>setSelectedIndex(i.toString())}>{tag.name}</Link>

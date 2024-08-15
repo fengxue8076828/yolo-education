@@ -17,7 +17,7 @@ const TeacherDetail = ({teacher,setShowTeacherDetail}:{teacher:TeacherType | nul
         className="fixed top-0 left-0 w-full h-[100vh] z-20 flex backdrop-blur-sm"
     >
         <div className='m-auto w-[90vw] md:w-[50vw] h-[70vh] bg-middle-blue rounded-xl p-16 flex flex-col gap-10'>
-        <div className='flex items-center gap-10'>
+            <div className='flex items-center gap-10'>
                 <div className='w-[150px] rounded-full overflow-hidden'>
                     <Image src={teacher?.image?urlFor(teacher.image).url():teacherPicture} alt={teacher?teacher.name:"teacher"} width={800} height={800} />
                 </div>

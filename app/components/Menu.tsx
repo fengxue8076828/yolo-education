@@ -43,7 +43,7 @@ const Menu = ({dropdownOpened,setDropdownOpened}:MenuProps) => {
           topMenus && (
             topMenus.map(topMenu=>(
               <span key={topMenu._id} className='block relative'>
-                <Link className='hover:text-ternary-color' href={topMenu.link?topMenu.link:"/"} onMouseEnter={()=>setMenuId(topMenu._id)}>{topMenu.text}</Link>
+                <Link className='hover:text-ternary-color' href={topMenu.link?topMenu.link:""} onMouseEnter={()=>setMenuId(topMenu._id)}>{topMenu.text}</Link>
                 {
                   topMenu._id === menuId && subMenus && subMenus.length > 0?(
                     <Submenu menuitems={subMenus} from='desktop' clearHandler={clearMenuId} />

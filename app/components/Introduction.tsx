@@ -25,7 +25,7 @@ const Introduction = () => {
     <motion.div
     initial={{opacity:0}}
     whileInView={{opacity:1,transition:{duration:1}}}
-      id='introduction' className='flex flex-col items-center pt-8 pb-8 md:pt-20 md:pb-0 px-3 md:px-10'
+      id='introduction' className='flex flex-col items-center py-10 md:pt-20 md:pb-0 px-3 md:px-10'
     >
         <div className='flex flex-col gap-1 md:gap-5 items-center'>
           <h1 className='text-2xl md:text-4xl font-bold'>Üdvözöljük a <span className='text-ternary-color'>YOLO</span> Education oldalán</h1>

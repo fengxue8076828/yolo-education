@@ -2,12 +2,12 @@ import React from 'react'
 import ListHeader from '../../../components/ListHeader'
 import Search from '../../../components/Search'
 import Tagbox from '../../../components/Tagbox'
-import { getTeachersByName } from '@/sanity/lib/queries'
+import { getTeachersByTitle } from '@/sanity/lib/queries'
 import TeacherCard from '@/app/components/TeacherCard'
 
 
 const TeachersQuery = async({params}:{params:{keyword:string,index:string}}) => {
-  const teachers = await getTeachersByName(params.keyword)
+  const teachers = await getTeachersByTitle(params.keyword)
   return (
     <div className='bg-shallow-blue min-h-[100vh]'>
         <ListHeader text="TANÁR" />

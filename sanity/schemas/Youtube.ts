@@ -22,6 +22,12 @@ export const Youtube = {
             title:"Youtube csatorna URL-je",
             type:"url",
             validation:(Rule:Rule) => Rule.required()
+        },
+        {
+            name:"youtubeHomeUrl",
+            title:"Youtube foöldal URL-je",
+            type:"string",
+            validation:(Rule:Rule) => Rule.required()
         }
     ]
 }

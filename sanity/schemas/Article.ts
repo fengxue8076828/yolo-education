@@ -20,15 +20,23 @@ export const Article = {
             name:"content",
             title:"Tartalom",
             type:"array",
-            of:[{type:"block"}]
+            of:[
+                {
+                    type:"block",
+                },
+                {
+                    type:"image",
+                    options:{hotspots:true},
+                }
+            ]
         },
-        {
-            name:"image",
-            title:"Kép",
-            type:"image",
-            options:{
-                hotspot:true
-            }
-        }
+        // {
+        //     name:"image",
+        //     title:"Kép",
+        //     type:"image",
+        //     options:{
+        //         hotspot:true
+        //     }
+        // }
     ]
 }
