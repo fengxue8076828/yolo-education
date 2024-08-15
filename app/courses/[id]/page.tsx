@@ -18,7 +18,7 @@ const CourseDetail = async({params}:{params:{id:string}}) => {
   return (
     <div className='bg-shallow-blue min-h-[100vh]'>
         <ListHeader text={course.name} />
-        <CourseDetailBody course={course} chapters={chapters} />
+        <CourseDetailBody course={course} />
         {/* <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
             <div className='w-full lg:w-[80%] bg-white p-5 md:p-16 rounded flex flex-col '>
                 <Image className='w-full mb-10' src={urlFor(course.image).url()} alt='course' width={800} height={800} />
