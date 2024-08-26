@@ -12,14 +12,11 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  searchParams,
   children,
   
 }: {
-  searchParams:{lang:string}
   children: React.ReactNode
 }) {
-  const language = searchParams?.lang?searchParams.lang:"hu"
   return (
     <html lang="hu">
       <body className={poppins.className}>
