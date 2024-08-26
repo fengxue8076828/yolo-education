@@ -1,5 +1,13 @@
 import {Rule} from "@sanity/types"
 
+const slugify = (input: any) => {
+    const englishName = input.find((item: { _key: string }) => item._key === 'en')?.value || 'default-slug'
+    return englishName
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .slice(0, 200)
+  }
+
 export const ForeignStudyCover  = {
     name:"foreignStudyCover",
     title:"külföldi tanulmányi borító",
@@ -8,13 +16,13 @@ export const ForeignStudyCover  = {
         {
             name:"subtitle",
             title:"felirat",
-            type:"string",
+            type:"internationalizedArrayString",
             validation:(Rule:Rule) => Rule.required()
         },
         {
             name:"title",
             title:"cím",
-            type:"string",
+            type:"internationalizedArrayString",
             validation:(Rule:Rule) => Rule.required()
         },
         {
@@ -23,25 +31,80 @@ export const ForeignStudyCover  = {
             type:"slug",
             options:{
                 source:"subtitle",
+                slugify:slugify
             },
             validation:(Rule:Rule) => Rule.required()
         },
         {
             name:"text",
             title:"szöveg",
-            type:"string",
+            type:"internationalizedArrayString",
             validation:(Rule:Rule) => Rule.required()
         },
         {
             name:"features",
             title:"jellemzők",
             type:"array",
-            of:[{type:"string"}],
-            validation:(Rule:Rule) => Rule.required().max(2).error("Ebben a tömbben legfeljebb 5 elem lehet.")
+            of:[
+                {
+                    type:"object",
+                    fields:[
+                        {
+                            name:'text',
+                            titile:'text',
+                            type:"internationalizedArrayString",
+                            validation:(Rule:Rule) => Rule.required()
+                        }
+                    ],
+                    preview:{
+                        select:{
+                            title:"text",
+                        },
+                        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+                            const { title } = selection;
+                            return {
+                              title: title[0].value,
+                            };
+                          },
+                        
+                    }
+                }
+            ],
+            validation:(Rule:Rule) => Rule.required().max(3).error("Ebben a tömbben legfeljebb 3 elem lehet.")
         },
         {
-            name:"content",
-            title:"tartalom",
+            name:"contenthu",
+            title:"Tartalom Magyar",
+            type:"array",
+            of:[
+                {
+                    type:"block",
+                },
+                {
+                    type:"image",
+                    options:{hotspots:true},
+                }
+            ],
+            validation:(Rule:Rule) => Rule.required()
+        },
+        {
+            name:"contenten",
+            title:"Tartalom Angolul",
+            type:"array",
+            of:[
+                {
+                    type:"block",
+                },
+                {
+                    type:"image",
+                    options:{hotspots:true},
+                }
+            ],
+            validation:(Rule:Rule) => Rule.required()
+        },
+        {
+            name:"contentcn",
+            title:"Tartalom Kinai",
             type:"array",
             of:[
                 {
@@ -70,5 +133,17 @@ export const ForeignStudyCover  = {
             },
             validation:(Rule:Rule) => Rule.required()
         }
-    ]
+    ],
+    preview:{
+        select:{
+            title:"title",
+        },
+        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+            const { title } = selection;
+            return {
+              title: title[0].value,
+            };
+          },
+        
+    }
 }

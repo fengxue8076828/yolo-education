@@ -8,19 +8,25 @@ import Programs from './components/Programs'
 import Teachers from './components/Teachers'
 import Testimonials from './components/Testimonials'
 import Navigator from './components/Navigator'
+import Menubar from '@/app/components/Menubar'
+import Footer from '@/app/components/Footer'
 
-export default function Home() {
+export default function Home({searchParams}:{searchParams:{lang?:string}}) {
   return (
+    <>
+    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
     <main>
       <Navigator />     
-      <Header />
-      <Feathers />
-      <Introduction />
-      <Courses />
-      <YoutubeChannel />
-      <Programs />
-      <Teachers />
-      <Testimonials />
+      <Header lang={`${searchParams.lang?searchParams.lang:"hu"}`}/>
+      <Feathers lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
+      <Introduction lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
+      <Courses lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+      <YoutubeChannel lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
+      <Programs lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
+      <Teachers lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
+      <Testimonials lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
     </main>
+    <Footer lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
+    </>
   )
 } 

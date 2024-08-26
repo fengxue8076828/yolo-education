@@ -1,32 +1,37 @@
 import { PortableTextBlock } from 'sanity'
 import {client} from './client'
+import internationalizedArrayString from 'sanity-plugin-internationalized-array';
 
 export interface CategoryType {
     _id:string,
-    name:string,
+    name:{_key:string,value:string}[],
 }
 export interface TeacherCategoryType {
     _id:string,
-    name:string
+    name:{_key:string,value:string}[]
 }
 
 export interface TeacherType {
     _id:string,
     name:string,
-    title:string,
-    charactor:string,
-    description:PortableTextBlock[],
-    image:string
-    teacherCategory:TeacherCategoryType
+    title:{_key:string,value:string}[],
+    charactor:{_key:string,value:string}[],
+    descriptionhu:PortableTextBlock[],
+    descriptionen:PortableTextBlock[],
+    descriptioncn:PortableTextBlock[],
+    image:string,
+    teacherCategory:TeacherCategoryType,
 
 }
 
 export interface CourseType {
     _id:string,
-    name:string,
-    subTitle:string
+    name:{_key:string,value:"string"}[],
+    subTitle:{_key:string,value:"string"}[],
     slug:string,
-    description:PortableTextBlock[],
+    descriptionhu:PortableTextBlock[],
+    descriptionen:PortableTextBlock[],
+    descriptioncn:PortableTextBlock[],
     price:string,
     image:string,
     category:CategoryType,
@@ -35,7 +40,7 @@ export interface CourseType {
     lectures:number,
     duration:number,
     teacher:TeacherType,
-    location:string,
+    location:{_key:string,value:"string"}[],
 
 }
 export interface ChapterType {
@@ -47,9 +52,11 @@ export interface ChapterType {
 }
 export interface ProgramType {
     _id:string,
-    name:string,
-    subject:string,
-    description:PortableTextBlock[],
+    name:{_key:string,value:"string"}[],
+    subject:{_key:string,value:"string"}[],
+    descriptionhu:PortableTextBlock[],
+    descriptionen:PortableTextBlock[],
+    descriptioncn:PortableTextBlock[],
     time:string,
     location:string,
     teacher:TeacherType,
@@ -60,24 +67,28 @@ export interface ProgramType {
     youtubeLink:string,
 }
 export interface ArticleType {
-    title:string,
+    title:{_key:string,value:string}[],
     slug:string,
-    content:PortableTextBlock[],
+    contenthu:PortableTextBlock[],
+    contenten:PortableTextBlock[],
+    contentcn:PortableTextBlock[],
     // image:string
 }
 export interface HeaderTextType {
-    slogan:string,
-    content:string
+    slogan:{_key:string,value:string}[],
+    content:{_key:string,value:string}[]
 }
 export interface FeatureType {
     _id:string,
-    title:string,
-    content:string
+    title:{_key:string,value:string}[],
+    content:{_key:string,value:string}[]
 }
 export interface TestimonialType {
     _id:string,
     name:string,
-    content:PortableTextBlock[],
+    contenthu:PortableTextBlock[],
+    contenten:PortableTextBlock[],
+    contentcn:PortableTextBlock[],
     image:string
 }
 
@@ -92,16 +103,17 @@ export interface RegistrationType {
 }
 
 export interface TagType {
-    name:string
+    name:{_key:string,value:string}[],
+    type:string
 }
 
 export interface LinkType {
-    text:string,
+    text:{_key:string,value:string}[],
     url:string
 }
 
 export interface FooterGroupType {
-    title:string,
+    title:{_key:string,value:string}[],
     links:LinkType[]
 }
 
@@ -117,59 +129,61 @@ export interface Footertype {
     facebook:string,
     instagram:string,
     youtube:string,
-    description:string
+    description:{_key:string,value:string}[]
 }
 
 export interface MenuitemType{
     _id:string,
     serial:number,
-    text:string,
+    text:{_key:string,value:string}[],
     parent:MenuitemType | null,
     link:string,
 }
 
 export interface YoutubeType{
-    title:string,
-    text:string,
+    title:{_key:string,value:string}[],
+    text:{_key:string,value:string}[],
     youtubeChannelUrl:string,
     youtubeHomeUrl:string,
 }
 
 export interface IntroductionType{
-    title:string,
-    text:string
+    title:{_key:string,value:string}[],
+    text:{_key:string,value:string}[]
 }
 
 export interface ProgramCategoryType{
     _id:string,
-    name:string
+    name:{_key:string,value:string}[]
 }
 
 export interface ExamCategoryType{
     _id:string,
-    name:string
+    name:{_key:string,value:string}[]
 }
 
 export interface ExamType{
     _id:string,
-    name:string,
+    name:{_key:string,value:string}[],
     logo:string,
-    description:string,
+    description:{_key:string,value:string}[],
     category:ExamCategoryType,
     link:string
 }
 
 export interface ForeignStudyCoverType{
     _id:string,
-    subtitle:string,
+    subtitle:{_key:string,value:string}[],
     slug:{
         _type:"slug",
         current:string
     },
-    title:string, 
-    text:string,
-    content:PortableTextBlock[],
-    features:string[],
+    title:{_key:string,value:string}[], 
+    text:{_key:string,value:string}[],
+    contenthu:PortableTextBlock[],
+    contenten:PortableTextBlock[],
+    contentcn:PortableTextBlock[],
+    features:{text:{_key:string,value:string}[]}[],
     pictures:string[],
     coverImage:string,
 }
@@ -225,8 +239,8 @@ export async function getTeachersByCategory(categoryId:string):Promise<TeacherTy
     return data
 }
 
-export async function getTeachersByTitle(keyword:string):Promise<TeacherType[]> {
-    const query = `*[_type=="teacher" && (title match "*${keyword}*")]`
+export async function getTeachersByTitle(keyword:string,lang:string):Promise<TeacherType[]> {
+    const query = `*[_type=="teacher" && (title[_key=="${lang}"].value match "*${keyword}*")]`
     const data = await client.fetch(query)
     return data
 }
@@ -256,14 +270,15 @@ export async function getCoursesOnWindow():Promise<CourseType[]> {
         },
     }`
     const data = await client.fetch(query)
+
     if (data.length > 8){
         return data.slice(0,8)
     }
     return data 
 }
 
-export async function getCoursesByName(keyword:string):Promise<CourseType[]> {
-    const query = `*[_type=="course" && name match "*${keyword}*"]{
+export async function getCoursesByName(keyword:string,lang:string):Promise<CourseType[]> {
+    const query = `*[_type=="course" && name[_key=="${lang}"].value match "*${keyword}*"]{
         _id,
         name,
         subTitle,
@@ -325,7 +340,9 @@ export async function getCourseById(id:string):Promise<CourseType>{
         subTitle,
         image,
         startDate,
-        description,
+        descriptionhu,
+        descriptionen,
+        descriptioncn,
         startData,
         classTime,
         location,
@@ -337,7 +354,9 @@ export async function getCourseById(id:string):Promise<CourseType>{
             title,
             charactor,
             image,
-            description
+            descriptionhu,
+            descriptionen,
+            descriptioncn,
         },
         "category":category->{
             name
@@ -372,7 +391,9 @@ export async function getPrograms():Promise<ProgramType[]>{
         time,
         location,
         image,
-        description,
+        descriptionhu,
+        descriptionen,
+        descriptioncn,
         "teacher":teacher->{
             name,
             image   
@@ -382,15 +403,17 @@ export async function getPrograms():Promise<ProgramType[]>{
     return data  
 }
 
-export async function getProgramsByName(keyword:string):Promise<ProgramType[]> {
-    const query = `*[_type=="program" && (name match "*${keyword}*")]{
+export async function getProgramsByName(keyword:string,lang:string):Promise<ProgramType[]> {
+    const query = `*[_type=="program" && (name[_key=="${lang}"].value match "*${keyword}*")]{
         _id,
         name,
         subject,
         time,
         location,
         image,
-        description,
+        descriptionhu,
+        descriptionen,
+        descriptioncn,
         "teacher":teacher->{
             name,
             image   
@@ -408,7 +431,9 @@ export async function getProgramsByCategory(id:string):Promise<ProgramType[]>{
         time,
         location,
         image,
-        description,
+        descriptionhu,
+        descriptionen,
+        descriptioncn,
         "teacher":teacher->{
             name,
             image   
@@ -426,7 +451,9 @@ export async function getProgramById(id:string):Promise<ProgramType>{
         time,
         location,
         image,
-        description,
+        descriptionhu,
+        descriptionen,
+        descriptioncn,
         "teacher":teacher->{
             name,
             image   

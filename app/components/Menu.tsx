@@ -9,10 +9,11 @@ import Submenu from './Submenu';
 
 interface MenuProps {
   dropdownOpened:boolean,
-  setDropdownOpened:React.Dispatch<React.SetStateAction<boolean>>
+  setDropdownOpened:React.Dispatch<React.SetStateAction<boolean>>,
+  lang:string
 }
 
-const Menu = ({dropdownOpened,setDropdownOpened}:MenuProps) => {
+const Menu = ({dropdownOpened,setDropdownOpened,lang}:MenuProps) => {
   const [topMenus,setTopMenus] = useState<MenuitemType[]|null>(null)
   const [menuId,setMenuId] = useState("")
   const [subMenus,setSubMenus] = useState<MenuitemType[]|null>(null)
@@ -38,15 +39,15 @@ const Menu = ({dropdownOpened,setDropdownOpened}:MenuProps) => {
   }
   return (
     <>
-      <div className='hidden lg:flex justify-between items-center gap-9'>
+      <div className='hidden lg:flex justify-between items-center gap-9 w-auto'>
         {
           topMenus && (
             topMenus.map(topMenu=>(
               <span key={topMenu._id} className='block relative'>
-                <Link className='hover:text-ternary-color' href={topMenu.link?topMenu.link:""} onMouseEnter={()=>setMenuId(topMenu._id)}>{topMenu.text}</Link>
+                <Link className='hover:text-ternary-color' href={topMenu.link?topMenu.link.indexOf("#")===-1?topMenu.link.concat(`?lang=${lang}`):`${topMenu.link.slice(0, topMenu.link.indexOf("#"))}?lang=${lang}${topMenu.link.slice(topMenu.link.indexOf("#"))}`:""} onMouseEnter={()=>setMenuId(topMenu._id)}>{topMenu.text.find((item)=>item._key===lang)?.value}</Link>
                 {
                   topMenu._id === menuId && subMenus && subMenus.length > 0?(
-                    <Submenu menuitems={subMenus} from='desktop' clearHandler={clearMenuId} />
+                    <Submenu menuitems={subMenus} from='desktop' clearHandler={clearMenuId} lang={lang} />
                   ):""
                 }
               </span>

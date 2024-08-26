@@ -8,7 +8,14 @@ import { urlFor } from '@/sanity/lib/client'
 import { PortableText } from '@portabletext/react'
 import PortableTextComponent from './PortableTextComponent'
 
-const TestimonialCard = ({testimonial}:{testimonial:TestimonialType}) => {
+enum Content {
+  descHu="contenthu",
+  descEn="contenten",
+  descCn="contentcn"
+}
+
+const TestimonialCard = ({testimonial,lang}:{testimonial:TestimonialType,lang:string}) => {
+  const contentName:Content="content".concat(lang) as Content
   return (
     <motion.div
     initial={{opacity:0}}
@@ -27,7 +34,7 @@ const TestimonialCard = ({testimonial}:{testimonial:TestimonialType}) => {
             </div>
             <div className='p-7 text-sm max-w-three-quarter min-h-36'>
               <PortableText  
-                value={testimonial.content}
+                value={testimonial[contentName]}
                 components={PortableTextComponent}
                />
             </div>

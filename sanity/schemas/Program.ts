@@ -8,12 +8,14 @@ export const Program = {
         {
             name:"name",
             title:"Név",
-            type:"string",
+            type:"internationalizedArrayString",
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"subject",
             title:"Tantárgy",
-            type:"string",
+            type:"internationalizedArrayString",
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"time",
@@ -23,22 +25,25 @@ export const Program = {
                 dateFormat: 'YYYY-MM-DD',
                 timeFormat: 'HH:mm',
                 calendarTodayLabel: 'Today'
-              }
+              },
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"location",
             title:"Elhelyezkedés",
-            type:"string"
+            type:"string",
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"teacher",
             title:"Tanár",
             type:"reference",
-            to:[{type:"teacher"}]
+            to:[{type:"teacher"}],
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
-            name:"description",
-            title:"Leírás",
+            name:"descriptionhu",
+            title:"Leírás Magyar",
             type:"array",
             of:[
                 {
@@ -48,7 +53,38 @@ export const Program = {
                     type:"image",
                     options:{hotspots:true},
                 }
-            ]
+            ],
+            validation:(Rule:Rule)=>Rule.required()
+        },
+        {
+            name:"descriptionen",
+            title:"Leírás Angolul",
+            type:"array",
+            of:[
+                {
+                    type:"block",
+                },
+                {
+                    type:"image",
+                    options:{hotspots:true},
+                }
+            ],
+            validation:(Rule:Rule)=>Rule.required()
+        },
+        {
+            name:"descriptioncn",
+            title:"Leírás Kinai",
+            type:"array",
+            of:[
+                {
+                    type:"block",
+                },
+                {
+                    type:"image",
+                    options:{hotspots:true},
+                }
+            ],
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"image",
@@ -56,7 +92,8 @@ export const Program = {
             type:"image",
             options:{
                 hotspot:true
-            }
+            },
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"twitterLink",
@@ -85,5 +122,17 @@ export const Program = {
             to:[{type:"programCategory"}],
             validation:(Rule:Rule) => Rule.required()
         }
-    ]
+    ],
+    preview:{
+        select:{
+            title:"name",
+        },
+        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+            const { title } = selection;
+            return {
+              title: title[0].value,
+            };
+          },
+        
+    }
 }

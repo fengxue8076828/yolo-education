@@ -12,19 +12,27 @@ import { PortableText } from '@portabletext/react';
 import { useRouter } from 'next/navigation';
 import PortableTextComponent from './PortableTextComponent';
 
+enum Description {
+    descHu="descriptionhu",
+    descEn="descriptionen",
+    descCn="descriptioncn"
+}
 
-const ProgramCard = ({program}:{program:ProgramType}) => {
+
+const ProgramCard = ({program,lang}:{program:ProgramType,lang:string}) => {
     const [opened,setOpened] = useState(false)
     const time = new Date(program.time)
     const formattedDate = format(time,"yyyy-MM-dd")
     const formattedTime = format(time,"HH:mm")
     const router = useRouter()
 
+    const descriptionName:Description="description".concat(lang) as Description
+
     const gotoProgramDetail = (register?:string) => {
         if(register){
-            router.push(`/programs/${program._id}#${register}`)
+            router.push(`/programs/${program._id}?lang=${lang}#${register}`)
         }else{
-            router.push(`/programs/${program._id}`)
+            router.push(`/programs/${program._id}?lang=${lang}`)
         }
         
     }
@@ -41,7 +49,7 @@ const ProgramCard = ({program}:{program:ProgramType}) => {
                     
                     }                    
                 <div className={`p-10 flex flex-col ${!opened?'items-start':'items-center'} md:items-start`}>
-                    <h3 className='text-base font-bold mb-1 md:text-xl'>{program.name}</h3>
+                    <h3 className='text-base font-bold mb-1 md:text-xl'>{program.name.find((item)=>item._key===lang)?.value}</h3>
                     <p className='text-sm md:text-base'>{formattedDate} {formattedTime}</p>
                 </div> 
             </div>
@@ -62,7 +70,7 @@ const ProgramCard = ({program}:{program:ProgramType}) => {
             <div className='w-full md:w-2/3 flex flex-col gap-20'>
                 <div>
                     <PortableText 
-                        value={program.description}
+                        value={program[descriptionName]}
                         components={PortableTextComponent}
                      />
                 </div>
@@ -72,10 +80,10 @@ const ProgramCard = ({program}:{program:ProgramType}) => {
                 </p> */}
                 <div className='flex gap-5 md:gap-10'>
                     <div className='w-half md:w-auto'>
-                        <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail()}>MORE</button>
+                        <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail()}>{lang==="hu"?"TÖBB":lang==="en"?"MORE":"更多"}</button>
                     </div>
                     <div className='w-half md:w-auto'>
-                        <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail("program-register")}>REGISTER</button>
+                        <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail("program-register")}>{lang==="hu"?"Regisztráció":lang==="en"?"Registration":"注册课程"}</button>
                     </div>
 
                 </div>

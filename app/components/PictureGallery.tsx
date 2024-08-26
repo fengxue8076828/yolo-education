@@ -31,7 +31,6 @@ const PictureGallery = ({pictures}:{pictures:string[]}) => {
                 <Swiper
                     spaceBetween={20}
                     slidesPerView={3}
-                    onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => setSwiper(swiper)}
                     loop={true}
                     breakpoints={{

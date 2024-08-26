@@ -4,12 +4,12 @@ import { ProgramType,ProgramCategoryType } from '@/sanity/lib/queries'
 import { Category } from '@/sanity/schemas/Category'
 import ProgramListContainer from './ProgramListContainer'
 
-const ProgramList = ({categories}:{categories:ProgramCategoryType[]}) => {
+const ProgramList = ({categories,lang}:{categories:ProgramCategoryType[],lang:string}) => {
   return (
     <div className='flex w-full flex-col gap-10 bg-white p-10'>
       {
         categories.map(category=>(
-          <ProgramListContainer key={category._id} category={category} />
+          <ProgramListContainer key={category._id} category={category} lang={lang} />
         ))
       }
     </div>

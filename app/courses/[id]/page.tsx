@@ -9,16 +9,20 @@ import defaultCoursePicture from "@/public/course.png"
 import CourseDetailTagsContainer from '@/app/components/CourseDetailTagsContainer'
 import RegisterForm from '@/app/components/RegisterForm'
 import CourseDetailBody from '@/app/components/CourseDetailBody'
+import Menubar from '@/app/components/Menubar'
+import Footer from '@/app/components/Footer'
 
 export const revalidate = 60
 
-const CourseDetail = async({params}:{params:{id:string}}) => {
+const CourseDetail = async({params,searchParams}:{params:{id:string},searchParams:{lang?:string}}) => {
     const course = await getCourseById(params.id)
-    const chapters = await getChaptersByCourse(params.id)
+    const language = searchParams.lang?searchParams.lang:"hu"
   return (
+    <>
+    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
     <div className='bg-shallow-blue min-h-[100vh]'>
-        <ListHeader text={course.name} />
-        <CourseDetailBody course={course} />
+        <ListHeader text={course.name.find((item)=>item._key===language)?.value || course.name[0].value} />
+        <CourseDetailBody course={course} lang={language} />
         {/* <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
             <div className='w-full lg:w-[80%] bg-white p-5 md:p-16 rounded flex flex-col '>
                 <Image className='w-full mb-10' src={urlFor(course.image).url()} alt='course' width={800} height={800} />
@@ -35,6 +39,8 @@ const CourseDetail = async({params}:{params:{id:string}}) => {
             <PriceBox price={course.price} />
         </div> */}
     </div>
+    <Footer lang={language} />
+    </>
   )
 }
 

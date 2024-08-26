@@ -1,3 +1,13 @@
+import {Rule} from '@sanity/types'
+
+const slugify = (input: any) => {
+    const englishName = input.find((item: { _key: string }) => item._key === 'en')?.value || 'default-slug'
+    return englishName
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .slice(0, 200)
+  }
+
 export const Article = {
     name:"article",
     title:"Cikk",
@@ -6,19 +16,22 @@ export const Article = {
         {
             name:"title",
             title:"Cím",
-            type:"string",
+            type:"internationalizedArrayString",
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"slug",
             title:"Meztelen csiga",
             type:"slug",
             options:{
-                source:"title"
-            }
+                source:"title",
+                slugify:slugify,
+            },
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
-            name:"content",
-            title:"Tartalom",
+            name:"contenthu",
+            title:"Tartalom Magyar",
             type:"array",
             of:[
                 {
@@ -28,15 +41,50 @@ export const Article = {
                     type:"image",
                     options:{hotspots:true},
                 }
-            ]
+            ],
+            validation:(Rule:Rule)=>Rule.required()
         },
-        // {
-        //     name:"image",
-        //     title:"Kép",
-        //     type:"image",
-        //     options:{
-        //         hotspot:true
-        //     }
-        // }
-    ]
+        {
+            name:"contenten",
+            title:"Tartalom Angolul",
+            type:"array",
+            of:[
+                {
+                    type:"block",
+                },
+                {
+                    type:"image",
+                    options:{hotspots:true},
+                }
+            ],
+            validation:(Rule:Rule)=>Rule.required()
+        },
+        {
+            name:"contentcn",
+            title:"Tartalom Kínai",
+            type:"array",
+            of:[
+                {
+                    type:"block",
+                },
+                {
+                    type:"image",
+                    options:{hotspots:true},
+                }
+            ],
+            validation:(Rule:Rule)=>Rule.required()
+        },
+    ],
+    preview:{
+        select:{
+            title:"title",
+        },
+        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+            const { title } = selection;
+            return {
+              title: title[0].value,
+            };
+          },
+        
+    }
 }

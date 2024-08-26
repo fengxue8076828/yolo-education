@@ -13,14 +13,26 @@ import {format} from "date-fns"
 import { MdPlayArrow } from "react-icons/md";
 import { useRouter } from 'next/navigation';
 import PortableTextComponent from './PortableTextComponent';
+import { PortableTextBlock } from 'sanity';
 
+enum Description {
+    descHu="descriptionhu",
+    descEn="descriptionen",
+    descCn="descriptioncn"
+}
 
-const CourseDetailTagsContainer = ({course}:{course:CourseType}) => {
-    const tags=["Áttekintés","Tanár"]
+enum TagType {
+    hu="hu",
+    en="en",
+    cn="cn"
+}
+
+const CourseDetailTagsContainer = ({course,lang}:{course:CourseType,lang:string}) => {
+    const tags=[{hu:"Áttekintés",en:"Overview",cn:"课程信息"},{hu:"Tanár",en:"Teacher",cn:"授课老师"}]
     const [selectedTag,setSelectedTag] = useState(0)
-    const [selectedChapters,setSelectedChapters] = useState<number[]>([0])
     const dates = course.startDate
     const router = useRouter()
+    const descriptionName:Description="description".concat(lang) as Description
 
     const isDateClickable = (date:Date) => {
         const formattedDate = date.toISOString().split('T')[0]; // Format date to YYYY-MM-DD
@@ -32,7 +44,7 @@ const CourseDetailTagsContainer = ({course}:{course:CourseType}) => {
             {
                 tags.map((tag,index)=>(
                     <div key={index} className={`${index === selectedTag?'bg-dark-blue text-white':'bg-middle-blue text-black'} border border-1 border-gray-500 flex-1 flex py-5 border-r-0 font-extrabold cursor-pointer last:border-r`} onClick={()=>setSelectedTag(index)}>
-                        <h3 className='m-auto'>{tag}</h3>
+                        <h3 className='m-auto'>{tag[lang as TagType]}</h3>
                     </div>
                 ))
             }
@@ -42,32 +54,32 @@ const CourseDetailTagsContainer = ({course}:{course:CourseType}) => {
                 <div className='flex flex-wrap gap-10 gap-y-3 md:gap-16 md:gap-y-5 items-center'>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Név : </span>{course.name}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Név":lang==="en"?"Name":"课程名称"} : </span>{course.name.find((item)=>item._key===lang)?.value || course.name[0].value}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Tanfolyam dátuma : </span>{course.startDate}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Tanfolyam dátuma":lang==="en"?"Course Date":"课程日期"} : </span>{course.startDate}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Előadások : </span>{course.lectures}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Előadások":lang==="en"?"Lectures":"课程次数"} : </span>{course.lectures}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Időtartam : </span>{course.duration}hét(ig)</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Időtartam":lang==="en"?"Period":"课程周期"} : </span>{course.duration}hét(ig)</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Tanár : </span>{course.teacher.name}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Tanár":lang==="en"?"Teacher":"授课老师"} : </span>{course.teacher.name}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>Elhelyezkedés : </span>{course.location}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Elhelyezkedés":lang==="en"?"Location":"上课地点"} : </span>{course.location.find((item)=>item._key===lang)?.value || course.location[0].value}</h4>
                     </div>
                 </div>
                 <div className='flex flex-col md:flex-row items-stretch gap-5 pt-16 justify-between w-full md:w-[100%] md:items-center'>
                     <div className='text-base md:text-xl flex flex-col gap-3'>
-                        <h4><span className='font-extrabold'>Kategória : </span>{course.category.name}</h4>
+                        <h4><span className='font-extrabold'>{lang==="hu"?"Kategória":lang==="en"?"Category":"课程目录"} : </span>{course.category.name.find((item)=>item._key===lang)?.value}</h4>
                     </div>
                     <div className='flex flex-col md:flex-row items-stretch gap-3'>
                         <Button text='Register' clickHandler={()=>{router.push("#register")}}/>
@@ -85,7 +97,7 @@ const CourseDetailTagsContainer = ({course}:{course:CourseType}) => {
                 </div>
                 <div>
                     <PortableText 
-                        value={course.description}
+                        value={course[descriptionName]}
                         components={PortableTextComponent}
                      />
                 </div>         
@@ -119,12 +131,12 @@ const CourseDetailTagsContainer = ({course}:{course:CourseType}) => {
                 </div>
                 <div>
                     <h3 className='text-2xl font-extrabold'>{course.teacher.name}</h3>
-                    <p className='text-xl'>{course.teacher.title}</p>
+                    <p className='text-xl'>{course.teacher?.title.find((item)=>item._key===lang)?.value}</p>
                 </div>
             </div>
             <div className='w-full'>
                 <PortableText 
-                    value={course.teacher.description}
+                    value={course.teacher[descriptionName]}
                     components={PortableTextComponent}
                  />
             </div>

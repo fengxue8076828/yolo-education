@@ -7,8 +7,10 @@ import Submenu from './Submenu'
 
 const MenuDropdown = ({
         dropdownOpen,
+        lang
     }:{
         dropdownOpen:boolean,
+        lang:string
     }) => {
       const [topMenus,setTopMenus] = useState<MenuitemType[]|null>(null)
       const [menuId,setMenuId] = useState("")
@@ -36,7 +38,7 @@ const MenuDropdown = ({
                     topMenus && (
                       topMenus.map(topMenu=>(
                         <span key={topMenu._id} className='block relative'>
-                          <Link className='hover:text-ternary-color' href={topMenu.link?topMenu.link:"/"} onClick={()=>setMenuId(topMenu._id)}>{topMenu.text}</Link>
+                          <Link className='hover:text-ternary-color' href={topMenu.link?topMenu.link.indexOf("#")===-1?topMenu.link.concat(`?lang=${lang}`):`${topMenu.link.slice(0, topMenu.link.indexOf("#"))}?lang=${lang}${topMenu.link.slice(topMenu.link.indexOf("#"))}`:""} onClick={()=>setMenuId(topMenu._id)}>{topMenu.text.find((item)=>item._key===lang)?.value}</Link>
                         </span>                   
                       ))
                     )
@@ -45,7 +47,7 @@ const MenuDropdown = ({
       <div>
       {
          subMenus && subMenus.length > 0?(
-           <Submenu menuitems={subMenus} />
+           <Submenu menuitems={subMenus} lang={lang} />
         ):""
       }
       </div>

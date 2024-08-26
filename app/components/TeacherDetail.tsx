@@ -8,7 +8,14 @@ import teacherPicture from "@/public/teacher.png"
 import {motion} from "framer-motion"
 import PortableTextComponent from './PortableTextComponent'
 
-const TeacherDetail = ({teacher,setShowTeacherDetail}:{teacher:TeacherType | null,setShowTeacherDetail:(s:boolean)=>void}) => {
+enum Description {
+    descHu="descriptionhu",
+    descEn="descriptionen",
+    descCn="descriptioncn"
+}
+
+const TeacherDetail = ({teacher,setShowTeacherDetail,lang}:{teacher:TeacherType | null,setShowTeacherDetail:(s:boolean)=>void,lang:string}) => {
+    const descriptionName:Description="description".concat(lang) as Description
   return (
     <motion.div 
         initial={{scale:0}}
@@ -23,13 +30,13 @@ const TeacherDetail = ({teacher,setShowTeacherDetail}:{teacher:TeacherType | nul
                 </div>
                 <div>
                     <h3 className='text-2xl font-extrabold'>{teacher?.name}</h3>
-                    <p className='text-xl'>{teacher?.title}</p>
+                    <p className='text-xl'>{teacher?.title.find((item)=>item._key===lang)?.value}</p>
                 </div>
             </div>
             <div className='w-full'>
                 {
                     teacher && <PortableText 
-                        value={teacher.description}
+                        value={teacher[descriptionName]}
                         components={PortableTextComponent}
                      />
                 }

@@ -8,7 +8,7 @@ export const Exam = {
         {
             name:"name",
             title:"Név",
-            type:"string",
+            type:"internationalizedArrayString",
             validation:(Rule:Rule)=>Rule.required()
         },
         {
@@ -23,7 +23,7 @@ export const Exam = {
         {
             name:"description",
             title:"Leírás",
-            type:"string",
+            type:"internationalizedArrayString",
             validation:(Rule:Rule)=>Rule.required()
         },
         {
@@ -38,5 +38,17 @@ export const Exam = {
             title:"Link",
             type:"string"
         }
-    ]
+    ],
+    preview:{
+        select:{
+            title:"name",
+        },
+        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+            const { title } = selection;
+            return {
+              title: title[0].value,
+            };
+          },
+        
+    }
 }

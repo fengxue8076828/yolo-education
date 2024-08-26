@@ -9,8 +9,20 @@ export const Testimonial = {
       type:"string"
     },
     {
-      name:"content",
-      title:"Tartalom",
+      name:"contenthu",
+      title:"Tartalom Magyar",
+      type:"array",
+      of:[{type:"block"}]
+    },
+    {
+      name:"contenten",
+      title:"Tartalom Angolul",
+      type:"array",
+      of:[{type:"block"}]
+    },
+    {
+      name:"contentcn",
+      title:"Tartalom Kinai",
       type:"array",
       of:[{type:"block"}]
     },

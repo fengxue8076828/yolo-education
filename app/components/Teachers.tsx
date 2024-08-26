@@ -12,7 +12,7 @@ import {motion} from "framer-motion"
 import TeacherDetail from './TeacherDetail';
 
 
-const Teachers = () => {
+const Teachers = ({lang}:{lang:string}) => {
     const [teachers,setTeachers] = useState<TeacherType[]>([])
     const [swiper,setSwiper] = useState<SwiperClass | null>(null)
     const [selectedTeacher,setSelectedTeacher] = useState<TeacherType | null>(null)
@@ -34,7 +34,10 @@ const Teachers = () => {
 
             <div className='flex justify-start w-full items-center'>
                 <div className='flex flex-col gap-1 md:gap-5'>
-                    <h1 className='text-2xl md:text-4xl font-bold mt-1'>Szakképzett <span className='text-ternary-color'>tanáraink</span></h1>
+                    <h1 className='text-2xl md:text-4xl font-bold mt-1'>
+                        {lang==="hu"?"Szakképzett ":lang==="en"?"Our ":"我们的"}
+                        <span className='text-ternary-color'>{lang==="hu"?"tanáraink":lang==="en"?"Teachers":"老师"}</span>
+                    </h1>
                     <span className='w-[50px] h-[2px] md:w-[70px] md:h-[5px] bg-ternary-color'></span>
                 </div>
                 {/* <div className='flex gap-3'>
@@ -69,7 +72,7 @@ const Teachers = () => {
                     {
                     teachers.map(teacher=>(
                         <SwiperSlide key={teacher._id}>
-                            <TeacherCard teacher={teacher} setSelectedTeacher={setSelectedTeacher} setShowTeacherDetail={setShowTeacherDetail} />
+                            <TeacherCard teacher={teacher} setSelectedTeacher={setSelectedTeacher} setShowTeacherDetail={setShowTeacherDetail} lang={lang} />
                         </SwiperSlide>
                         
                     ))
@@ -89,7 +92,7 @@ const Teachers = () => {
                 </div>
             </div>
             {
-                showTeacherDetail&&<TeacherDetail teacher={selectedTeacher} setShowTeacherDetail={setShowTeacherDetail} />
+                showTeacherDetail&&<TeacherDetail teacher={selectedTeacher} setShowTeacherDetail={setShowTeacherDetail} lang={lang} />
             }  
  
              

@@ -10,10 +10,10 @@ import { urlFor } from '@/sanity/lib/client';
 import { useRouter } from 'next/navigation';
 import { HiMiniCurrencyDollar } from "react-icons/hi2";
 
-const CourseCard = ({course}:{course:CourseType}) => {
+const CourseCard = ({course,lang}:{course:CourseType,lang:string}) => {
   const router = useRouter()
   const navigateToCourse = (id:string) => {
-    router.push(`/courses/${id}`)
+    router.push(`/courses/${id}?lang=${lang}`)
   }
   return (
     <div className='min-w-64 rounded bg-white hover:shadow-xl hover:scale-105 hover:transition cursor-pointer' onClick={()=>navigateToCourse(course._id)}>
@@ -22,8 +22,8 @@ const CourseCard = ({course}:{course:CourseType}) => {
         </div>
         
         <div className='px-5 py-8 min-h-[130px]'>
-            <h4 className='font-bold'>{course.name}</h4>
-            <p className='font-thin text-xs'>{course.subTitle}</p>
+            <h4 className='font-bold'>{course.name.find((item)=>item._key===lang)?.value}</h4>
+            <p className='font-thin text-xs'>{course.subTitle.find((item)=>item._key===lang)?.value}</p>
         </div>
         <div className='px-5 pt-8 pb-3 flex justify-between items-center'>
             <div className='flex justify-between items-center gap-1'>

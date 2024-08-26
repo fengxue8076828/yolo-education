@@ -7,24 +7,28 @@ import Menu from './Menu'
 import Searchbox from './Searchbox'
 import MenuDropdown from './MenuDropdown'
 import Link from 'next/link'
+import LanguageSelect from './LanguageSelect'
 
-const Menubar = () => {
+const Menubar = ({lang}:{lang:string}) => {
   const [dropdownOpen,setDropdownOpen] = useState(false)
   return (
     <>
-      <Searchbox type="courseandprogram" location='top' />
+      <Searchbox type="courseandprogram" location='top' lang={lang} />
       <div className='bg-primary-color px-3 md:px-10 py-3 flex justify-between items-center relative'>
           <div className='flex items-center gap-1'>
-            <Link href="/">
-              <div className='flex gap-1'>
-                <Image src={logo} alt='logo' width={200} height={30}></Image>
+            
+              <div className='flex gap-1 items-center'>
+                <Link href="/">
+                  <Image src={logo} alt='logo' width={200} height={30}></Image>
+                </Link>
+                <LanguageSelect lang={lang} />
               </div>
               
-            </Link>
+            
           </div>
-          <Searchbox type="courseandprogram" location='menu' />
-          <Menu dropdownOpened={dropdownOpen} setDropdownOpened={setDropdownOpen} />
-          <MenuDropdown dropdownOpen={dropdownOpen} />
+          <Searchbox type="courseandprogram" location='menu' lang={lang} />
+          <Menu dropdownOpened={dropdownOpen} setDropdownOpened={setDropdownOpen} lang={lang} />
+          <MenuDropdown dropdownOpen={dropdownOpen} lang={lang} />
       </div>
     </>
     

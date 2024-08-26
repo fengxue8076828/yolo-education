@@ -6,13 +6,25 @@ export const HeaderText = {
         {
             name:"slogan",
             title:"Szlogen",
-            type:"string"
+            type:"internationalizedArrayString"
         },
         {
             name:"content",
             title:"Tartalom",
-            type:"string"
+            type:"internationalizedArrayString"
         }
         
-    ]
+    ],
+    preview:{
+        select:{
+            title:"slogan",
+        },
+        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+            const { title } = selection;
+            return {
+              title: title[0].value,
+            };
+          },
+        
+    }
 }

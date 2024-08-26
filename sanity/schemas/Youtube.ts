@@ -8,13 +8,13 @@ export const Youtube = {
         {
             name:"title",
             title:"cím",
-            type:"string",
+            type:"internationalizedArrayString",
             validation:(Rule:Rule) => Rule.required()
         },
         {
             name:"text",
             title:"szöveg",
-            type:"string",
+            type:"internationalizedArrayString",
             validation:(Rule:Rule) => Rule.required()
         },
         {
@@ -29,5 +29,17 @@ export const Youtube = {
             type:"string",
             validation:(Rule:Rule) => Rule.required()
         }
-    ]
+    ],
+    preview:{
+        select:{
+            title:"title",
+        },
+        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+            const { title } = selection;
+            return {
+              title: title[0].value,
+            };
+          },
+        
+    }
 }

@@ -6,7 +6,7 @@ export const FooterGroup = {
         {
             name:"title",
             title:"Cím",
-            type:"string"
+            type:"internationalizedArrayString"
         },
         {
             name:"links",
@@ -14,5 +14,17 @@ export const FooterGroup = {
             type:"array",
             of:[{type:"link"}]
         }
-    ]
+    ],
+    preview:{
+        select:{
+            title:"title",
+        },
+        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+            const { title } = selection;
+            return {
+              title: title[0].value,
+            };
+          },
+        
+    }
 }

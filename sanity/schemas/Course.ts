@@ -1,4 +1,14 @@
 import {Rule} from '@sanity/types'
+import internationalizedArray from 'sanity-plugin-internationalized-array';
+import {defineType, defineField} from 'sanity';
+
+const slugify = (input: any) => {
+    const englishName = input.find((item: { _key: string }) => item._key === 'en')?.value || 'default-slug'
+    return englishName
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .slice(0, 200)
+  }
 
 export const Course =  {
     name:"course",
@@ -8,7 +18,7 @@ export const Course =  {
         {
             name:"name",
             title:"Név",
-            type:"string",
+            type:"internationalizedArrayString",
             validation:(Rule:Rule)=>Rule.required()
         },
         {
@@ -17,6 +27,7 @@ export const Course =  {
             type:"slug",
             options:{
                 source:"name",
+                slugify:slugify,
                 maxLength:90
             },
             validation:(Rule:Rule)=>Rule.required()
@@ -24,11 +35,41 @@ export const Course =  {
         {
             name:"subTitle",
             title:"Felirat",
-            type:"string",
+            type:"internationalizedArrayString",
         },
         {
-            name:"description",
-            title:"Leírás",
+            name:"descriptionhu",
+            title:"Leírás Magyar",
+            type:"array",
+            of:[
+                {
+                    type:"block",
+                },
+                {
+                    type:"image",
+                    options:{hotspots:true},
+                }
+            ],
+            validation:(Rule:Rule)=>Rule.required()
+        },
+        {
+            name:"descriptionen",
+            title:"Leírás Angolul",
+            type:"array",
+            of:[
+                {
+                    type:"block",
+                },
+                {
+                    type:"image",
+                    options:{hotspots:true},
+                }
+            ],
+            validation:(Rule:Rule)=>Rule.required()
+        },
+        {
+            name:"descriptioncn",
+            title:"Leírás Kínai",
             type:"array",
             of:[
                 {
@@ -116,8 +157,20 @@ export const Course =  {
         {
             name:"location",
             title:"Elhelyezkedés",
-            type:"string",
+            type:"internationalizedArrayString",
             validation:(Rule:Rule)=>Rule.required()
         }
-    ]
+    ],
+    preview:{
+        select:{
+            title:"name",
+        },
+        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+            const { title } = selection;
+            return {
+              title: title[0].value,
+            };
+          },
+        
+    }
 }

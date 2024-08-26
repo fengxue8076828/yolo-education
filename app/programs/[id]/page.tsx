@@ -17,17 +17,31 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import Link from 'next/link'
 import PortableTextComponent from '@/app/components/PortableTextComponent'
+import Menubar from '@/app/components/Menubar'
+import Footer from '@/app/components/Footer'
 
 export const revalidate = 60
 
-const ProgramDetail = async({params}:{params:{id:string}}) => {
+enum Description {
+    descHu="descriptionhu",
+    descEn="descriptionen",
+    descCn="descriptioncn"
+}
+
+const ProgramDetail = async({params,searchParams}:{params:{id:string},searchParams:{lang?:string}}) => {
     const program = await getProgramById(params.id)
     const programTime = new Date(program.time)
     const formattedDate = format(programTime,'yyyy-MM-dd')
     const formattedTime = format(programTime,'HH:mm')
+    const language = searchParams.lang?searchParams.lang:"hu"
+
+    const descriptionName:Description="description".concat(language) as Description
+
   return (
+    <>
+    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
     <div className='bg-shallow-blue min-h-[100vh]'>
-    <ListHeader text={program.name} />
+    <ListHeader text={program.name.find((item)=>item._key===language)?.value || program.name[0].value} />
     <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
         <div className='w-full lg:w-[80%] bg-white p-5 md:p-16 rounded flex flex-col items-center'>
             <div className='w-full h-[400px] mb-10 relative'>
@@ -48,42 +62,42 @@ const ProgramDetail = async({params}:{params:{id:string}}) => {
                     </div>
                     <div className='py-16'>
                         <PortableText 
-                            value={program.description}
+                            value={program[descriptionName]}
                             components={PortableTextComponent}
                          />
                     </div>
                     <div className='flex flex-col md:flex-row flex-wrap mb-16 gap-16'>
                         <div className='flex flex-col gap-10 flex-1'>
                             <div className='text-2xl flex flex-col gap-2'>
-                                <h2 className='font-extrabold'>program információk:</h2>
+                                <h2 className='font-extrabold'>{language==="hu"?"program információk":language==="en"?"program information":"活动信息"}:</h2>
                                 <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                             </div>
                             <div className='flex flex-col gap-5'>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
-                                    <h3 className='text-lg'><span className='font-extrabold'>Tanár:</span>{program.teacher.name}
+                                    <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"Tanár":language==="en"?"Teacher":"老师"}:</span>{program.teacher.name}
                                     </h3>
                                 </div>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
-                                    <h3 className='text-lg'><span className='font-extrabold'>Név : </span>{program.name}
+                                    <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"név":language==="en"?"name":"活动名称"}: </span>{program.name.find((item)=>item._key===language)?.value || program.name[0].value}
                                     </h3>
                                 </div>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
-                                    <h3 className='text-lg'><span className='font-extrabold'>tantárgy : </span>{program.subject}
+                                    <h3 className='text-lg'><span className='font-extrabold'> {language==="hu"?"tantárgy":language==="en"?"subject":"活动主题"}: </span>{program.subject.find((item)=>item._key===language)?.value || program.subject[0].value}
                                     </h3>
                                 </div>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
-                                    <h3 className='text-lg'><span>elhelyezkedés : </span>{program.location}
+                                    <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"elhelyezkedés":language==="en"?"location":"活动地点"}: </span>{program.location}
                                     </h3>
                                 </div>
                             </div>
                         </div>
                         <div className='flex flex-col gap-10 flex-1'>
                             <div className='text-2xl flex flex-col gap-2'>
-                                <h2 className='font-extrabold'>Keresse meg ezt a programot:</h2>
+                                <h2 className='font-extrabold'>{language==="hu"?"Keresse meg ezt a programot":language==="en"?"Find this program":"查看我们社交媒体页面"}:</h2>
                                 <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                             </div>
                             <div className='flex gap-10'>
@@ -99,20 +113,22 @@ const ProgramDetail = async({params}:{params:{id:string}}) => {
                             </div>
                         </div>
                     </div>
-                    <div id='register' className='mt-16'>
+                    <div id='program-register' className='mt-16'>
                     <div className='flex flex-col gap-1  my-16'>
-                        <h1 className='text-2xl font-extrabold mb-3'>Regisztrálja ezt a programot</h1>
+                        <h1 className='text-2xl font-extrabold mb-3'>{language==="hu"?"Regisztrálja ezt a programot":language==="en"?"Register the program":"注册这个活动"}</h1>
                         <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                     </div>
-                        <RegisterForm type='program' dates={["program"]} activityName={program.name} />
+                        <RegisterForm type='program' dates={["program"]} activityName={program.name.find((item)=>item._key===language)?.value || program.name[0].value} lang={language} />
                     </div>
                     
                 </div>
             </div>
         </div>           
-        <PriceBox price={program.price} />
+        <PriceBox price={program.price} lang={language} />
     </div>
 </div>
+<Footer lang={language} />
+</>
   )
 }
 

@@ -8,7 +8,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
-const YoutubeChannel = () => {
+const YoutubeChannel = ({lang}:{lang:string}) => {
   const [youtube,setYoutube] = useState<YoutubeType|null>(null)
   useEffect(()=>{
     const fetchYoutube = async() => {
@@ -34,8 +34,8 @@ const YoutubeChannel = () => {
           />
         </div>
         <div className='flex-1 flex flex-col justify-center items-center px-5 py-10 lg:py-40 bg-dark-blue'>
-          <h1 className='text-2xl md:text-4xl font-bold mt-1 z-10 text-white text-center'>{youtube && youtube.title}</h1>
-          <p className='w-full md:w-2/3 mt-4 md:mt-8 text-center z-10 text-white'>{youtube && youtube.text}</p>
+          <h1 className='text-2xl md:text-4xl font-bold mt-1 z-10 text-white text-center'>{youtube && youtube.title.find((item)=>item._key===lang)?.value}</h1>
+          <p className='w-full md:w-2/3 mt-4 md:mt-8 text-center z-10 text-white'>{youtube && youtube.text.find((item)=>item._key===lang)?.value}</p>
           <Link className='z-10' href={youtube? youtube.youtubeChannelUrl:"/"} target='_blank'>
             <FaYoutube className='text-7xl text-ternary-color mt-5 cursor-pointer' />
           </Link>

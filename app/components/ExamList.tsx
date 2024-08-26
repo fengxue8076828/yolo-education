@@ -2,12 +2,12 @@ import React from 'react'
 import { ExamCategoryType } from '@/sanity/lib/queries'
 import ExamListContainer from './ExamListContainer'
 
-const ExamList = ({categories}:{categories:ExamCategoryType[]}) => {
+const ExamList = ({categories,lang}:{categories:ExamCategoryType[],lang:string}) => {
   return (
     <div className='flex w-full flex-col gap-10 bg-white p-10'>
       {
         categories.map(category=>(
-          <ExamListContainer key={category._id} category={category} />
+          <ExamListContainer key={category._id} category={category} lang={lang} />
         ))
       }
     </div>

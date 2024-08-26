@@ -1,3 +1,5 @@
+import {Rule} from '@sanity/types'
+
 export const Footer = {
     name:"footer",
     title:"Lábléc",
@@ -7,12 +9,14 @@ export const Footer = {
             name:"groups",
             title:"Csoportok",
             type:"array",
-            of:[{type:"footerGroup"}]
+            of:[{type:"footerGroup"}],
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"telephone",
             title:"Telefon",
-            type:"string"
+            type:"string",
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"mobilephone",
@@ -22,47 +26,56 @@ export const Footer = {
         {
             name:"address",
             title:"Cím",
-            type:"string"
+            type:"string",
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"email",
             title:"Email",
-            type:"string"
+            type:"string",
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"wechat",
             title:"Wechat",
-            type:"image"
+            type:"image",
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"tiktok",
             title:"Tiktok",
-            type:'url'
+            type:'url',
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"xiaohongshu",
             title:"Xiaohongshu",
-            type:'url'
+            type:'url',
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"facebook",
             title:"Facebook",
-            type:"url"
+            type:"url",
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"instagram",
             title:"Instagram",
-            type:"url"
+            type:"url",
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"youtube",
             title:"Youtube",
-            type:"url"
+            type:"url",
+            validation:(Rule:Rule)=>Rule.required()
         },
         {
             name:"description",
             title:"Leírás",
-            type:"string"
+            type:"internationalizedArrayString",
+            validation:(Rule:Rule)=>Rule.required()
         }
     ]
 }

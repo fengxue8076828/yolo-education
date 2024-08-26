@@ -2,7 +2,7 @@ import { type SchemaTypeDefinition } from 'sanity'
 import { Category } from './schemas/Category'
 import { Teacher } from './schemas/Teacher'
 import { Course } from './schemas/Course'
-import { Chapter } from './schemas/Chapter'
+// import { Chapter } from './schemas/Chapter'
 import {Program} from './schemas/Program'
 import {Article} from './schemas/Article'
 import {HeaderText} from './schemas/HeaderText'
@@ -24,5 +24,5 @@ import { ExamCategory } from './schemas/ExamCategory'
 import { Exam } from './schemas/Exam'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [Category,Teacher,Course,Chapter,Program,Article,HeaderText,Feature,Testimonial,Registration,Tag,Link,FooterGroup,Footer,MenuItem,Introduction,Youtube,ProgramCategory,TeacherCategory,ForeignStudyCover,GalleryPicture,Exam,ExamCategory],
+  types: [Category,Teacher,Course,Program,Article,HeaderText,Feature,Testimonial,Registration,Tag,Link,FooterGroup,Footer,MenuItem,Introduction,Youtube,ProgramCategory,TeacherCategory,ForeignStudyCover,GalleryPicture,Exam,ExamCategory],
 }

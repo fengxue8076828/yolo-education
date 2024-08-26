@@ -10,7 +10,7 @@ import {Swiper as SwiperClass} from 'swiper'
 import 'swiper/css';
 import { TestimonialType } from '@/sanity/lib/queries';
 
-const Testimonials = () => {
+const Testimonials = ({lang}:{lang:string}) => {
   
   const [testimonialChunks,setTestimonialChunks] = useState<TestimonialType[][]|null>(null)
   const [swiper,setSwiper] = useState<SwiperClass | null>(null)
@@ -35,8 +35,11 @@ const Testimonials = () => {
           <BsArrowLeftSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=> swiper?.slidePrev()} />
           <BsArrowRightSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiper?.slideNext()} />
         </div> */}
-        <div className='flex flex-col gap-1 md:gap-5 items-end'>
-            <h1 className='text-2xl md:text-4xl font-bold mt-1'>Mit <span className='text-ternary-color'> mondanak </span> diákjaink</h1>
+        <div className='flex flex-col gap-1 md:gap-5 w-full items-end'>
+            <h1 className='text-2xl md:text-4xl font-bold mt-1'>
+            {lang==="hu"?"Mit ":lang==="en"?"What ":"我们的"}
+              <span className='text-ternary-color'>{lang==="hu"?"mondanak ":lang==="en"?"Our students  ":"学生"}</span>{lang==="hu"?"diákjaink":lang==="en"?"say":"见证"}
+              </h1>
             <span className='w-[50px] h-[2px] md:w-[70px] md:h-[5px] bg-ternary-color'></span>
         </div>
       </div>
@@ -69,7 +72,7 @@ const Testimonials = () => {
                 <div className='flex flex-col gap-5'>
                   {
                     testimonialChunk.map(testimonial=>(
-                      <TestimonialCard key={testimonial._id} testimonial={testimonial} />
+                      <TestimonialCard key={testimonial._id} testimonial={testimonial} lang={lang} />
                     ))
                   }
                 </div>

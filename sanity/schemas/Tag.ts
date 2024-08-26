@@ -8,7 +8,7 @@ export const Tag = {
         {
             name:"name",
             title:"Név",
-            type:"string",
+            type:"internationalizedArrayString",
             validation:(Rule:Rule)=>Rule.required()
         },
         {
@@ -17,5 +17,17 @@ export const Tag = {
             type:"string",
             validation:(Rule:Rule)=>Rule.required()
         }
-    ]
+    ],
+    preview:{
+        select:{
+            title:"name",
+        },
+        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+            const { title } = selection;
+            return {
+              title: title[0].value,
+            };
+          },
+        
+    }
 }

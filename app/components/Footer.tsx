@@ -17,7 +17,7 @@ import { SiXiaohongshu } from "react-icons/si";
 export const revalidate = 60
 
 
-const Footer = async() => {
+const Footer = async({lang}:{lang:string}) => {
     const footer = await getFooter()
   return (
     <div className='text-white py-10 px-5 md:pt-32 md:pb-10 flex flex-col items-center relative bg-darker-blue'>
@@ -27,13 +27,13 @@ const Footer = async() => {
                     footer.groups.map((group,index)=>(
                         <div key={index} className='flex flex-col gap-1 lg:gap-3'>
                             <div className='flex flex-col gap-3'>
-                                <h3>{group.title}</h3>
+                                <h3>{group.title.find((item)=>item._key===lang)?.value}</h3>
                                 <span className='block w-[30px] h-[3px] bg-golden mb-7' />
                             </div>
                             <div className='flex flex-col gap-3'>
                                 {
                                     group.links.map((link,index)=>(
-                                        <Link key={index} href={link.url}>{link.text}</Link>
+                                        <Link key={index} href={link.url.concat(`?lang=${lang}`)}>{link.text.find((item)=>item._key===lang)?.value}</Link>
                                     ))
                                 }
                             </div>           
@@ -42,7 +42,7 @@ const Footer = async() => {
                 }
                 <div className='flex flex-col gap-7'>
                     <div className='flex flex-col gap-3'>
-                        <h3>Contact</h3>
+                        <h3>{lang==="hu"?"Érintkezés":lang==="en"?"Contact":"联系方式"}</h3>
                         <span className='block w-[30px] h-[3px] bg-golden mb-2 lg:mb-5' />
                     </div>
                     <div className='flex flex-col gap-3'>
@@ -70,7 +70,7 @@ const Footer = async() => {
                     <Image src={urlFor(footer.wechat).url()} width={150} height={150} alt='qrcode' className='m-auto' />
                 </div>
                 <p className='text-sm w-full'>
-                {footer.description}
+                {footer.description.find((item)=>item._key===lang)?.value}
                 </p>
             </div>
         </div>

@@ -21,7 +21,7 @@ export const MenuItem = {
         {
             name:"text",
             title:"Szöveg",
-            type:"string",
+            type:"internationalizedArrayString",
             validation:(Rule:Rule)=>Rule.required()
         },
         {
@@ -35,11 +35,11 @@ export const MenuItem = {
             title:"text",
             parentText:"parent.text"
         },
-        prepare(selection:{title:string,parentText:string}) {
+        prepare(selection:{title:{_key:string,value:"string"}[],parentText:{_key:string,value:"string"}[]}) {
             const { title, parentText } = selection;
             return {
-              title: title,
-              subtitle: parentText ? `Szülő: ${parentText}` : 'Főmenü', // Displaying parent's name in the subtitle
+              title: title[0].value,
+              subtitle: parentText ? `Szülő: ${parentText[0].value}` : 'Főmenü', // Displaying parent's name in the subtitle
             };
           },
         

@@ -9,16 +9,28 @@ import { PortableText } from '@portabletext/react'
 import PortableTextComponent from '@/app/components/PortableTextComponent'
 import { getCoursesByTeacher } from '@/sanity/lib/queries'
 import CourseCard from '@/app/components/CourseCard'
+import Menubar from '@/app/components/Menubar'
+import Footer from '@/app/components/Footer'
 
-const Teacher = async({params}:{params:{id:string}}) => {
+enum Description {
+    descHu="descriptionhu",
+    descEn="descriptionen",
+    descCn="descriptioncn"
+}
+
+const Teacher = async({params,searchParams}:{params:{id:string},searchParams:{lang?:string}}) => {
     const teacher = await getTeacherById(params.id)
     const courses = await getCoursesByTeacher(teacher._id)
+    const language = searchParams.lang?searchParams.lang:"hu"
+    const descriptionName:Description="description".concat(language) as Description
     return (
+        <>
+    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
         <div className='bg-shallow-blue min-h-[100vh]'>
             <ListHeader text="TANÁR" />
             <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
                 <div className='w-full lg:w-[80%]'>
-                    <Tagbox index='-1' type='teacher' />
+                    <Tagbox index='-1' type='teacher' lang={language} />
                     <div className='min-h-[80vh] pt-16 px-10 w-full flex flex-col gap-10'>
                         <div className='flex items-center gap-10'>
                             <div className='w-[150px] h-[150px] relative rounded-full overflow-hidden'>
@@ -26,31 +38,33 @@ const Teacher = async({params}:{params:{id:string}}) => {
                             </div>
                             <div>
                                 <h3 className='text-2xl font-extrabold'>{teacher.name}</h3>
-                                <p className='text-xl'>{teacher.title}</p>
+                                <p className='text-xl'>{teacher?.title.find((item)=>item._key===language)?.value}</p>
                             </div>
                         </div>
                         <div className='w-full'>
                             <PortableText 
-                                value={teacher.description}
+                                value={teacher[descriptionName]}
                                 components={PortableTextComponent}
                              />
                         </div>
                     </div>
                
                     <div className='flex flex-col gap-3 items-center md:items-start'>
-                        <h2 className='text-xl md:text-3xl'>A tanfolyamai</h2>
+                        <h2 className='text-xl md:text-3xl'>{language==="hu"?"A tanfolyamai":language==="en"?"his(her) courses":"他(她)的课程"}</h2>
                         <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                     </div>
                     <div className='w-full grid gap-y-10 gap-x-7 grid-cols-auto-fill-100 px-10 md:px-0 mt-7 md:mt-10'>
                         {courses.map(course=>(
-                        <CourseCard key={course._id} course={course} />
+                        <CourseCard key={course._id} course={course} lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
                         ))}
                     </div>
                 
                 </div>           
-                <Search type='teacher' />
+                <Search type='teacher' lang={language} />
             </div>
         </div>
+        <Footer lang={language} />
+        </>
     )
 }
 
