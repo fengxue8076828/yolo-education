@@ -18,7 +18,7 @@ export const Link = {
         select:{
             title:"text",
         },
-        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+        prepare(selection:{title:{_key:string,value:string}[]}) {
             const { title } = selection;
             return {
               title: title[0].value,

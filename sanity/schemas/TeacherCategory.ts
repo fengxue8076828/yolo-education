@@ -16,7 +16,7 @@ export const TeacherCategory = {
         select:{
             title:"name",
         },
-        prepare(selection:{title:{_key:string,value:"string"}[]}) {
+        prepare(selection:{title:{_key:string,value:string}[]}) {
             const { title } = selection;
             return {
               title: title[0].value,

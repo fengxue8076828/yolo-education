@@ -35,7 +35,7 @@ export const MenuItem = {
             title:"text",
             parentText:"parent.text"
         },
-        prepare(selection:{title:{_key:string,value:"string"}[],parentText:{_key:string,value:"string"}[]}) {
+        prepare(selection:{title:{_key:string,value:string}[],parentText:{_key:string,value:"string"}[]}) {
             const { title, parentText } = selection;
             return {
               title: title[0].value,
