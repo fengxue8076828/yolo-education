@@ -10,19 +10,20 @@ export const revalidate = 60
 
 const Exams = async({searchParams}:{searchParams:{lang?:string}}) => {
     const categories = await getExamCategories()
+    const language = searchParams.lang?searchParams.lang:"hu"
     return (
       <>
     <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
       <div className='bg-shallow-blue min-h-[100vh]'>
-      <ListHeader text="Vizsgák" />
+      <ListHeader text={language==="hu"?"Vizsgák":language==="en"?"Exams":"考试"} />
       <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
         <div className='w-full lg:w-[80%]'>
           <ExamList categories={categories} lang={searchParams.lang?searchParams.lang:"hu"} />
         </div>           
-        <Search type='courseandprogram' />
+        <Search type='courseandprogram' lang={language} />
       </div>
   </div>
-  <Footer />
+  <Footer lang={language} />
   </>
     )
 }
