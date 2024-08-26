@@ -9,7 +9,7 @@ import { urlFor } from '@/sanity/lib/client'
 import { useRouter } from 'next/navigation'
 import {format} from "date-fns"
 
-const ProgramListCard = ({program}:{program:ProgramType}) => {
+const ProgramListCard = ({program,lang}:{program:ProgramType,lang:string}) => {
     const router = useRouter()
     const gotoDetail = () => {
         router.push(`/programs/${program._id}`)
@@ -24,8 +24,8 @@ const ProgramListCard = ({program}:{program:ProgramType}) => {
         </div>
         <div className='p-10 flex flex-col gap-7 items-start'>
             <div>
-                <h4 className='font-extrabold text-xl'>{program.name}</h4>
-                <p className='font-thin'>{program.subject}</p>
+                <h4 className='font-extrabold text-xl'>{program.name.find((item)=>item._key===`${lang}`)?.value}</h4>
+                <p className='font-thin'>{program.subject.find((item)=>item._key===`${lang}`)?.value}</p>
             </div>
             <div className='flex justify-between items-center gap-2'>
                 <FaRegCalendarAlt />
