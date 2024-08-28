@@ -44,7 +44,7 @@ const Testimonials = ({lang}:{lang:string}) => {
         </div>
       </div>
 
-      <div className='w-full mt-10 px-20 md:px-0 md:mt-20 z-10 flex'>
+      <div className='w-full mt-10 sm:px-5 md:px-20 md:mt-20 z-10 flex'>
         <Swiper
             spaceBetween={50}
             slidesPerView={2}
@@ -83,7 +83,7 @@ const Testimonials = ({lang}:{lang:string}) => {
         }
         </Swiper> 
       </div>
-      <div className='flex justify-center w-full items-center sm:mt-3 md:mt-5 lg:mt-10'>
+      <div className='flex justify-center w-full items-center sm:mt-10 md:mt-5 lg:mt-10'>
         <div className='flex gap-3'>
           <BsArrowLeftSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=> swiper?.slidePrev()} />
           <BsArrowRightSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiper?.slideNext()} />

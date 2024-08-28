@@ -28,11 +28,9 @@ const TeacherCard = (
     }
   }
   const router = useRouter()
-  const handleTeacherDetail = () => {
-    router.push(`/teachers/${teacher._id}?lang=${lang}`)
-  }
+ 
   return (
-    <div className='group flex-1 cursor-pointer my-5 h-[300px] relative [perspective:50rem]' onClick={handleSelectTeacher}>
+    <div className='group flex-1 my-5 h-[300px] relative [perspective:50rem]'>
         <div className='w-full group-hover:[transform:rotateY(180deg)] transition-all duration-700  bg-white absolute [backface-visibility:hidden] rounded-xl h-[300px]'>
           <div className='w-full rounded-xl h-[170px] overflow-hidden relative'>
             <Image className='object-cover object-top' src={urlFor(teacher.image).url()} alt={teacher.title.find((item)=>item._key===lang)?.value || "teacher"} layout='fill' />
@@ -56,7 +54,7 @@ const TeacherCard = (
               </div>
             </div>
             <p className='w-full h-[80px]'>{teacher.charactor.find((item)=>item._key===lang)?.value}</p>
-            <Button text={lang==="hu"?"Több":lang==="en"?"See More":"查看详细信息"} clickHandler={()=>handleTeacherDetail()} />
+            <Button text={lang==="hu"?"Több":lang==="en"?"See More":"查看详细信息"} clickHandler={()=>handleSelectTeacher()} />
           </div>
         </div>
     </div>

@@ -21,6 +21,17 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
     const [message,setMessage] = useState("")
     const [selectedDate,setSelectedDate] = useState("")
     const [agreeTerms,setAgreeTerms] = useState(false)
+
+    const formatDate = (datetime:string) => {
+        const date = new Date(datetime);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        
+        return `${year}-${month}-${day} ${hours}:${minutes}`;
+    };
     const handleCheckAgreeTerms = (event:React.ChangeEvent<HTMLInputElement>):void => {
         setAgreeTerms(event.target.checked)
     }
@@ -81,7 +92,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
                             <option value="">{lang==="hu"?"A tanfolyam kezdési dátuma":lang==="en"?"Please choose a date":"请选择一个日期"}</option>
                             {
                                 dates.map((date,index)=>(
-                                    <option key={index} value={date}>{date}</option>
+                                    <option key={index} value={formatDate(date)}>{formatDate(date)}</option>
                                 ))
                             }
                         </select>

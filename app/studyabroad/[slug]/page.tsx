@@ -60,8 +60,8 @@ const StudyAbroadDetail = async({params,searchParams}:{params:{slug:string},sear
                     foreingStudyCovers.map(cover=>(
                         <div key={cover._id} className='flex items-center gap-3 font-extrabold'>
                             <IoIosArrowDroprightCircle className="text-2xl text-golden" />
-                            <Link href={`/studyabroad/${cover.slug.current}?lang=${language}`} className='hover:text-golden'>
-                                {cover.subtitle.find((item)=>item._key===language)?.value}
+                            <Link href={`/studyabroad/${cover.slug.current}?lang=${language}`} className={`hover:text-golden ${foreignStudyCover._id===cover._id?"text-golden":""}`}>
+                                {cover.title.find((item)=>item._key===language)?.value}
                             </Link>
                             
                         </div>

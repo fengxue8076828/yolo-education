@@ -30,7 +30,9 @@ const TestimonialCard = ({testimonial,lang}:{testimonial:TestimonialType,lang:st
         </div>
         <div className='bg-middle-blue relative rounded-lg'>
             <div className='absolute top-[-50px] right-[30px] w-[80px] h-[80px] rounded-lg overflow-hidden outline outline-8 outline-white'>
-                <Image src={urlFor(testimonial.image).url()}  layout='fill' alt='testimonial' />
+              <div className='relative w-[100%] h-[100%]'>
+                <Image className='absolute object-cover object-top' src={urlFor(testimonial.image).url()}  layout='fill' alt='testimonial' />
+              </div>
             </div>
             <div className='p-7 text-sm max-w-three-quarter min-h-36'>
               <PortableText  

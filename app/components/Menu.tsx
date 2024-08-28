@@ -44,7 +44,7 @@ const Menu = ({dropdownOpened,setDropdownOpened,lang}:MenuProps) => {
           topMenus && (
             topMenus.map(topMenu=>(
               <span key={topMenu._id} className='block relative'>
-                <Link className='hover:text-ternary-color' href={topMenu.link?topMenu.link.indexOf("#")===-1?topMenu.link.concat(`?lang=${lang}`):`${topMenu.link.slice(0, topMenu.link.indexOf("#"))}?lang=${lang}${topMenu.link.slice(topMenu.link.indexOf("#"))}`:""} onMouseEnter={()=>setMenuId(topMenu._id)}>{topMenu.text.find((item)=>item._key===lang)?.value}</Link>
+                <Link className='hover:text-ternary-color' href={topMenu.link?topMenu.link.indexOf("#")===-1?topMenu.link.concat(`?lang=${lang}`):`${topMenu.link.slice(0, topMenu.link.indexOf("#"))}?lang=${lang}${topMenu.link.slice(topMenu.link.indexOf("#"))}`:""} onMouseEnter={()=>{setSubMenus(null); setMenuId(topMenu._id)}}>{topMenu.text.find((item)=>item._key===lang)?.value}</Link>
                 {
                   topMenu._id === menuId && subMenus && subMenus.length > 0?(
                     <Submenu menuitems={subMenus} from='desktop' clearHandler={clearMenuId} lang={lang} />

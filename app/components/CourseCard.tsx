@@ -32,7 +32,7 @@ const CourseCard = ({course,lang}:{course:CourseType,lang:string}) => {
             </div>
             <div className='flex items-center gap-3 rounded-full pr-5 bg-ternary-color overflow-hidden'>
               <div className='rounded-full overflow-hidden relative w-[40px] h-[40px]'>
-                <Image src={urlFor(course.teacher.image).url()} alt='teacher' layout='fill' /> 
+                <Image className='absolute object-cover object-top' src={urlFor(course.teacher.image).url()} alt='teacher' layout='fill' /> 
               </div>
               <h3 className='text-white'>{course.teacher.name}</h3>
             </div>

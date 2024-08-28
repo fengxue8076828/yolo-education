@@ -20,7 +20,7 @@ import { LuHeartHandshake } from "react-icons/lu";
 
 const Navigator = () => {
   return (
-    <div className='w-[40px] bg-middle-shallow-blue flex-col justify-around items-center hidden lg:flex lg:gap-7 lg:px-5 lg:py-7 fixed top-[20vh] left-0 z-30 rounded-e-2xl'>
+    <div className='w-[40px] bg-middle-shallow-blue flex-col justify-around items-center hidden md:flex md:gap-7 md:px-5 md:py-7 fixed top-[20vh] left-0 z-30 rounded-e-2xl'>
         <Link href="#introduction">
             <MdPermDeviceInformation className='text-xl md:text-3xl text-gray-500 cursor-pointer' />
         </Link>

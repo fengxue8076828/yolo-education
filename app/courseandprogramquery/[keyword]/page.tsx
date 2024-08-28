@@ -25,7 +25,7 @@ const CourseAndProgramQuery = async({params,searchParams}:{params:{keyword:strin
         <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
             <div className='w-full lg:w-[80%]'>
                 <div className='flex flex-col gap-3 items-center md:items-start'>
-                    <h2 className='text-xl md:text-3xl'>TANFOLYAMAINK</h2>
+                    <h2 className='text-xl md:text-3xl'>{language==="hu"?"TANFOLYAMAINK":language==="en"?"Courses":"课程"}</h2>
                     <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                 </div>
                 <div className='w-full grid gap-y-10 gap-x-7 grid-cols-auto-fill-100 px-10 md:px-0 mt-7 md:mt-10'>
@@ -34,7 +34,7 @@ const CourseAndProgramQuery = async({params,searchParams}:{params:{keyword:strin
                     ))}
                 </div>
                 <div className='flex flex-col gap-3 items-center md:items-start mt-12'>
-                    <h2 className='text-xl md:text-3xl'>PROGRAMJAINK</h2>
+                    <h2 className='text-xl md:text-3xl'>{language==="hu"?"PROGRAMJAINK":language==="en"?"Programs":"活动"}</h2>
                     <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                 </div>
                 <div className='flex w-full flex-col gap-10 mt-7 bg-white p-10'>
