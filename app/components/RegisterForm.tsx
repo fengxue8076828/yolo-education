@@ -68,6 +68,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
                     startDate:selectedDate
                 })
             })
+            console.log("************",res)
             if(res.status === 500){
                 throw new Error("something went wrong")
             }
