@@ -54,7 +54,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
             return
         }
         try{
-            const res = await fetch("/api/register",{
+            const res = await fetch("https://www.yolo-education.com/api/register",{
                 method:"post",
                 headers:{
                     "Content-Type":"application/json"
