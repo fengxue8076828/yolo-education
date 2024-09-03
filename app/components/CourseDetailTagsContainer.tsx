@@ -38,6 +38,16 @@ const CourseDetailTagsContainer = ({course,lang}:{course:CourseType,lang:string}
         const formattedDate = date.toISOString().split('T')[0]; // Format date to YYYY-MM-DD
         return dates.includes(formattedDate);
       }
+    const formatDate = (datetime:string) => {
+        const date = new Date(datetime);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        
+        return `${year}-${month}-${day} ${hours}:${minutes}`;
+    };
   return (
     <div>        
         <div className='flex w-full text-xs md:text-base'>
@@ -58,7 +68,7 @@ const CourseDetailTagsContainer = ({course,lang}:{course:CourseType,lang:string}
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Tanfolyam dátuma":lang==="en"?"Course Date":"课程日期"} : </span>{course.startDate}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Tanfolyam dátuma":lang==="en"?"Course Date":"课程日期"} : </span>{course.startDate.map(d=>formatDate(d).concat(", "))}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
@@ -82,7 +92,7 @@ const CourseDetailTagsContainer = ({course,lang}:{course:CourseType,lang:string}
                         <h4><span className='font-extrabold'>{lang==="hu"?"Kategória":lang==="en"?"Category":"课程目录"} : </span>{course.category.name.find((item)=>item._key===lang)?.value}</h4>
                     </div>
                     <div className='flex flex-col md:flex-row items-stretch gap-3'>
-                        <Button text='Register' clickHandler={()=>{router.push("#register")}}/>
+                        <Button text={lang==="hu"?"Regisztráció":lang==="en"?"Register":"注册课程"} clickHandler={()=>{router.push("#register")}}/>
                         {/* <select className='border p-3' onChange={(e)=>setSelectedDate(e.target.value)}>
                             <option value="">A tanfolyam kezdési dátuma</option>
                             {
