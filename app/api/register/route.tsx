@@ -15,6 +15,7 @@ export const POST = async(req:NextRequest) => {
             startDate
         }
         const result = client.create(registration)
+        console.log("************",result)
         return NextResponse.json({message:"Registered Successfully"},{status:200})
     }catch(error){
         return NextResponse.json({message:"Something went wrong"},{status:500})
