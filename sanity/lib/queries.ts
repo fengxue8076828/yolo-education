@@ -62,7 +62,8 @@ export interface ProgramType {
     teacher:TeacherType,
     image:string,
     price:string,
-    twitterLink:string,
+    tiktokLink:string,
+    xiaohongshuLink:string,
     facebookLink:string,
     youtubeLink:string,
 }

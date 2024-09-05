@@ -21,7 +21,7 @@ const Programs = ({lang}:{lang:string}) => {
     initial={{opacity:0}}
     whileInView={{opacity:1,transition:{duration:1}}}
     id='programs' className='flex flex-col py-8 px-3 items-end md:px-10 md:py-20'>
-      <div className='w-full flex flex-col gap-1 md:gap-5 items-end'>
+      <div className='w-full flex flex-col gap-1 md:gap-5 items-center md:items-end'>
         <h1 className='text-2xl md:text-4xl font-bold mt-1'>
         {lang==="hu"?"Közelgő ":lang==="en"?"Our ":"我们的"}
           <span className='text-ternary-color'>{lang==="hu"?"Programok":lang==="en"?"Programs":"活动"}</span>

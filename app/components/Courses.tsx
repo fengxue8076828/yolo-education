@@ -30,19 +30,19 @@ const Courses = ({lang}:{lang:string}) => {
     initial={{opacity:0}}
     whileInView={{opacity:1,transition:{duration:1}}}
      id='courses' className='bg-shallow-blue py-8 px-3 flex flex-col items-center md:px-10 sm:py-20 md:py-25'>
-      <div className='w-full flex justify-between items-center'>
-        <div className='flex flex-col gap-1 md:gap-5'>
+      <div className='w-full flex flex-col md:flex-row items-center md:justify-between'>
+        <div className='flex flex-col items-center md:items-start gap-1 md:gap-5 mb-7 md:mb-0'>
           <h1 className='text-2xl md:text-4xl font-bold mt-1'>
           {lang==="hu"?"Tanfolya":lang==="en"?"Our ":"我们的"}
             <span className='text-ternary-color'>{lang==="hu"?"maink":lang==="en"?" Courses":"课程"}</span>
           </h1>
           <span className='w-[50px] h-[2px] md:w-[70px] md:h-[5px] bg-ternary-color'></span>
         </div>
+        <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 block bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color self-stretch md:self-auto' onClick={navigateToCourses}>{lang==="hu"?"Az összes tanfolyam megtekintése":lang==="en"?"View all courses":"查看所有课程"}</button>
         
-        <Button text={lang==="hu"?"Az összes tanfolyam megtekintése":lang==="en"?"View all courses":"查看所有课程"} clickHandler={navigateToCourses} />
       </div>
           
-        <div className='w-full mt-10 px-20 md:px-0 md:mt-20 z-10'>
+        <div className='w-full mt-10 md:px-10 md:mt-20 z-10'>
         <Swiper
             spaceBetween={50}
             slidesPerView={4}

@@ -29,7 +29,7 @@ const Searchbox = ({type,location,lang}:{type:string,location:string,lang:string
     }
   }
   return (
-    <div className={`items-center relative ${location=='top'?'md:hidden':'hidden md:flex md:w-96'}`}>
+    <div className={`items-center relative ${location=='top'?'md:hidden':'hidden md:flex md:w-96 lg:w-32 xl:w-72 2xl:w-96'}`}>
         <input className={`py-2 px-4 font-inherit rounded outline-none w-[100%]`} type='text' placeholder={
           lang=="hu"?
           (type=="course"?'keressen tanfolyamokat...':type=="program"?'keressen program...':type=="teacher"?'keressen tanár...':'keressen tanfolyamokat és program...'):

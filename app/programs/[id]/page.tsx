@@ -19,6 +19,8 @@ import Link from 'next/link'
 import PortableTextComponent from '@/app/components/PortableTextComponent'
 import Menubar from '@/app/components/Menubar'
 import Footer from '@/app/components/Footer'
+import { FaTiktok } from "react-icons/fa";
+import { SiXiaohongshu } from "react-icons/si";
 
 export const revalidate = 60
 
@@ -100,15 +102,18 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
                                 <h2 className='font-extrabold'>{language==="hu"?"Keresse meg ezt a programot":language==="en"?"Find this program":"查看我们社交媒体页面"}:</h2>
                                 <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                             </div>
-                            <div className='flex gap-10'>
-                                <Link href={program.twitterLink?program.twitterLink:""}>
-                                    <FaSquareXTwitter className='text-4xl' />
+                            <div className='flex gap-10 items-center'>
+                                <Link href={program.tiktokLink?program.tiktokLink:""}>
+                                    <FaTiktok className='text-2xl' />
+                                </Link>
+                                <Link href={program.xiaohongshuLink?program.xiaohongshuLink:""}>
+                                    <SiXiaohongshu className='text-4xl' />
                                 </Link>
                                 <Link href={program.facebookLink?program.facebookLink:""}>
-                                    <FaFacebookSquare className='text-4xl' />
+                                    <FaFacebookSquare className='text-2xl' />
                                 </Link>
                                 <Link href={program.youtubeLink?program.youtubeLink:""}>
-                                    <IoLogoYoutube className='text-4xl' />
+                                    <IoLogoYoutube className='text-2xl' />
                                 </Link>
                             </div>
                         </div>

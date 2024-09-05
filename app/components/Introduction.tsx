@@ -39,14 +39,14 @@ const Introduction = ({lang}:{lang:string}) => {
           <span className='w-[50px] h-[2px] md:w-[70px] md:h-[5px] bg-ternary-color'></span>
         </div>
         
-        <div className='flex items-center gap-20 mt-8 md:mt-20 px-3'>
+        <div className='flex items-center gap-20 mt-8 md:mt-20'>
             <div className='hidden md:block'>
                 <Image src={student} width={300} height={300} alt='students'/>
             </div>
             <div className='flex flex-col items-center md:items-start'>
               <h2 className='text-sm text-center font-semibold md:text-2xl md:text-left'>{introduction&&introduction.title.find((item)=>item._key===lang)?.value}</h2>
               <p className='px-5 md:px-0 md:max-w-prose my-8'>{introduction && introduction.text.find((item)=>item._key===lang)?.value}</p>
-              <Button text={lang==="hu"?"Rólunk":lang==="en"?"About us":"关于我们"} clickHandler={gotoAboutUs} />
+              <button  className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 block bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color self-stretch md:self-auto' onAuxClickCapture={gotoAboutUs}>{lang==="hu"?"Rólunk":lang==="en"?"About us":"关于我们"}</button>
             </div>  
         </div>
     </motion.div>

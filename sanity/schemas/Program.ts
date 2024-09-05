@@ -96,7 +96,12 @@ export const Program = {
             validation:(Rule:Rule)=>Rule.required()
         },
         {
-            name:"twitterLink",
+            name:"tiktokLink",
+            title:"TwitterLink",
+            type:"url",
+        },
+        {
+            name:"xiaohongshuLink",
             title:"TwitterLink",
             type:"url",
         },

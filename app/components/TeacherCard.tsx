@@ -13,21 +13,29 @@ const TeacherCard = (
     teacher,
     setSelectedTeacher,
     setShowTeacherDetail,
-    lang
+    lang,
+    location,
   }:{
     teacher:TeacherType,
     setSelectedTeacher?:(t:TeacherType)=>void,
     setShowTeacherDetail?:(s:boolean)=>void,
-    lang:string
+    lang:string,
+    location?:string,
   }
   ) => {
   const handleSelectTeacher = () => {
+    if(location=="list"){
+      router.push(`/teachers/${teacher._id}?lang=${lang}`)
+      return
+    }
+    
     if (setSelectedTeacher && setShowTeacherDetail) {
       setSelectedTeacher(teacher)
       setShowTeacherDetail(true)
     }
   }
   const router = useRouter()
+
  
   return (
     <div className='group flex-1 my-5 h-[300px] relative [perspective:50rem]'>

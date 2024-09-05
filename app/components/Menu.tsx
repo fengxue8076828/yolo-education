@@ -39,7 +39,7 @@ const Menu = ({dropdownOpened,setDropdownOpened,lang}:MenuProps) => {
   }
   return (
     <>
-      <div className='hidden lg:flex justify-between items-center gap-9 w-auto'>
+      <div className='hidden lg:flex justify-between items-center lg:gap-3 lg:text-sm 2xl:text-base 2xl:gap-9 w-auto'>
         {
           topMenus && (
             topMenus.map(topMenu=>(

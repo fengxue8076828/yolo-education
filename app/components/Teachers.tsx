@@ -32,8 +32,8 @@ const Teachers = ({lang}:{lang:string}) => {
         whileInView={{opacity:1,transition:{duration:1}}}
          id='teachers' className='py-8 px-5 flex flex-col items-center md:px-10 sm:py-20 md:py-25'>
 
-            <div className='flex justify-start w-full items-center'>
-                <div className='flex flex-col gap-1 md:gap-5'>
+            <div className='flex justify-center md:justify-start w-full items-center'>
+                <div className='flex flex-col gap-1 md:gap-5 items-center md:items-start'>
                     <h1 className='text-2xl md:text-4xl font-bold mt-1'>
                         {lang==="hu"?"Szakképzett ":lang==="en"?"Our ":"我们的"}
                         <span className='text-ternary-color'>{lang==="hu"?"tanáraink":lang==="en"?"Teachers":"老师"}</span>

@@ -14,7 +14,7 @@ const Menubar = ({lang}:{lang:string}) => {
   return (
     <>
       <Searchbox type="courseandprogram" location='top' lang={lang} />
-      <div className='bg-primary-color px-3 md:px-10 py-3 flex justify-between items-center relative'>
+      <div className='bg-primary-color px-3 lg:pl-0 pr-1 lg: xl:px-3 md:px-10 py-3 flex justify-between items-center relative'>
           <div className='flex items-center gap-1'>
             
               <div className='flex gap-1 items-center'>

@@ -15,7 +15,7 @@ const TeacherListContainer = async({category,lang}:{category:TeacherCategoryType
       </div>
       <div className='w-full grid gap-y-10 gap-x-7 grid-cols-auto-fill-100 px-10 md:px-0 mt-7 md:mt-10'>
         {teachers.map(teacher=>(
-          <TeacherCard key={teacher._id} teacher={teacher} lang={lang} />
+          <TeacherCard location='list' key={teacher._id} teacher={teacher} lang={lang} />
         ))}
       </div>
       
