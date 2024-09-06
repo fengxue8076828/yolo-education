@@ -26,58 +26,66 @@ const Courses = ({lang}:{lang:string}) => {
     router.push("/courses")
   }
   return (
-    <motion.div
+    <motion.div 
     initial={{opacity:0}}
-    whileInView={{opacity:1,transition:{duration:1}}}
-     id='courses' className='bg-shallow-blue py-8 px-3 flex flex-col items-center md:px-10 sm:py-20 md:py-25'>
-      <div className='w-full flex flex-col md:flex-row items-center md:justify-between'>
-        <div className='flex flex-col items-center md:items-start gap-1 md:gap-5 mb-7 md:mb-0'>
+    whileInView={{opacity:1,transition:{duration:1}}} id='courses' className='py-8 px-5 flex flex-col items-center md:px-10 sm:py-20 md:py-25'>
+      
+    <div className='flex w-full justify-between'>
+      {/* <div className='flex gap-3'>
+        <BsArrowLeftSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=> swiper?.slidePrev()} />
+        <BsArrowRightSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiper?.slideNext()} />
+      </div> */}
+      <div className='flex flex-col gap-1 md:gap-5 w-full items-center md:items-end'>
           <h1 className='text-2xl md:text-4xl font-bold mt-1'>
-          {lang==="hu"?"Tanfolya":lang==="en"?"Our ":"我们的"}
-            <span className='text-ternary-color'>{lang==="hu"?"maink":lang==="en"?" Courses":"课程"}</span>
-          </h1>
+          {lang==="hu"?"Mit ":lang==="en"?"What ":"我们的"}
+            <span className='text-ternary-color'>{lang==="hu"?"mondanak ":lang==="en"?"Our students  ":"学生"}</span>{lang==="hu"?"diákjaink":lang==="en"?"say":"见证"}
+            </h1>
           <span className='w-[50px] h-[2px] md:w-[70px] md:h-[5px] bg-ternary-color'></span>
-        </div>
-        <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 block bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color self-stretch md:self-auto' onClick={navigateToCourses}>{lang==="hu"?"Az összes tanfolyam megtekintése":lang==="en"?"View all courses":"查看所有课程"}</button>
-        
       </div>
+    </div>
+
+    <div className='w-full mt-10 sm:px-5 md:px-0 md:mt-20 z-10 flex'>
+      <Swiper
+          spaceBetween={50}
+          slidesPerView={4}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => setSwiper(swiper)}
+          loop={true}
+          breakpoints={{
+              320: {
+              slidesPerView: 1,
+              },
+              // when window width is >= 768px
+              768: {
+              slidesPerView: 3,
+              },
+              // when window width is >= 1024px
+              1024: {
+              slidesPerView: 4,
+              },
+          }}
+      >
+      {
+        courses?.map((course,index)=>{
+          return (
+            <SwiperSlide key={index}>
+              {/* <div className='flex flex-col gap-5'> */}
+                <CourseCard course={course} lang={lang} />
+              {/* </div> */}
+            </SwiperSlide>
+          )
           
-        <div className='w-full mt-10 md:px-10 md:mt-20 z-10'>
-        <Swiper
-            spaceBetween={50}
-            slidesPerView={4}
-            onSwiper={(swiper) => setSwiper(swiper)}
-            loop={true}
-            breakpoints={{
-                320: {
-                slidesPerView: 1,
-                },
-                // when window width is >= 768px
-                768: {
-                slidesPerView: 3,
-                },
-                // when window width is >= 1024px
-                1024: {
-                slidesPerView: 5,
-                },
-            }}
-          >
-              {
-                courses?.map(course=>(
-                  <SwiperSlide key={course._id}>
-                    <CourseCard key={course._id} course={course} lang={`${lang}`} />
-                  </SwiperSlide>
-                ))
-              }
-          </Swiper>
-        </div>
-        <div className='flex justify-center w-full items-center mt-10'>
-                <div className='flex gap-3'>
-                    <BsArrowLeftSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=> swiper?.slidePrev()} />
-                    <BsArrowRightSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiper?.slideNext()} />
-                </div>
-            </div>
-    </motion.div>
+        })
+      }
+      </Swiper> 
+    </div>
+    <div className='flex justify-center w-full items-center sm:mt-10 md:mt-5 lg:mt-10'>
+      <div className='flex gap-3'>
+        <BsArrowLeftSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiper?.slidePrev()} />
+        <BsArrowRightSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiper?.slideNext()} />
+      </div>
+    </div>
+</motion.div>
     
   )
 }

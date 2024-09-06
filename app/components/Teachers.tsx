@@ -14,7 +14,7 @@ import TeacherDetail from './TeacherDetail';
 
 const Teachers = ({lang}:{lang:string}) => {
     const [teachers,setTeachers] = useState<TeacherType[]>([])
-    const [swiper,setSwiper] = useState<SwiperClass | null>(null)
+    const [swiperTeacher,setSwiperTeacher] = useState<SwiperClass | null>(null)
     const [selectedTeacher,setSelectedTeacher] = useState<TeacherType | null>(null)
     const [showTeacherDetail,setShowTeacherDetail] = useState(false)
 
@@ -45,14 +45,15 @@ const Teachers = ({lang}:{lang:string}) => {
                     <BsArrowRightSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiper?.slideNext()} />
                 </div> */}
             </div>
-            <div 
+            {/* <div 
                 className='w-full mt-10 px-20 md:px-0 md:mt-20 z-10'
-            >
+            > */}
+                <div className='w-full flex mt-10 sm:px-5 md:px-0 md:mt-20 z-10'>
                 <Swiper
                     spaceBetween={50}
                     slidesPerView={4}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => setSwiper(swiper)}
+                    onSlideChange={() => console.log('slide change for teachers')}
+                    onSwiper={(swiper) => setSwiperTeacher(swiper)}
                     loop={true}
                     breakpoints={{
                         320: {
@@ -78,17 +79,12 @@ const Teachers = ({lang}:{lang:string}) => {
                     ))
                 }
                 
-                {/* {
-                    teachersInWindow.map(teacher=>(
-                        <TeacherCard key={teacher._id} teacher={teacher} />
-                    ))
-                } */}
                 </Swiper> 
             </div>
             <div className='flex justify-center w-full items-center sm:mt-3 md:mt-5 lg:mt-10'>
                 <div className='flex gap-3'>
-                    <BsArrowLeftSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=> swiper?.slidePrev()} />
-                    <BsArrowRightSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiper?.slideNext()} />
+                    <BsArrowLeftSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiperTeacher?.slidePrev()} />
+                    <BsArrowRightSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiperTeacher?.slideNext()} />
                 </div>
             </div>
             {

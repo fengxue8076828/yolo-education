@@ -20,7 +20,7 @@ export const revalidate = 60
 const Footer = async({lang}:{lang:string}) => {
     const footer = await getFooter()
   return (
-    <div className='text-white py-10 px-5 md:pt-32 md:pb-10 flex flex-col items-center relative bg-darker-blue'>
+    <div className='text-white py-10 px-5 md:pt-32 md:pb-10 text-xs xl:text-base flex flex-col items-center relative bg-darker-blue'>
         <div className='w-4/5 flex flex-col lg:flex-row gap-24'>
             <div className='w-2/3 flex flex-col lg:flex-row gap-24 mb-10'>
                 {
