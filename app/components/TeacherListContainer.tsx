@@ -13,7 +13,7 @@ const TeacherListContainer = async({category,lang}:{category:TeacherCategoryType
         <h2 className='text-xl md:text-3xl'>{category.name.find((item)=>item._key===lang)?.value}</h2>
         <span className='w-[50px] h-[2px] bg-ternary-color'></span>
       </div>
-      <div className='w-full grid gap-y-10 gap-x-7 grid-cols-auto-fill-100 px-10 md:px-0 mt-7 md:mt-10'>
+      <div className='w-full grid gap-y-10 gap-x-7 grid-cols-auto-fill-100 px-0 xl:px-10 md:px-0 mt-7 md:mt-10'>
         {teachers.map(teacher=>(
           <TeacherCard location='list' key={teacher._id} teacher={teacher} lang={lang} />
         ))}
