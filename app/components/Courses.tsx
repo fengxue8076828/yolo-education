@@ -35,10 +35,10 @@ const Courses = ({lang}:{lang:string}) => {
         <BsArrowLeftSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=> swiper?.slidePrev()} />
         <BsArrowRightSquareFill className='text-ternary-color text-2xl md:text-3xl cursor-pointer hover:text-dark-ternary-color' onClick={()=>swiper?.slideNext()} />
       </div> */}
-      <div className='flex flex-col gap-1 md:gap-5 w-full items-center md:items-end'>
+      <div className='flex flex-col gap-1 md:gap-5 w-full items-center md:items-start'>
           <h1 className='text-2xl md:text-4xl font-bold mt-1'>
-          {lang==="hu"?"Mit ":lang==="en"?"What ":"我们的"}
-            <span className='text-ternary-color'>{lang==="hu"?"mondanak ":lang==="en"?"Our students  ":"学生"}</span>{lang==="hu"?"diákjaink":lang==="en"?"say":"见证"}
+          {lang==="hu"?"Tanfolya":lang==="en"?"Our ":"我们的"}
+            <span className='text-ternary-color'>{lang==="hu"?"maink":lang==="en"?"courses":"课程"}</span>
             </h1>
           <span className='w-[50px] h-[2px] md:w-[70px] md:h-[5px] bg-ternary-color'></span>
       </div>

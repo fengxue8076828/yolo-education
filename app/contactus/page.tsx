@@ -16,7 +16,7 @@ const Contact = async({searchParams}:{searchParams:{lang?:string}}) => {
     <Menubar lang={language}  />
     <div className='bg-shallow-blue'>
         <ListHeader text={language==="hu"?"Vegye fel velünk a kapcsolatot":language==="en"?"Contact us":"联系我们"} />
-        <div className='flex px-0 py-10 lg:p-10 gap-5 items-start flex-col lg:flex-row m-h-[100vh]'>
+        <div className='flex px-0 py-10 lg:p-10 gap-5 items-start flex-col xl:flex-row m-h-[100vh]'>
                 <div className='flex flex-col md:flex-row gap-3 p-10 w-[100%] lg:w-[75%] bg-white'>
                   <div className='flex flex-col w-[100%] md:w-[50%]'>
                     <div>
