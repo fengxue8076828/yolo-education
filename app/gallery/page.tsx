@@ -17,7 +17,7 @@ const Gallery = async({params,searchParams}:{params:{slug:string},searchParams:{
 
   return (
     <>
-    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+    <Menubar lang={language}  />
     <div className='bg-shallow-blue'>
         <ListHeader text={language==="hu"?"Képtár":language==="en"?"Gallery":"图片墙"} />
         <div className='flex p-10 gap-5 items-start flex-col lg:flex-row m-h-[100vh]'>

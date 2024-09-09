@@ -29,7 +29,7 @@ const StudyAbroadDetail = async({params,searchParams}:{params:{slug:string},sear
     const contentName:Content="content".concat(language) as Content
   return (
     <>
-    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+    <Menubar lang={language}  />
     <div className='bg-shallow-blue'>
         <ListHeader text={foreignStudyCover.subtitle.find((item)=>item._key===language)?.value || foreignStudyCover.subtitle[0].value} />
         <div className='flex p-10 gap-5 items-start flex-col lg:flex-row'>
@@ -55,11 +55,11 @@ const StudyAbroadDetail = async({params,searchParams}:{params:{slug:string},sear
                 </div>
                 <PictureGallery pictures={foreignStudyCover.pictures} />            
             </div>
-            <div className='bg-white w-[100%] lg:w-[25%] p-10 order-first lg:order-last flex flex-col gap-3'>
+            <div className='bg-white w-[100%] lg:w-[25%] p-7 order-first lg:order-last flex flex-col gap-3'>
                 {
-                    foreingStudyCovers.map(cover=>(
-                        <div key={cover._id} className='flex items-center gap-3 font-extrabold'>
-                            <IoIosArrowDroprightCircle className="text-2xl text-golden" />
+                    foreingStudyCovers.map((cover,index)=>(
+                        <div key={cover._id} className={`flex order items-center gap-3 font-extrabold ${index===3?'order-first':''}`}>
+                            <IoIosArrowDroprightCircle className="text-2xl text-golden min-w-[20%]" />
                             <Link href={`/studyabroad/${cover.slug.current}?lang=${language}`} className={`hover:text-golden ${foreignStudyCover._id===cover._id?"text-golden":""}`}>
                                 {cover.title.find((item)=>item._key===language)?.value}
                             </Link>

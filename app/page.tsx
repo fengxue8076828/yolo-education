@@ -1,3 +1,4 @@
+
 import Image from 'next/image'
 import Header from './components/Header'
 import Feathers from './components/Feathers'

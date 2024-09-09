@@ -44,6 +44,14 @@ const config: Config = {
         'half':'50%',
         'less-half':'48%',
         'three-quarter':'75%',
+      },
+      screens: {
+        'sm': '350px',  // You can modify existing breakpoints
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+        // Add or modify as needed
       },     
     },
   },

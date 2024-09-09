@@ -1,5 +1,5 @@
 "use client"
-import React,{useState} from 'react'
+import React,{useEffect,useState} from 'react'
 import chineseFlag from "@/public/chinese-flag.png"
 import hungarianFlag from "@/public/hungarian-flag.png"
 import americanFlag from "@/public/american-flag.png"
@@ -10,17 +10,28 @@ import { useRouter } from 'next/navigation'
 
 
 const LanguageSelect = ({lang}:{lang:string}) => {
-  const [showLanList,setShowLanList] = useState(false)
-    const router = useRouter()
-
-    const switchLanguage = (l:string) => {
-        setShowLanList(false)
-        router.push(`/?lang=${l}`)
+  const router = useRouter()
+  if(typeof window !== 'undefined'){
+    const defaultLang = localStorage.getItem("lang")
+    if(defaultLang && defaultLang !== lang){
+      router.push(`/?lang=${defaultLang}`)
     }
+  }
+
+
+  const [showLanList,setShowLanList] = useState(false)
+
+  const switchLanguage = (l:string) => {
+    if(typeof window !== 'undefined'){
+      localStorage.setItem('lang',l)
+    }
+      setShowLanList(false)
+      router.push(`/?lang=${l}`)
+  }
 
 
   return (
-    <div className='relative mt-2 z-20'>
+    <div className='relative z-30'>
         {/* <select name="selectLanguage" value={lang} onChange={(e)=>switchLanguage(e.target.value)} className='px-2 py-1 outline-none'>
             <option value="en">English</option>
             <option value="hu">Magyarul</option>

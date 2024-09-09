@@ -12,14 +12,14 @@ import Footer from '@/app/components/Footer'
 
 
 const CourseAndProgramQuery = async({params,searchParams}:{params:{keyword:string},searchParams:{lang?:string}}) => {
-  const language = searchParams.lang?searchParams.lang:"hu"
+    const language = searchParams.lang?searchParams.lang:"hu"
   const decodedKeyword = decodeURIComponent(params.keyword);
   const courses = await getCoursesByName(decodedKeyword,language)
   const programs = await getProgramsByName(decodedKeyword,language)
   
   return (
     <>
-    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+    <Menubar lang={language}  />
     <div className='bg-shallow-blue min-h-[100vh]'>
         <ListHeader text={language==="hu"?"TANFOLYAMAINK és PROGRAMJAINK":language==="en"?"Courses and Programs":"课程和活动"} />
         <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>

@@ -14,7 +14,7 @@ const CoursesQuery = async({params,searchParams}:{params:{keyword:string,index:s
   const programs = await getProgramsByName(decodedKeyword,language)
   return (
     <>
-    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+    <Menubar lang={language}  />
     <div className='bg-shallow-blue min-h-[100vh]'>
         <ListHeader text={language==="hu"?"PROGRAMJAINK":language==="en"?"Our Programs":"我们的活动"} />
         <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>

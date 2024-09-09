@@ -46,7 +46,7 @@ const Courses = ({lang}:{lang:string}) => {
 
     <div className='w-full mt-10 sm:px-5 md:px-0 md:mt-20 z-10 flex'>
       <Swiper
-          spaceBetween={50}
+          spaceBetween={30}
           slidesPerView={4}
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => setSwiper(swiper)}

@@ -14,7 +14,7 @@ const ExamListContainer = async({category,lang}:{category:ExamCategoryType,lang:
         <h2 className='text-xl md:text-3xl'>{category.name.find((item)=>item._key===lang)?.value}</h2>
         <span className='w-[50px] h-[2px] bg-ternary-color'></span>
       </div>
-      <div className='w-full flex flex-col px-10 md:px-0 mt-7 md:mt-10'>
+      <div className='w-full flex flex-col px-0 md:px-0 mt-7 md:mt-10'>
         {exams.map(exam=>(
           <ExamCard key={exam._id} exam={exam} lang={lang} />
         ))}

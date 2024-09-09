@@ -22,7 +22,7 @@ const Article = async({params,searchParams}:{params:{slug:string},searchParams:{
     const contentName:Content="content".concat(language) as Content
   return (
     <>
-    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+    <Menubar lang={language}  />
     <div className='bg-shallow-blue min-h-[100vh]'>
     <ListHeader text={article.title.find((item)=>item._key===language)?.value || article.title[0].value} />
     <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>

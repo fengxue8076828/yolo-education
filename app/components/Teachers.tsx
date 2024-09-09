@@ -48,7 +48,7 @@ const Teachers = ({lang}:{lang:string}) => {
             {/* <div 
                 className='w-full mt-10 px-20 md:px-0 md:mt-20 z-10'
             > */}
-                <div className='w-full flex mt-10 sm:px-5 md:px-0 md:mt-20 z-10'>
+                <div className='w-full mt-10 sm:px-5 md:px-0 md:mt-20 z-10 flex'>
                 <Swiper
                     spaceBetween={50}
                     slidesPerView={4}
@@ -73,6 +73,7 @@ const Teachers = ({lang}:{lang:string}) => {
                     {
                     teachers.map(teacher=>(
                         <SwiperSlide key={teacher._id}>
+                            {/* <div>hello</div> */}
                             <TeacherCard teacher={teacher} setSelectedTeacher={setSelectedTeacher} setShowTeacherDetail={setShowTeacherDetail} lang={lang} />
                         </SwiperSlide>
                         

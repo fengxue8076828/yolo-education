@@ -13,7 +13,7 @@ const Contact = async({searchParams}:{searchParams:{lang?:string}}) => {
   const language = searchParams.lang?searchParams.lang:"hu"
   return (
     <>
-    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+    <Menubar lang={language}  />
     <div className='bg-shallow-blue'>
         <ListHeader text={language==="hu"?"Vegye fel velünk a kapcsolatot":language==="en"?"Contact us":"联系我们"} />
         <div className='flex p-10 gap-5 items-start flex-col lg:flex-row m-h-[100vh]'>
@@ -22,22 +22,31 @@ const Contact = async({searchParams}:{searchParams:{lang?:string}}) => {
                     <div>
                     <Image src={contact} alt="contact" width={1000} height={1000} />
                     </div>
-                    <div className='pl-12 mt-5 flex flex-col gap-3'>
-                      <div className='flex items-center gap-3 text-lg lg:text-xl'>
-                        <BiSolidNavigation />
-                        {language==="hu"?"Telefon":language==="en"?"Telephone":"联系电话"}: {footer.telephone}
+                    <div className=' mt-5 flex flex-col gap-3'>
+                      <div className='flex justify-between items-center gap-2 text-sm lg:text-lg'>
+                        <BiSolidNavigation className='min-w-[20%]' />
+                        <h3 className='text-left flex-grow'>
+                          {language==="hu"?"Telefon":language==="en"?"Telephone":"联系电话"}: {footer.telephone}
+                        </h3>
                       </div>
-                      <div className='flex items-center gap-3 text-lg lg:text-xl'>
-                        <BiSolidNavigation />
-                        {language==="hu"?"MobileTelefon":language==="en"?"Mobile":"手机"}: {footer.mobilephone}
+                      <div className='flex justify-between items-center gap-2 text-sm lg:text-lg'>
+                        <BiSolidNavigation className='min-w-[20%]' />
+                        <h3 className='text-left flex-grow'>
+                          {language==="hu"?"MobileTelefon":language==="en"?"Mobile":"手机"}: {footer.mobilephone}
+                        </h3>
                       </div>
-                      <div className='flex items-center gap-3 text-lg lg:text-xl'>
-                        <BiSolidNavigation />
-                        Email: {footer.email}
+                      <div className='flex justify-between items-center gap-2 text-sm lg:text-lg'>
+                        <BiSolidNavigation className='min-w-[20%]' />
+                        <h3 className='text-left flex-grow'>
+                          Email: {footer.email}
+                        </h3>
                       </div>
-                      <div className='flex items-center gap-3 text-lg lg:text-xl'>
-                        <BiSolidNavigation />
-                        {language==="hu"?"Cím":language==="en"?"Address":"地址"}: {footer.address}
+                      <div className='flex justify-between items-center gap-2 text-sm lg:text-lg'>
+                        <BiSolidNavigation className='min-w-[20%]' />
+                        <h3 className='text-left flex-grow'>
+                          {language==="hu"?"Cím":language==="en"?"Address":"地址"}: {footer.address}
+                        </h3>
+                        
                       </div>
                     </div>
                   </div>
