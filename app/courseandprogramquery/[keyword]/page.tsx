@@ -37,7 +37,7 @@ const CourseAndProgramQuery = async({params,searchParams}:{params:{keyword:strin
                     <h2 className='text-xl md:text-3xl'>{language==="hu"?"PROGRAMJAINK":language==="en"?"Programs":"活动"}</h2>
                     <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                 </div>
-                <div className='flex w-full flex-col gap-10 mt-7 bg-white p-10'>
+                <div className='flex w-full flex-col gap-10 mt-7 bg-white p-3 lg:p-10'>
                     {programs.map(program=>(
                         <ProgramCard key={program._id} program={program} lang={language} />
                     ))}

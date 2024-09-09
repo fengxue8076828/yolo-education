@@ -20,7 +20,7 @@ const CoursesQuery = async({params,searchParams}:{params:{keyword:string,index:s
         <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
           <div className='w-full lg:w-[80%]'>
             <Tagbox index={params.index} type='program' lang={language} />
-            <div className='flex w-full flex-col gap-10 mt-7 bg-white p-10'>
+            <div className='flex w-full flex-col gap-10 mt-7 bg-white p-3 md:p-10'>
                 {programs.map(program=>(
                 <ProgramCard key={program._id} program={program} lang={language} />
                 ))}
