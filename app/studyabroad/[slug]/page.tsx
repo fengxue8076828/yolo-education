@@ -32,7 +32,7 @@ const StudyAbroadDetail = async({params,searchParams}:{params:{slug:string},sear
     <Menubar lang={language}  />
     <div className='bg-shallow-blue'>
         <ListHeader text={foreignStudyCover.subtitle.find((item)=>item._key===language)?.value || foreignStudyCover.subtitle[0].value} />
-        <div className='flex p-10 gap-5 items-start flex-col lg:flex-row'>
+        <div className='flex px-0 py-10 lg:p-10 gap-5 items-start flex-col lg:flex-row'>
             <div className='flex flex-col p-10 w-[100%] lg:w-[75%] bg-white'>
                 <Image src={urlFor(foreignStudyCover.coverImage).url()} alt={foreignStudyCover.subtitle.find((item)=>item._key===language)?.value || foreignStudyCover.subtitle[0].value} width={1000} height={1000} className='w-[100%]' />
                 <h4 className='uppercase tracking-wider text-dark-blue mt-20'>{foreignStudyCover.subtitle.find((item)=>item._key===language)?.value || foreignStudyCover.subtitle[0].value}</h4>

@@ -11,7 +11,7 @@ import { getIntroduction } from '@/sanity/lib/queries'
 const Introduction = ({lang}:{lang:string}) => {
   const router = useRouter()
   const gotoAboutUs = () => {
-    router.push("/articles/about-us")
+    router.push("/articles/introduction")
   }
   const [introduction,setIntroduction] = useState<IntroductionType|null>(null)
   useEffect(()=>{
@@ -46,7 +46,7 @@ const Introduction = ({lang}:{lang:string}) => {
             <div className='flex flex-col items-center md:items-start'>
               <h2 className='text-sm text-center font-semibold md:text-2xl md:text-left'>{introduction&&introduction.title.find((item)=>item._key===lang)?.value}</h2>
               <p className='px-5 md:px-0 md:max-w-prose my-8'>{introduction && introduction.text.find((item)=>item._key===lang)?.value}</p>
-              <button  className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 block bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color self-stretch md:self-auto' onAuxClickCapture={gotoAboutUs}>{lang==="hu"?"Rólunk":lang==="en"?"About us":"关于我们"}</button>
+              <button  className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 block bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color self-stretch md:self-auto' onClick={gotoAboutUs}>{lang==="hu"?"Rólunk":lang==="en"?"About us":"关于我们"}</button>
             </div>  
         </div>
     </motion.div>

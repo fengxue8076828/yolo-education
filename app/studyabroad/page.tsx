@@ -18,7 +18,7 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
     <Menubar lang={language}  />
     <div className='bg-shallow-blue min-h-[100vh]'>
         <ListHeader text={language==="hu"?"KÜlFÖlD ÉS TANULMÁNYI ÚT":language==="en"?"ABROAD AND STUDY TRAVEL":"留学和游学"} />
-        <div className='flex flex-col p-10'>
+        <div className='flex flex-col px-0 py-10 lg:p-10'>
             <div id='internation-study' className='grid grid-cols-2 lg:grid-cols-4 grid-rows-4 lg:grid-rows-2 w-[100%] h-auto min-h-[800px]'>
                 <div className='bg-[url("/happystudents.jpg")] bg-no-repeat bg-cover bg-center row-start-1 col-start-1 flex flex-col relative'>
                     <div className='absolute inset-0 bg-lime bg-opacity-90'>
