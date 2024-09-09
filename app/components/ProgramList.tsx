@@ -6,7 +6,7 @@ import ProgramListContainer from './ProgramListContainer'
 
 const ProgramList = ({categories,lang}:{categories:ProgramCategoryType[],lang:string}) => {
   return (
-    <div className='flex w-full flex-col gap-10 bg-white p-10'>
+    <div className='flex w-full flex-col gap-10 bg-white p-3 lg:p-10'>
       {
         categories.map(category=>(
           <ProgramListContainer key={category._id} category={category} lang={lang} />

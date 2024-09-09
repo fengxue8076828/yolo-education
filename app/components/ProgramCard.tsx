@@ -60,9 +60,9 @@ const ProgramCard = ({program,lang}:{program:ProgramType,lang:string}) => {
             </div>
         </div>
         <motion.div
-            initial={{x:-300,opacity:0}}
+            initial={{x:'-100%',opacity:0}}
             whileInView={{x:0,opacity:1}}
-            className={`p-10 ${!opened?'hidden':'block'} flex flex-col items-start md:flex-row justify-between gap-10`}
+            className={`p-10 ${!opened?'hidden':'block'} flex flex-col items-start md:flex-row justify-between gap-5`}
         >
             <div>
                 <Image src={urlFor(program.image).url()} width={500} height={300} alt='student' />

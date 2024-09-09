@@ -47,8 +47,10 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
                     <div className='absolute inset-0 bg-dark-blue bg-opacity-30'>
                     </div>
                     <div className='my-auto mr-3 ml-10 text-white z-10 flex flex-col gap-10 items-start'>
-                        <h4 className='tracking-widest text-lg font-bold'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].subtitle.find((item)=>item._key===language)?.value}</h4>
-                        <h2 className='text-5xl font-extrabold'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].title.find((item)=>item._key===language)?.value}</h2>
+                        <div className='flex flex-col gap-1'>
+                            <h4 className='tracking-widest text-sm lg:text-lg font-bold'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].subtitle.find((item)=>item._key===language)?.value}</h4>
+                            <h2 className='text-3xl lg:text-5xl font-extrabold'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].title.find((item)=>item._key===language)?.value}</h2>
+                        </div>
                         <p className='text-sm'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].text.find((item)=>item._key===language)?.value}</p>
                         <Link className='text-white block border border-solid border-white px-5 py-2 rounded-lg hover:text-black hover:bg-white transition font-extrabold' href={`/studyabroad/${foreignStudyCovers.length>0&&foreignStudyCovers[0].slug.current}?lang=${language}`}>{language==="hu"?"Olvasson tovább":language==="en"?"Read More":"详细信息"}</Link>
                     </div>
@@ -77,8 +79,10 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
                     <div className='absolute inset-0 bg-dark-blue bg-opacity-30'>
                     </div>
                     <div className='my-auto mr-3 ml-10 text-white z-10 flex flex-col gap-10 items-start'>
-                        <h4 className='tracking-widest text-lg font-bold'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].subtitle.find((item)=>item._key===language)?.value}</h4>
-                        <h2 className='text-5xl font-extrabold'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].title.find((item)=>item._key===language)?.value}</h2>
+                        <div className='flex flex-col gap-1'>
+                            <h4 className='tracking-widest text-sm lg:text-lg font-bold'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].subtitle.find((item)=>item._key===language)?.value}</h4>
+                            <h2 className='text-3xl lg:text-5xl font-extrabold'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].title.find((item)=>item._key===language)?.value}</h2>
+                        </div>
                         <p className='text-sm'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].text.find((item)=>item._key===language)?.value}</p>
                         <Link className='text-white block border border-solid border-white px-5 py-2 rounded-lg hover:text-black hover:bg-white transition' href={`/studyabroad/${foreignStudyCovers.length>2&&foreignStudyCovers[2].slug.current}?lang=${language}`}>{language==="hu"?"Olvasson tovább":language==="en"?"Read More":"详细信息"}</Link>
                     </div>
@@ -113,8 +117,10 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
                     <div className='absolute inset-0 bg-dark-lime bg-opacity-70'>
                     </div>
                     <div className='my-auto mr-3 ml-10 text-white z-10 flex flex-col gap-10 items-start'>
-                        <h4 className='tracking-widest text-lg font-bold'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].subtitle.find((item)=>item._key===language)?.value}</h4>
-                        <h2 className='text-5xl font-extrabold'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].title.find((item)=>item._key===language)?.value}</h2>
+                        <div className='flex flex-col gap-1'>
+                            <h4 className='tracking-widest text-sm lg:text-lg font-bold'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].subtitle.find((item)=>item._key===language)?.value}</h4>
+                            <h2 className='text-3xl lg:text-5xl font-extrabold'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].title.find((item)=>item._key===language)?.value}</h2>
+                            </div>
                         <p className='text-sm'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].text.find((item)=>item._key===language)?.value}</p>
                         <Link className='text-white block border border-solid border-white px-5 py-2 rounded-lg hover:text-black hover:bg-white transition' href={`/studyabroad/${foreignStudyCovers.length>1&&foreignStudyCovers[1].slug.current}?lang=${language}`}>{language==="hu"?"Olvasson tovább":language==="en"?"Read More":"详细信息"}</Link>
                     </div>
@@ -145,8 +151,11 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
                     <div className='absolute inset-0 bg-dark-blue bg-opacity-30'>
                     </div>
                     <div className='my-auto mr-3 ml-10 text-white z-10 flex flex-col gap-10 items-start'>
-                        <h4 className='tracking-widest text-lg font-bold'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].subtitle.find((item)=>item._key===language)?.value}</h4>
-                        <h2 className='text-5xl font-extrabold'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].title.find((item)=>item._key===language)?.value}</h2>
+                        
+                        <div className='flex flex-col gap-1'>
+                            <h4 className='tracking-widest text-sm lg:text-lg font-bold'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].subtitle.find((item)=>item._key===language)?.value}</h4>
+                            <h2 className='text-3xl lg:text-5xl font-extrabold'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].title.find((item)=>item._key===language)?.value}</h2>
+                        </div>
                         <p className='text-sm'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].text.find((item)=>item._key===language)?.value}</p>
                         <Link className='text-white block border border-solid border-white px-5 py-2 rounded-lg hover:text-black hover:bg-white transition' href={`/studyabroad/${foreignStudyCovers.length>3&&foreignStudyCovers[3].slug.current}?lang=${language}`}>{language==="hu"?"Olvasson tovább":language==="en"?"Read More":"详细信息"}</Link>
                     </div>
