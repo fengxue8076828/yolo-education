@@ -31,7 +31,7 @@ const Teacher = async({params,searchParams}:{params:{id:string},searchParams:{la
             <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
                 <div className='w-full lg:w-[80%]'>
                     <Tagbox index='-1' type='teacher' lang={language} />
-                    <div className='p-16 px-3 lg:px-10 w-full flex flex-col gap-10'>
+                    <div className='p-16 px-0 lg:px-10 w-full flex flex-col gap-10'>
                         <div className='flex items-center gap-10'>
                             <div className='w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[150px] lg:h-[150px] relative rounded-full overflow-hidden'>
                                 <Image src={urlFor(teacher.image).url()} alt={teacher.name}  className='object-cover object-top' layout='fill' />
