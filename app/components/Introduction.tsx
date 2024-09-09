@@ -11,7 +11,7 @@ import { getIntroduction } from '@/sanity/lib/queries'
 const Introduction = ({lang}:{lang:string}) => {
   const router = useRouter()
   const gotoAboutUs = () => {
-    router.push("/articles/introduction")
+    router.push(`/articles/introduction?lang=${lang}`)
   }
   const [introduction,setIntroduction] = useState<IntroductionType|null>(null)
   useEffect(()=>{

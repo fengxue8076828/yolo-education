@@ -27,7 +27,7 @@ const Header = async({lang}:{lang:string}) => {
               <p className='max-w-prose my-5 mb-10'>
                 {headerText.content.find((item)=>item._key===lang)?.value}
               </p>
-              <Link href="/courses"  className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color'>
+              <Link href={`/courses?lang=${lang}`}  className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color'>
               {lang==="hu"?"Tanfolyamok felfedezése":lang==="en"?"Discover courses":"探索课程"}
               </Link>
             </div>  

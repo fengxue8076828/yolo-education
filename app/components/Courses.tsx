@@ -23,7 +23,7 @@ const Courses = ({lang}:{lang:string}) => {
   },[])
   const router = useRouter()
   const navigateToCourses = () => {
-    router.push("/courses")
+    router.push(`/courses?lang=${lang}`)
   }
   return (
     <motion.div 
