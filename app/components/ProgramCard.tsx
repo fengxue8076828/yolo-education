@@ -80,10 +80,10 @@ const ProgramCard = ({program,lang}:{program:ProgramType,lang:string}) => {
                 </p> */}
                 <div className='flex gap-2 lg:gap-5'>
                     <div className='w-half md:w-auto'>
-                        <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail()}>{lang==="hu"?"TÖBB":lang==="en"?"MORE":"更多"}</button>
+                        <button className='px-1 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail()}>{lang==="hu"?"TÖBB":lang==="en"?"MORE":"更多"}</button>
                     </div>
                     <div className='w-half md:w-auto'>
-                        <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail("program-register")}>{lang==="hu"?"Regisztráció":lang==="en"?"Registration":"注册课程"}</button>
+                        <button className='px-1 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail("program-register")}>{lang==="hu"?"Regisztráció":lang==="en"?"Registration":"注册课程"}</button>
                     </div>
 
                 </div>
