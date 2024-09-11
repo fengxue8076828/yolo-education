@@ -34,6 +34,13 @@ export const POST = async(req:NextRequest) => {
             text: `User ${registration.name} with email ${registration.email} has registered ${registration.activityName} from ${registration.type},\n start time:${registration.startDate} \n message:${registration.message}`, // plain text body
           });
 
+          await transporter.sendMail({
+            from: process.env.NEXT_PUBLIC_ZOHO_USER, // sender address (your Zoho email)
+            to: registration.email, // list of receivers
+            subject: `Thank you for register Yolo Education!`, // subject line
+            text: `Dear ${registration.name}, \nYou registered ${registration.activityName} from ${registration.type},\n start time:${registration.startDate} \n Our teacher will contact soon.\n\n Best Regards,\nYolo Education`, // plain text body
+          });
+
         return NextResponse.json({message:"Registered Successfully"},{status:200})
     }catch(error){
         console.log(error)
