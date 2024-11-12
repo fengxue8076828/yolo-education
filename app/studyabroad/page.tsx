@@ -15,17 +15,17 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
     const language = searchParams.lang?searchParams.lang:"hu"
   return (
     <>
-    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+    <Menubar lang={language}  />
     <div className='bg-shallow-blue min-h-[100vh]'>
         <ListHeader text={language==="hu"?"KÜlFÖlD ÉS TANULMÁNYI ÚT":language==="en"?"ABROAD AND STUDY TRAVEL":"留学和游学"} />
-        <div className='flex flex-col p-10'>
+        <div className='flex flex-col px-0 py-10 lg:p-10'>
             <div id='internation-study' className='grid grid-cols-2 lg:grid-cols-4 grid-rows-4 lg:grid-rows-2 w-[100%] h-auto min-h-[800px]'>
                 <div className='bg-[url("/happystudents.jpg")] bg-no-repeat bg-cover bg-center row-start-1 col-start-1 flex flex-col relative'>
                     <div className='absolute inset-0 bg-lime bg-opacity-90'>
                     </div>
                     <div className='my-auto ml-10 flex flex-col gap-5 z-10'>
                         <IoMdGlobe className="text-3xl text-white" />
-                        <h2 className='text-lg md:text-2xl w-[150px] leading-10 text-white'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].features.length>0&&foreignStudyCovers[0].features[0].text.find((item)=>item._key===language)?.value}</h2>
+                        <h2 className='text-sm xl:text-lg w-[150px] leading-10 text-white'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].features.length>0&&foreignStudyCovers[0].features[0].text.find((item)=>item._key===language)?.value}</h2>
                     </div>
                     
                 </div>
@@ -40,15 +40,17 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
                 <div className='bg-golden row-start-2 col-start-2 flex flex-col'>
                     <div className='my-auto ml-10 flex flex-col gap-5 z-10'>
                         <IoMdGlobe className="text-3xl text-white" />
-                        <h2 className='text-lg md:text-2xl w-[150px] leading-10 text-white'>{foreignStudyCovers.length>0&&foreignStudyCovers[1].features.length>1&&foreignStudyCovers[0].features[0].text.find((item)=>item._key===language)?.value}</h2>
+                        <h2 className='text-sm xl:text-lg w-[150px] leading-10 text-white'>{foreignStudyCovers.length>0&&foreignStudyCovers[1].features.length>1&&foreignStudyCovers[0].features[0].text.find((item)=>item._key===language)?.value}</h2>
                     </div>
                 </div>
                 <div className='col-span-2 row-span-2 bg-[url("/graduatestudents.jpg")] bg-no-repeat bg-cover relative flex py-10 lg:py-0'>
                     <div className='absolute inset-0 bg-dark-blue bg-opacity-30'>
                     </div>
                     <div className='my-auto mr-3 ml-10 text-white z-10 flex flex-col gap-10 items-start'>
-                        <h4 className='tracking-widest text-lg font-bold'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].subtitle.find((item)=>item._key===language)?.value}</h4>
-                        <h2 className='text-5xl font-extrabold'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].title.find((item)=>item._key===language)?.value}</h2>
+                        <div className='flex flex-col gap-1'>
+                            <h4 className='tracking-widest text-sm lg:text-lg font-bold'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].subtitle.find((item)=>item._key===language)?.value}</h4>
+                            <h2 className='text-3xl lg:text-5xl font-extrabold'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].title.find((item)=>item._key===language)?.value}</h2>
+                        </div>
                         <p className='text-sm'>{foreignStudyCovers.length>0&&foreignStudyCovers[0].text.find((item)=>item._key===language)?.value}</p>
                         <Link className='text-white block border border-solid border-white px-5 py-2 rounded-lg hover:text-black hover:bg-white transition font-extrabold' href={`/studyabroad/${foreignStudyCovers.length>0&&foreignStudyCovers[0].slug.current}?lang=${language}`}>{language==="hu"?"Olvasson tovább":language==="en"?"Read More":"详细信息"}</Link>
                     </div>
@@ -62,7 +64,7 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
                 <div className='bg-dark-blue row-start-1 col-start-2 lg:row-start-1 lg:col-start-4 flex flex-col'>
                     <div className='my-auto ml-10 flex flex-col gap-5 z-10'>
                         <IoMdGlobe className="text-3xl text-white" />
-                        <h2 className='text-lg md:text-2xl w-[150px] leading-10 text-white'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].features.length>0&&foreignStudyCovers[2].features[0].text.find((item)=>item._key===language)?.value}</h2>
+                        <h2 className='text-sm xl:text-lg w-[150px] leading-10 text-white'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].features.length>0&&foreignStudyCovers[2].features[0].text.find((item)=>item._key===language)?.value}</h2>
                     </div>
                 </div>
                 <div className='row-start-2 col-start-2 lg:row-start-2 lg:col-start-4 bg-[url("/students2.jpg")] bg-no-repeat bg-cover bg-bottom relative flex'>
@@ -70,15 +72,17 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
                 <div className='bg-white row-start-2 col-start-1 lg:row-start-2 lg:col-start-3 flex flex-col'>
                     <div className='my-auto ml-10 flex flex-col gap-5 z-10'>
                     <IoMdGlobe className="text-3xl text-black" />
-                        <h2 className='text-lg md:text-2xl w-[150px] leading-10 text-black'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].features.length>1&&foreignStudyCovers[2].features[1].text.find((item)=>item._key===language)?.value}</h2>
+                        <h2 className='text-sm xl:text-lg w-[150px] leading-10 text-black'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].features.length>1&&foreignStudyCovers[2].features[1].text.find((item)=>item._key===language)?.value}</h2>
                     </div>
                 </div>
                 <div className='row-start-3 col-start-1 lg:row-start-1 lg:col-start-1 col-span-2 row-span-2 bg-[url("/university.jpg")] bg-no-repeat bg-cover relative flex py-10 lg:py-0'>
                     <div className='absolute inset-0 bg-dark-blue bg-opacity-30'>
                     </div>
                     <div className='my-auto mr-3 ml-10 text-white z-10 flex flex-col gap-10 items-start'>
-                        <h4 className='tracking-widest text-lg font-bold'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].subtitle.find((item)=>item._key===language)?.value}</h4>
-                        <h2 className='text-5xl font-extrabold'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].title.find((item)=>item._key===language)?.value}</h2>
+                        <div className='flex flex-col gap-1'>
+                            <h4 className='tracking-widest text-sm lg:text-lg font-bold'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].subtitle.find((item)=>item._key===language)?.value}</h4>
+                            <h2 className='text-3xl lg:text-5xl font-extrabold'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].title.find((item)=>item._key===language)?.value}</h2>
+                        </div>
                         <p className='text-sm'>{foreignStudyCovers.length>2&&foreignStudyCovers[2].text.find((item)=>item._key===language)?.value}</p>
                         <Link className='text-white block border border-solid border-white px-5 py-2 rounded-lg hover:text-black hover:bg-white transition' href={`/studyabroad/${foreignStudyCovers.length>2&&foreignStudyCovers[2].slug.current}?lang=${language}`}>{language==="hu"?"Olvasson tovább":language==="en"?"Read More":"详细信息"}</Link>
                     </div>
@@ -91,7 +95,7 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
                     </div>
                     <div className='my-auto ml-10 flex flex-col gap-5 z-10'>
                         <IoMdGlobe className="text-3xl text-black" />
-                        <h2 className='text-lg md:text-2xl w-[150px] leading-10 text-black'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].features.length>0&&foreignStudyCovers[1].features[0].text.find((item)=>item._key===language)?.value}</h2>
+                        <h2 className='text-sm xl:text-lg w-[150px] leading-10 text-black'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].features.length>0&&foreignStudyCovers[1].features[0].text.find((item)=>item._key===language)?.value}</h2>
                     </div>
                     
                 </div>
@@ -106,15 +110,17 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
                 <div className='bg-golden row-start-2 col-start-1 flex flex-col'>
                     <div className='my-auto ml-10 flex flex-col gap-5 z-10'>
                         <IoMdGlobe className="text-3xl text-white" />
-                        <h2 className='text-lg md:text-2xl w-[150px] leading-10 text-white'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].features.length>1&&foreignStudyCovers[1].features[1].text.find((item)=>item._key===language)?.value}</h2>
+                        <h2 className='text-sm xl:text-lg w-[150px] leading-10 text-white'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].features.length>1&&foreignStudyCovers[1].features[1].text.find((item)=>item._key===language)?.value}</h2>
                     </div>
                 </div>
                 <div className='col-span-2 row-span-2 bg-[url("/students5.jpg")] bg-no-repeat bg-cover relative flex py-10 lg:py-0'>
                     <div className='absolute inset-0 bg-dark-lime bg-opacity-70'>
                     </div>
                     <div className='my-auto mr-3 ml-10 text-white z-10 flex flex-col gap-10 items-start'>
-                        <h4 className='tracking-widest text-lg font-bold'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].subtitle.find((item)=>item._key===language)?.value}</h4>
-                        <h2 className='text-5xl font-extrabold'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].title.find((item)=>item._key===language)?.value}</h2>
+                        <div className='flex flex-col gap-1'>
+                            <h4 className='tracking-widest text-sm lg:text-lg font-bold'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].subtitle.find((item)=>item._key===language)?.value}</h4>
+                            <h2 className='text-3xl lg:text-5xl font-extrabold'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].title.find((item)=>item._key===language)?.value}</h2>
+                            </div>
                         <p className='text-sm'>{foreignStudyCovers.length>1&&foreignStudyCovers[1].text.find((item)=>item._key===language)?.value}</p>
                         <Link className='text-white block border border-solid border-white px-5 py-2 rounded-lg hover:text-black hover:bg-white transition' href={`/studyabroad/${foreignStudyCovers.length>1&&foreignStudyCovers[1].slug.current}?lang=${language}`}>{language==="hu"?"Olvasson tovább":language==="en"?"Read More":"详细信息"}</Link>
                     </div>
@@ -130,7 +136,7 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
                 <div className='bg-dark-blue row-start-1 col-start-2 lg:row-start-1 lg:col-start-4 flex flex-col'>
                     <div className='my-auto ml-10 flex flex-col gap-5 z-10'>
                         <IoMdGlobe className="text-3xl text-white" />
-                        <h2 className='text-lg md:text-2xl w-[150px] leading-10 text-white'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].features.length>0&&foreignStudyCovers[3].features[0].text.find((item)=>item._key===language)?.value}</h2>
+                        <h2 className='text-sm xl:text-lg w-[150px] leading-10 text-white'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].features.length>0&&foreignStudyCovers[3].features[0].text.find((item)=>item._key===language)?.value}</h2>
                     </div>
                 </div>
                 <div className='row-start-2 col-start-2 lg:row-start-2 lg:col-start-4 bg-[url("/training2.jpg")] bg-no-repeat bg-cover bg-bottom relative flex'>
@@ -138,15 +144,18 @@ const StudyAbroad = async({searchParams}:{searchParams:{lang?:string}}) => {
                 <div className='bg-white row-start-2 col-start-1 lg:row-start-2 lg:col-start-3 flex flex-col'>
                     <div className='my-auto ml-10 flex flex-col gap-5 z-10'>
                     <IoMdGlobe className="text-3xl text-black" />
-                        <h2 className='text-lg md:text-2xl w-[150px] leading-10 text-black'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].features.length>1&&foreignStudyCovers[3].features[1].text.find((item)=>item._key===language)?.value}</h2>
+                        <h2 className='text-sm xl:text-lg w-[150px] leading-10 text-black'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].features.length>1&&foreignStudyCovers[3].features[1].text.find((item)=>item._key===language)?.value}</h2>
                     </div>
                 </div>
                 <div className='row-start-3 col-start-1 lg:row-start-1 lg:col-start-1 col-span-2 row-span-2 bg-[url("/training-cover.jpg")] bg-no-repeat bg-cover relative flex py-10 lg:py-0'>
                     <div className='absolute inset-0 bg-dark-blue bg-opacity-30'>
                     </div>
                     <div className='my-auto mr-3 ml-10 text-white z-10 flex flex-col gap-10 items-start'>
-                        <h4 className='tracking-widest text-lg font-bold'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].subtitle.find((item)=>item._key===language)?.value}</h4>
-                        <h2 className='text-5xl font-extrabold'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].title.find((item)=>item._key===language)?.value}</h2>
+                        
+                        <div className='flex flex-col gap-1'>
+                            <h4 className='tracking-widest text-sm lg:text-lg font-bold'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].subtitle.find((item)=>item._key===language)?.value}</h4>
+                            <h2 className='text-3xl lg:text-5xl font-extrabold'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].title.find((item)=>item._key===language)?.value}</h2>
+                        </div>
                         <p className='text-sm'>{foreignStudyCovers.length>3&&foreignStudyCovers[3].text.find((item)=>item._key===language)?.value}</p>
                         <Link className='text-white block border border-solid border-white px-5 py-2 rounded-lg hover:text-black hover:bg-white transition' href={`/studyabroad/${foreignStudyCovers.length>3&&foreignStudyCovers[3].slug.current}?lang=${language}`}>{language==="hu"?"Olvasson tovább":language==="en"?"Read More":"详细信息"}</Link>
                     </div>

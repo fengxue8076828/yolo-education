@@ -68,7 +68,6 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
                     startDate:selectedDate
                 })
             })
-            console.log("************",res)
             if(res.status === 500){
                 throw new Error("something went wrong")
             }
@@ -81,14 +80,14 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
     <div className='w-full md:w-[80%] text-xl self-center'>
         <Toaster />
         <form action="" className='flex flex-col gap-5' onSubmit={handleSubmit}>
-            <div className='flex items-center gap-5'>
-                <label htmlFor="email" className='w-[100px]'>{lang==="hu"?"Címe":lang==="en"?"Course Name":"课程名称"}:</label>
-                <input type="email" id='email' className='border border-1 border-ternary-color flex-1 p-2' value={activityName} disabled />
+            <div className='flex flex-col items-stretch md:flex-row md:items-center gap-1 md:gap-5'>
+                <label htmlFor="course_name" className='w-[100px] block'>{lang==="hu"?"Címe":lang==="en"?"Course Name":"课程名称"}:</label>
+                <input type="email" id='course_name' className='border border-1 border-ternary-color flex-1 p-2' value={activityName} disabled />
             </div>
             {
                 type === "course" && (
-                    <div className='flex items-center gap-5'>
-                        <label htmlFor="date" className='w-[100px]'>{lang==="hu"?"dátuma":lang==="en"?"Date":"课程日期"}:</label>
+                    <div className='flex flex-col items-stretch md:flex-row md:items-center gap-1 md:gap-5'>
+                        <label htmlFor="date" className='w-[100px] block'>{lang==="hu"?"dátuma":lang==="en"?"Date":"课程日期"}:</label>
                         <select className='border border-ternary-color p-2'  onChange={(e)=>setSelectedDate(e.target.value)}>
                             <option value="">{lang==="hu"?"A tanfolyam kezdési dátuma":lang==="en"?"Please choose a date":"请选择一个日期"}</option>
                             {
@@ -101,19 +100,19 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
                 )
             }
             
-            <div className='flex items-center gap-5'>
+            <div className='flex flex-col items-stretch md:flex-row md:items-center gap-1 md:gap-5'>
                 <label htmlFor="email" className='w-[100px]'>Email:</label>
                 <input type="email" id='email' className='border border-1 border-ternary-color flex-1 p-2' value={email} onChange={(e)=>setEmail(e.target.value)} />
             </div>
-            <div className='flex items-center gap-5'>
+            <div className='flex flex-col items-stretch md:flex-row md:items-center gap-1 md:gap-5'>
                 <label htmlFor='name' className='w-[100px]'>{lang==="hu"?"Név":lang==="en"?"Your Name":"您的名字"}:</label>
                 <input type='text' id='name'  className='border border-1 border-ternary-color flex-1 p-2' value={name} onChange={(e)=>setName(e.target.value)}/>
             </div>
-            <div className='flex items-center gap-5'>
+            <div className='flex flex-col items-stretch md:flex-row md:items-center gap-1 md:gap-5'>
                 <label htmlFor='message' id='message' className='w-[100px]'>{lang==="hu"?"Üzenet":lang==="en"?"Message":"您的留言"}:</label>
                 <textarea className='border border-1 border-black flex-1 p-2' rows={5} value={message} onChange={(e)=>setMessage(e.target.value)}></textarea>
             </div>
-            <div className='flex items-center gap-5'>
+            <div className='flex flex-col items-stretch md:flex-row md:items-center gap-1 md:gap-5'>
                 <div className='w-[100px]'>
                 </div>
                 <div className='flex gap-2 text-sm'>
@@ -122,7 +121,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
                 </div>
                 
             </div>
-            <div className='self-center'>
+            <div className='self-stretch md:self-center flex flex-col items-stretch'>
                 <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color'>{lang==="hu"?" Beküldés":lang==="en"?"submit":"提交"}</button>
             </div>
             

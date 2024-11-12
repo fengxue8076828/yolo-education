@@ -19,7 +19,7 @@ const CourseDetail = async({params,searchParams}:{params:{id:string},searchParam
     const language = searchParams.lang?searchParams.lang:"hu"
   return (
     <>
-    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+    <Menubar lang={language}  />
     <div className='bg-shallow-blue min-h-[100vh]'>
         <ListHeader text={course.name.find((item)=>item._key===language)?.value || course.name[0].value} />
         <CourseDetailBody course={course} lang={language} />

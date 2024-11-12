@@ -14,7 +14,7 @@ const Teachers = async({searchParams}:{searchParams:{lang?:string}}) => {
     const language = searchParams.lang?searchParams.lang:"hu"
     return (
       <>
-    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+    <Menubar lang={language}  />
       <div className='bg-shallow-blue min-h-[100vh]'>
       <ListHeader text={language==="hu"?"TANÁR":language==="en"?"Teachers":"我们的老师"} />
       <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>

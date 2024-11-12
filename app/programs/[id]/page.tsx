@@ -41,7 +41,7 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
 
   return (
     <>
-    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+    <Menubar lang={language}  />
     <div className='bg-shallow-blue min-h-[100vh]'>
     <ListHeader text={program.name.find((item)=>item._key===language)?.value || program.name[0].value} />
     <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>

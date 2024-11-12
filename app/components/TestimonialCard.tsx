@@ -34,7 +34,7 @@ const TestimonialCard = ({testimonial,lang}:{testimonial:TestimonialType,lang:st
                 <Image className='absolute object-cover object-top' src={urlFor(testimonial.image).url()}  layout='fill' alt='testimonial' />
               </div>
             </div>
-            <div className='p-7 text-sm max-w-three-quarter min-h-36'>
+            <div className='p-10 pt-14 text-sm max-w-full min-h-36'>
               <PortableText  
                 value={testimonial[contentName]}
                 components={PortableTextComponent}

@@ -17,13 +17,13 @@ const CoursesQuery = async({params,searchParams}:{params:{keyword:string,index:s
   
   return (
     <>
-    <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+    <Menubar lang={language}  />
     <div className='bg-shallow-blue min-h-[100vh]'>
         <ListHeader text={language==="hu"?"TANFOLYAMAINK":language==="en"?"Our Courses":"我们的课程"} />
         <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
           <div className='w-full lg:w-[80%]'>
             <Tagbox index={params.index} type='course' lang={language} />
-            <div className='w-full grid gap-y-10 gap-x-7 grid-cols-auto-fill-100 px-10 md:px-0 mt-7 md:mt-10'>
+            <div className='w-full grid gap-y-10 gap-x-7 grid-cols-auto-fill-100 px-3 md:px-0 mt-7 md:mt-10'>
                 {courses.map(course=>(
                 <CourseCard key={course._id} course={course} lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
                 ))}

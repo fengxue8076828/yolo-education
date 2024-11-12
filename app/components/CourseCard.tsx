@@ -16,7 +16,7 @@ const CourseCard = ({course,lang}:{course:CourseType,lang:string}) => {
     router.push(`/courses/${id}?lang=${lang}`)
   }
   return (
-    <div className='min-w-64 rounded bg-white hover:shadow-xl hover:scale-105 hover:transition cursor-pointer' onClick={()=>navigateToCourse(course._id)}>
+    <div className='flex-1 rounded bg-white hover:shadow-xl hover:scale-105 hover:transition cursor-pointer' onClick={()=>navigateToCourse(course._id)}>
         <div className='w-full h-[160px] relative'>
           <Image className='object-cover' src={urlFor(course.image).url()} alt='course' layout='fill' />
         </div>
@@ -28,7 +28,7 @@ const CourseCard = ({course,lang}:{course:CourseType,lang:string}) => {
         <div className='px-5 pt-8 pb-3 flex justify-between items-center'>
             <div className='flex justify-between items-center gap-1'>
                 <HiMiniCurrencyDollar className="text-3xl text-golden" />
-                <p>{course.price} HUF</p>
+                <p className='text-xs'>{course.price} HUF</p>
             </div>
             <div className='flex items-center gap-3 rounded-full pr-5 bg-ternary-color overflow-hidden'>
               <div className='rounded-full overflow-hidden relative w-[40px] h-[40px]'>

@@ -32,13 +32,13 @@ const MenuDropdown = ({
         }
       },[menuId])
   return (
-    <div className={`${!dropdownOpen?'hidden':'block'} absolute left-0 top-full w-full h-[100vh] bg-middle-blue lg:hidden flex z-20 items-start pl-10 md:pl-32 pt-24 gap-10`}>
-      <div className='flex flex-col text-xl gap-5 items-end'>
+    <div className={`${!dropdownOpen?'hidden':'block'} absolute left-0 top-full w-full h-[100vh] bg-middle-blue lg:hidden flex z-20 items-start pl-5 md:pl-32 pt-24 gap-10`}>
+      <div className='flex flex-col text-xl gap-5 items-end w-[40%]'>
         {
                     topMenus && (
                       topMenus.map(topMenu=>(
-                        <span key={topMenu._id} className='block relative'>
-                          <Link className='hover:text-ternary-color' href={topMenu.link?topMenu.link.indexOf("#")===-1?topMenu.link.concat(`?lang=${lang}`):`${topMenu.link.slice(0, topMenu.link.indexOf("#"))}?lang=${lang}${topMenu.link.slice(topMenu.link.indexOf("#"))}`:""} onTouchStart={()=>setMenuId(topMenu._id)}>{topMenu.text.find((item)=>item._key===lang)?.value}</Link>
+                        <span key={topMenu._id} className='block relative sm:text-sm md:text-base text-right'>
+                          <Link className='hover:text-ternary-color text-right' href={topMenu.link?topMenu.link.indexOf("#")===-1?topMenu.link.concat(`?lang=${lang}`):`${topMenu.link.slice(0, topMenu.link.indexOf("#"))}?lang=${lang}${topMenu.link.slice(topMenu.link.indexOf("#"))}`:""} onTouchStart={()=>setMenuId(topMenu._id)}>{topMenu.text.find((item)=>item._key===lang)?.value}</Link>
                         </span>                   
                       ))
                     )

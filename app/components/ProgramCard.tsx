@@ -60,9 +60,9 @@ const ProgramCard = ({program,lang}:{program:ProgramType,lang:string}) => {
             </div>
         </div>
         <motion.div
-            initial={{x:-300,opacity:0}}
+            initial={{x:'-100%',opacity:0}}
             whileInView={{x:0,opacity:1}}
-            className={`p-10 ${!opened?'hidden':'block'} flex flex-col items-start md:flex-row justify-between gap-10`}
+            className={`p-10 ${!opened?'hidden':'block'} flex flex-col items-start md:flex-row justify-between gap-5`}
         >
             <div>
                 <Image src={urlFor(program.image).url()} width={500} height={300} alt='student' />
@@ -78,12 +78,12 @@ const ProgramCard = ({program,lang}:{program:ProgramType,lang:string}) => {
                 {/* <p className='md:max-w-prose text-sm md:text-base'>
                     {program.description.toString()}
                 </p> */}
-                <div className='flex gap-5 md:gap-10'>
+                <div className='flex gap-2 lg:gap-5'>
                     <div className='w-half md:w-auto'>
-                        <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail()}>{lang==="hu"?"TÖBB":lang==="en"?"MORE":"更多"}</button>
+                        <button className='px-1 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail()}>{lang==="hu"?"TÖBB":lang==="en"?"MORE":"更多"}</button>
                     </div>
                     <div className='w-half md:w-auto'>
-                        <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail("program-register")}>{lang==="hu"?"Regisztráció":lang==="en"?"Registration":"注册课程"}</button>
+                        <button className='px-1 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail("program-register")}>{lang==="hu"?"Regisztráció":lang==="en"?"Registration":"注册课程"}</button>
                     </div>
 
                 </div>

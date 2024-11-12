@@ -51,8 +51,11 @@ const PictureGallery = ({pictures}:{pictures:string[]}) => {
                     {
                     pictures.map((picture,index)=>(
                         <SwiperSlide key={index}>
-                            <div className='min-w-[200px] min-h-[200px] relative overflow-hidden'>
-                                <Image src={urlFor(picture).url()} alt={picture} layout='fill' className='object-cover absolute' />
+                            <div className='min-w-[200px] min-h-[200px] overflow-hidden flex-1'>
+                                
+                                <div>
+                                 <Image src={urlFor(picture).url()} alt={picture} layout='fill' className='object-cover' />
+                                </div>
                             </div>
                             
                         </SwiperSlide>
