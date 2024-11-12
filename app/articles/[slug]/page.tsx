@@ -15,6 +15,7 @@ enum Content {
   contentEn="contenten",
   contentCn="contentcn"
 }
+export const revalidate = 60
 
 const Article = async({params,searchParams}:{params:{slug:string},searchParams:{lang?:string}}) => {
     const article = await getArticleBySlug(params.slug)

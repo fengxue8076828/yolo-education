@@ -8,6 +8,8 @@ import { BiSolidNavigation } from "react-icons/bi";
 import Menubar from '@/app/components/Menubar'
 import Footer from '@/app/components/Footer'
 
+export const revalidate = 60
+
 const Contact = async({searchParams}:{searchParams:{lang?:string}}) => {
   const footer = await getFooter()
   const language = searchParams.lang?searchParams.lang:"hu"

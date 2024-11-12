@@ -11,6 +11,8 @@ import Navigator from './components/Navigator'
 import Menubar from '@/app/components/Menubar'
 import Footer from '@/app/components/Footer'
 
+export const revalidate = 60
+
 export default function Home({searchParams}:{searchParams:{lang?:string}}) {
   return (
     <>

@@ -17,6 +17,7 @@ enum Description {
     descEn="descriptionen",
     descCn="descriptioncn"
 }
+export const revalidate = 60
 
 const Teacher = async({params,searchParams}:{params:{id:string},searchParams:{lang?:string}}) => {
     const teacher = await getTeacherById(params.id)
