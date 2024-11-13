@@ -42,7 +42,7 @@ const Footer = async({lang}:{lang:string}) => {
                 }
                 <div className='flex flex-col gap-3'>
                     <div className='flex flex-col gap-3'>
-                        <h3>{lang==="hu"?"Érintkezés":lang==="en"?"Contact":"联系方式"}</h3>
+                        <h3>{lang==="hu"?"Kapcsolat":lang==="en"?"Contact":"联系方式"}</h3>
                         <span className='block w-[30px] h-[3px] bg-golden mb-2 lg:mb-7' />
                     </div>
                     <div className='flex flex-col gap-3'>

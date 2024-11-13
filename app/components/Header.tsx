@@ -23,7 +23,7 @@ const Header = async({lang}:{lang:string}) => {
               <Image src={chineseBooks} alt='chinese books' width={200} height={250} />
             </div>         
             <div>
-              <h2 className='text-xl md:text-2xl text-ternary-color'>{lang==="hu"?"Yolo Oktatás":lang==="en"?"Yolo Education":"优乐教育"}</h2>
+              <h2 className='text-xl md:text-2xl text-ternary-color'>{lang==="hu"?"YOLO Oktatás":lang==="en"?"YOLO Education":"优乐教育"}</h2>
               <p className='max-w-prose my-5 mb-10'>
                 {headerText.content.find((item)=>item._key===lang)?.value}
               </p>
