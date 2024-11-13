@@ -44,26 +44,29 @@ const Courses = ({lang}:{lang:string}) => {
       </div>
     </div>
 
-    <div className='w-full mt-10 sm:px-5 md:px-0 md:mt-20 z-10 flex'>
+    <div className='w-full mt-10 sm:px-5 md:px-0 md:mt-20 z-10'>
       <Swiper
           spaceBetween={30}
-          slidesPerView={courses?(courses.length<4?courses?.length:4):0}
+          // slidesPerView={4}
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => setSwiper(swiper)}
           loop={true}
-          loopAddBlankSlides={true}
-          freeMode={true}
+          // slidesPerGroup={4}
+          // loopAddBlankSlides={true}
           breakpoints={{
               320: {
               slidesPerView: 1,
+              // slidesPerGroup:1
               },
               // when window width is >= 768px
               768: {
-              slidesPerView: courses?(courses.length<3?courses?.length:3):0,
+              slidesPerView: 3,
+              // slidesPerGroup:1
               },
               // when window width is >= 1024px
               1024: {
-              slidesPerView: courses?(courses.length<4?courses?.length:4):0,
+              slidesPerView: 4,
+              // slidesPerGroup:1
               },
           }}
       >

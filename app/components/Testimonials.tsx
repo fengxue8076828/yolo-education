@@ -44,7 +44,7 @@ const Testimonials = ({lang}:{lang:string}) => {
         </div>
       </div>
 
-      <div className='w-full mt-10 sm:px-5 px-5 md:px-0 md:mt-20 z-10 flex'>
+      <div className='w-full mt-10 sm:px-5 px-5 md:px-0 md:mt-20 z-10'>
         <Swiper
             spaceBetween={50}
             slidesPerView={2}

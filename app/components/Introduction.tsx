@@ -1,7 +1,7 @@
 "use client"
 import React,{useState,useEffect} from 'react'
 import Image from 'next/image'
-import student from '@/public/students.png'
+import cover from '@/public/cover.png'
 import Button from './Button'
 import {motion} from "framer-motion"
 import { useRouter } from 'next/navigation'
@@ -41,7 +41,7 @@ const Introduction = ({lang}:{lang:string}) => {
         
         <div className='flex items-center gap-20 mt-8 md:mt-20'>
             <div className='hidden md:block'>
-                <Image src={student} width={300} height={300} alt='students'/>
+                <Image src={cover} width={300} height={300} alt='students'/>
             </div>
             <div className='flex flex-col items-center md:items-start'>
               <h2 className='text-sm text-center font-semibold md:text-2xl md:text-left'>{introduction&&introduction.title.find((item)=>item._key===lang)?.value}</h2>
