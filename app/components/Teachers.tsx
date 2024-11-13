@@ -51,7 +51,7 @@ const Teachers = ({lang}:{lang:string}) => {
                 <div className='w-full mt-10 sm:px-5 md:px-0 md:mt-20 z-10 flex'>
                 <Swiper
                     spaceBetween={50}
-                    slidesPerView={4}
+                    slidesPerView={teachers?(teachers.length<4?teachers?.length:4):0}
                     onSlideChange={() => console.log('slide change for teachers')}
                     onSwiper={(swiper) => setSwiperTeacher(swiper)}
                     loop={true}
@@ -61,11 +61,11 @@ const Teachers = ({lang}:{lang:string}) => {
                         },
                         // when window width is >= 768px
                         768: {
-                        slidesPerView: 3,
+                        slidesPerView: teachers?(teachers.length<3?teachers?.length:3):0,
                         },
                         // when window width is >= 1024px
                         1024: {
-                        slidesPerView: 4,
+                        slidesPerView: teachers?(teachers.length<4?teachers?.length:4):0,
                         },
                     }}
                 >
