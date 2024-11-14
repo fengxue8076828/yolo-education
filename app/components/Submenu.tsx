@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { MenuitemType } from '@/sanity/lib/queries'
+
 import Link from 'next/link'
 interface SubmenuPropsType {
     menuitems:MenuitemType[] | null,

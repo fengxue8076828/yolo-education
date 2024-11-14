@@ -17,6 +17,7 @@ const Menu = ({dropdownOpened,setDropdownOpened,lang}:MenuProps) => {
   const [topMenus,setTopMenus] = useState<MenuitemType[]|null>(null)
   const [menuId,setMenuId] = useState("")
   const [subMenus,setSubMenus] = useState<MenuitemType[]|null>(null)
+  const [menuChange,setMenuChange] = useState(false)
   useEffect(()=>{
     const fetchTopMenus = async() => {
       const topMenus = await getTopMenu()
@@ -24,6 +25,7 @@ const Menu = ({dropdownOpened,setDropdownOpened,lang}:MenuProps) => {
     }
     fetchTopMenus()
   },[])
+  console.log("******************",menuId)
   useEffect(()=>{
     const fetchSubMenu = async(id:string) => {
       const subMenus = await getSubMenu(id)
@@ -32,7 +34,7 @@ const Menu = ({dropdownOpened,setDropdownOpened,lang}:MenuProps) => {
     if(menuId !== ""){
       fetchSubMenu(menuId)
     }
-  },[menuId])
+  },[menuId,menuChange])
 
   const clearMenuId = () => {
     setMenuId("")
@@ -44,7 +46,7 @@ const Menu = ({dropdownOpened,setDropdownOpened,lang}:MenuProps) => {
           topMenus && (
             topMenus.map(topMenu=>(
               <span key={topMenu._id} className='block relative'>
-                <Link className='hover:text-ternary-color' href={topMenu.link?topMenu.link.indexOf("#")===-1?topMenu.link.concat(`?lang=${lang}`):`${topMenu.link.slice(0, topMenu.link.indexOf("#"))}?lang=${lang}${topMenu.link.slice(topMenu.link.indexOf("#"))}`:""} onMouseEnter={()=>{setSubMenus(null); setMenuId(topMenu._id)}} onMouseLeave={()=>{setSubMenus(null);clearMenuId()}}>{topMenu.text.find((item)=>item._key===lang)?.value}</Link>
+                <Link className='hover:text-ternary-color' href={topMenu.link?topMenu.link.indexOf("#")===-1?topMenu.link.concat(`?lang=${lang}`):`${topMenu.link.slice(0, topMenu.link.indexOf("#"))}?lang=${lang}${topMenu.link.slice(topMenu.link.indexOf("#"))}`:""} onMouseEnter={()=>{setSubMenus(null);clearMenuId();setMenuChange(pre=>!pre); setMenuId(topMenu._id)}}>{topMenu.text.find((item)=>item._key===lang)?.value}</Link>
                 {
                   topMenu._id === menuId && subMenus && subMenus.length > 0?(
                     <Submenu menuitems={subMenus} from='desktop' clearHandler={clearMenuId} lang={lang} />
