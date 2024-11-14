@@ -46,7 +46,7 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
     <ListHeader text={program.name.find((item)=>item._key===language)?.value || program.name[0].value} />
     <div className='flex flex-col lg:flex-row gap-5 px-3 py-8 md:px-10 md:py-20'>
         <div className='w-full lg:w-[80%] bg-white p-5 md:p-16 rounded flex flex-col items-center'>
-            <div className='w-full h-[400px] mb-10 relative'>
+            <div className='w-full h-[450px] mb-10 relative'>
                 <Image className='object-cover' src={urlFor(program.image).url()} alt='course' layout='fill' />
             </div>
             

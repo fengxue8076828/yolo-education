@@ -21,13 +21,13 @@ const Gallery = async({params,searchParams}:{params:{slug:string},searchParams:{
     <div className='bg-shallow-blue'>
         <ListHeader text={language==="hu"?"Képtár":language==="en"?"Gallery":"图片墙"} />
         <div className='flex px-0 py-10 lg:p-10 gap-5 items-start flex-col lg:flex-row m-h-[100vh]'>
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-col-6 grid-rows-[200px] auto-rows-[200px] gap-3 grid-flow-row-dense  p-10 w-[100%] lg:w-[75%] bg-white'>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 grid-rows-[200px] auto-rows-[200px] gap-3 grid-flow-row-dense  p-10 w-[100%] lg:w-[75%] bg-white'>
               {
                 pictures.map((picture,index)=>(
 
                   <div key={picture._id} className={`col-span-${Math.floor(Math.random()*2)+1} row-span-${Math.floor(Math.random()*2)+1} relative hover:scale-105 hover:shadow-lg cursor-pointer transition-all rounded overflow-hidden`}>
                     <Link href={`/${picture.url}?lang=${language}`}>
-                      <Image src={urlFor(picture.image).url()} layout='fill' alt={picture.title} className='absolute object-cover object-center'></Image>
+                      <Image src={urlFor(picture.image).url()} layout='fill' alt={picture.title} className='absolute object-cover object-top'></Image>
                     </Link>
                     
                   </div>

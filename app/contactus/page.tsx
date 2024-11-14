@@ -24,7 +24,7 @@ const Contact = async({searchParams}:{searchParams:{lang?:string}}) => {
                     <div>
                     <Image src={contact} alt="contact" width={1000} height={1000} />
                     </div>
-                    <div className=' mt-5 flex flex-col gap-3'>
+                    <div className='mt-5 flex flex-col gap-3'>
                       <div className='flex justify-between items-center gap-2 text-sm lg:text-lg'>
                         <BiSolidNavigation className='min-w-[20%]' />
                         <h3 className='text-left flex-grow'>
