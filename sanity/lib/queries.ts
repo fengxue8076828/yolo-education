@@ -210,7 +210,7 @@ export async function getExamsByCategory(categoryId:string):Promise<ExamType[]> 
 
 
 export async function getGalleryPictures():Promise<GalleryPicture[]> {
-    const query = `*[_type=="galleryPicture"]`
+    const query = `*[_type=="galleryPicture"] | order(_createdAt desc)`
     const data = await client.fetch(query)
     return data
 }
