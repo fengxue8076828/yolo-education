@@ -7,7 +7,7 @@ import Footer from './components/Footer'
 const poppins = Poppins({ weight:"400",subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Yolo Education',
+  title: 'YOLO Education',
   description: 'The best Hungarian Chinese bilingual school in Budapest',
 }
 
