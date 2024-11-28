@@ -97,12 +97,12 @@ export const Program = {
         },
         {
             name:"tiktokLink",
-            title:"TwitterLink",
+            title:"TiktokLink",
             type:"url",
         },
         {
             name:"xiaohongshuLink",
-            title:"TwitterLink",
+            title:"XiaohongshuLink",
             type:"url",
         },
         {
@@ -126,6 +126,13 @@ export const Program = {
             type:"reference",
             to:[{type:"programCategory"}],
             validation:(Rule:Rule) => Rule.required()
+        },
+        {
+            name:"status",
+            title:"Nyissa meg a regisztrációt",
+            type:"boolean",
+            initialValue:true,
+            validation:(Rule:Rule)=>Rule.required()
         }
     ],
     preview:{

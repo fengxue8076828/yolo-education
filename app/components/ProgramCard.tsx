@@ -49,7 +49,17 @@ const ProgramCard = ({program,lang}:{program:ProgramType,lang:string}) => {
                     
                     }                    
                 <div className={`p-10 flex flex-col ${!opened?'items-start':'items-center'} md:items-start`}>
-                    <h3 className='text-base font-bold mb-1 md:text-xl'>{program.name.find((item)=>item._key===lang)?.value}</h3>
+                    <div className='mb-1 flex items-center gap-5'>
+                        <h3 className='text-base font-bold md:text-xl'>{program.name.find((item)=>item._key===lang)?.value}</h3>
+                        {
+                            program.status?
+                            <div className='bg-green-500 px-3 py-1 rounded-3xl text-sm'>{lang==="hu"?"Regisztráció":lang==="en"?"Enrollment in progress":"报名中"}</div>
+                            :
+                            <div className='bg-gray-300 px-3 py-1 rounded-3xl text-sm text-gray-500'>{lang==="hu"?"A regisztráció véget ért":lang==="en"?"Enrollment ended":"报名已结束"}</div>
+                        }
+                        
+                    </div>
+                    
                     <p className='text-sm md:text-base'>{formattedDate} {formattedTime}</p>
                 </div> 
             </div>
@@ -82,9 +92,13 @@ const ProgramCard = ({program,lang}:{program:ProgramType,lang:string}) => {
                     <div className='w-half md:w-auto'>
                         <button className='px-1 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail()}>{lang==="hu"?"TÖBB":lang==="en"?"MORE":"更多"}</button>
                     </div>
-                    <div className='w-half md:w-auto'>
+                    {
+                        program.status&&
+                        <div className='w-half md:w-auto'>
                         <button className='px-1 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color w-full md:w-auto' onClick={()=>gotoProgramDetail("program-register")}>{lang==="hu"?"Regisztráció":lang==="en"?"Registration":"注册课程"}</button>
                     </div>
+                    }
+                    
 
                 </div>
             </div> 

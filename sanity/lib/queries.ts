@@ -36,7 +36,7 @@ export interface CourseType {
     image:string,
     category:CategoryType,
     startDate:string[],
-    classTime:string,
+    classTime:{_key:string,value:"string"}[],
     lectures:number,
     duration:number,
     teacher:TeacherType,
@@ -66,6 +66,7 @@ export interface ProgramType {
     xiaohongshuLink:string,
     facebookLink:string,
     youtubeLink:string,
+    status:boolean
 }
 export interface ArticleType {
     title:{_key:string,value:string}[],
@@ -264,7 +265,9 @@ export async function getCoursesOnWindow():Promise<CourseType[]> {
         subTitle,
         image,
         startDate,
+        classTime,
         price,
+        lectures,
         "teacher":teacher->{
             name,
             image
@@ -286,6 +289,8 @@ export async function getCoursesByName(keyword:string,lang:string):Promise<Cours
         image,
         startDate,
         price,
+        classTime,
+        lectures,
         "teacher":teacher->{
             name,
             image
@@ -309,6 +314,8 @@ export async function getCoursesByTeacher(id:string):Promise<CourseType[]>{
         image,
         startDate,
         price,
+        classTime,
+        lectures,
         "teacher":teacher->{
             name,
             image
@@ -325,6 +332,8 @@ export async function getCoursesByCategory(id:string):Promise<CourseType[]>{
         image,
         startDate,
         price,
+        classTime,
+        lectures,
         "teacher":teacher->{
             name,
             image
@@ -398,7 +407,8 @@ export async function getPrograms():Promise<ProgramType[]>{
         "teacher":teacher->{
             name,
             image   
-        }
+        },
+        status
     }`
     const data = await client.fetch(query)
     return data  
@@ -415,10 +425,15 @@ export async function getProgramsByName(keyword:string,lang:string):Promise<Prog
         descriptionhu,
         descriptionen,
         descriptioncn,
+        tiktokLink,
+        xiaohongshuLink,
+        facebookLink,
+        youtubeLink,
         "teacher":teacher->{
             name,
             image   
-        }
+        },
+        status,
     }`
     const data = await client.fetch(query)
     return data 
@@ -438,7 +453,8 @@ export async function getProgramsByCategory(id:string):Promise<ProgramType[]>{
         "teacher":teacher->{
             name,
             image   
-        }
+        },
+        status
     }`
     const data = await client.fetch(query)
     return data
@@ -455,10 +471,15 @@ export async function getProgramById(id:string):Promise<ProgramType>{
         descriptionhu,
         descriptionen,
         descriptioncn,
+        tiktokLink,
+        xiaohongshuLink,
+        facebookLink,
+        youtubeLink,
         "teacher":teacher->{
             name,
             image   
-        }
+        },
+        status
     }`
     const data = await client.fetch(query)
     return data[0]  

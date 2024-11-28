@@ -21,10 +21,22 @@ const CourseCard = ({course,lang}:{course:CourseType,lang:string}) => {
           <Image className='object-cover' src={urlFor(course.image).url()} alt='course' layout='fill' />
         </div>
         
-        <div className='px-5 py-8 min-h-[130px]'>
+        <div className='px-5 pt-8 pb-4 min-h-[130px]'>
             <h4 className='font-bold'>{course.name.find((item)=>item._key===lang)?.value}</h4>
             <p className='font-thin text-xs'>{course.subTitle.find((item)=>item._key===lang)?.value}</p>
         </div>
+
+        <div className='px-5'>
+          <h4 className='font-bold text-sm'>
+            <span className='font-extrabold'>{lang==="hu"?"Osztály ideje":lang==="en"?"Class Time":"上课时间"} :</span>
+            {course.classTime.find((item)=>item._key===lang)?.value || course.classTime[0].value}
+          </h4>
+          <h4 className='font-bold text-sm'>
+            <span className='font-extrabold'>{lang==="hu"?"Alkalmak":lang==="en"?"Lectures":"课程次数"} : </span>
+            {course.lectures}
+          </h4>
+        </div>
+
         <div className='px-5 pt-8 pb-3 flex justify-between items-center'>
             <div className='flex justify-between items-center gap-1'>
                 <HiMiniCurrencyDollar className="text-3xl text-golden" />

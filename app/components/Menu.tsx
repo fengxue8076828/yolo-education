@@ -25,7 +25,6 @@ const Menu = ({dropdownOpened,setDropdownOpened,lang}:MenuProps) => {
     }
     fetchTopMenus()
   },[])
-  console.log("******************",menuId)
   useEffect(()=>{
     const fetchSubMenu = async(id:string) => {
       const subMenus = await getSubMenu(id)

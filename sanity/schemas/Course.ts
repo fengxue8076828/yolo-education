@@ -123,7 +123,7 @@ export const Course =  {
         {
             name:"classTime",
             title:"Osztály ideje",
-            type:"string",
+            type:"internationalizedArrayString",
             description:"Az óra kezdési időpontja.formátum ÓÓ:PP - ÓÓ:PP egy nap egy héten pl. 17:30 - 19:00 minden hétfőn",
             validation:(Rule:Rule)=>Rule.required()
         },

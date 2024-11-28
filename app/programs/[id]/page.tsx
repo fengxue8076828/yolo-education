@@ -71,7 +71,7 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
                     <div className='flex flex-col md:flex-row flex-wrap mb-16 gap-16'>
                         <div className='flex flex-col gap-10 flex-1'>
                             <div className='text-2xl flex flex-col gap-2'>
-                                <h2 className='font-extrabold'>{language==="hu"?"program információk":language==="en"?"program information":"活动信息"}:</h2>
+                                <h2 className='font-extrabold'>{language==="hu"?"Program információk":language==="en"?"Program information":"活动信息"}:</h2>
                                 <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                             </div>
                             <div className='flex flex-col gap-5'>
@@ -82,17 +82,27 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
                                 </div>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
-                                    <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"név":language==="en"?"name":"活动名称"}: </span>{program.name.find((item)=>item._key===language)?.value || program.name[0].value}
+                                    <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"Név":language==="en"?"Name":"活动名称"}: </span>{program.name.find((item)=>item._key===language)?.value || program.name[0].value}
                                     </h3>
                                 </div>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
-                                    <h3 className='text-lg'><span className='font-extrabold'> {language==="hu"?"tantárgy":language==="en"?"subject":"活动主题"}: </span>{program.subject.find((item)=>item._key===language)?.value || program.subject[0].value}
+                                    <h3 className='text-lg'><span className='font-extrabold'> {language==="hu"?"Tantárgy":language==="en"?"Subject":"活动主题"}: </span>{program.subject.find((item)=>item._key===language)?.value || program.subject[0].value}
                                     </h3>
                                 </div>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
-                                    <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"elhelyezkedés":language==="en"?"location":"活动地点"}: </span>{program.location}
+                                    <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"Elhelyezkedés":language==="en"?"Location":"活动地点"}: </span>{program.location}
+                                    </h3>
+                                </div>
+                                <div className='flex gap-3 items-center'>
+                                    <LuPencil className='text-xl' />
+                                    <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"Regisztráció állapota":language==="en"?"Registration Status":"报名状态"}: </span>
+                                    {
+                                        program.status?
+                                        (language==="hu"?"Regisztráció":language==="en"?"Enrollment in progress":"报名中"):
+                                        (language==="hu"?"A regisztráció véget ért":language==="en"?"Enrollment ended":"报名已结束")
+                                    }
                                     </h3>
                                 </div>
                             </div>
@@ -103,33 +113,52 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
                                 <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                             </div>
                             <div className='flex gap-10 items-center'>
-                                <Link href={program.tiktokLink?program.tiktokLink:""}>
-                                    <FaTiktok className='text-2xl' />
-                                </Link>
-                                <Link href={program.xiaohongshuLink?program.xiaohongshuLink:""}>
-                                    <SiXiaohongshu className='text-4xl' />
-                                </Link>
-                                <Link href={program.facebookLink?program.facebookLink:""}>
+                                {
+                                    program.tiktokLink&&
+                                    <Link href={program.tiktokLink}>
+                                        <FaTiktok className='text-2xl' />
+                                    </Link>
+                                }
+                                {
+                                    program.xiaohongshuLink&&
+                                    <Link href={program.xiaohongshuLink}>
+                                        <SiXiaohongshu className='text-4xl' />
+                                    </Link>
+                                }
+                                {
+                                    program.facebookLink&&
+                                    <Link href={program.facebookLink}>
                                     <FaFacebookSquare className='text-2xl' />
                                 </Link>
-                                <Link href={program.youtubeLink?program.youtubeLink:""}>
-                                    <IoLogoYoutube className='text-2xl' />
-                                </Link>
+                                }
+                                {
+                                    program.youtubeLink&&
+                                    <Link href={program.youtubeLink}>
+                                        <IoLogoYoutube className='text-2xl' />
+                                    </Link>
+
+                                }
+                                
+                                
                             </div>
                         </div>
                     </div>
-                    <div id='program-register' className='mt-16'>
-                    <div className='flex flex-col gap-1  my-16'>
+                    {
+                        program.status&&
+                        <div id='program-register' className='mt-16'>
+                        <div className='flex flex-col gap-1  my-16'>
                         <h1 className='text-2xl font-extrabold mb-3'>{language==="hu"?"Regisztrálja ezt a programot":language==="en"?"Register the program":"注册这个活动"}</h1>
                         <span className='w-[50px] h-[2px] bg-ternary-color'></span>
-                    </div>
+                        </div>
                         <RegisterForm type='program' dates={["program"]} activityName={program.name.find((item)=>item._key===language)?.value || program.name[0].value} lang={language} />
                     </div>
+                    }
+                    
                     
                 </div>
             </div>
         </div>           
-        <PriceBox price={program.price} lang={language} />
+        <PriceBox price={program.price} status={program.status} lang={language} />
     </div>
 </div>
 <Footer lang={language} />

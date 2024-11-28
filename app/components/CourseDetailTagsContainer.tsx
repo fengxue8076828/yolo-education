@@ -68,11 +68,14 @@ const CourseDetailTagsContainer = ({course,lang}:{course:CourseType,lang:string}
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Tanfolyam dátuma":lang==="en"?"Course Date":"课程日期"} : </span>{course.startDate.map(d=>formatDate(d).concat(", "))}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Osztály ideje":lang==="en"?"Class Time":"上课时间"} : </span>
+                        {/* {course.startDate.map(d=>formatDate(d).concat(", "))} */}
+                        {course.classTime.find((item)=>item._key===lang)?.value || course.classTime[0].value}
+                        </h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Előadások":lang==="en"?"Lectures":"课程次数"} : </span>{course.lectures}</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Alkalmak":lang==="en"?"Lectures":"课程次数"} : </span>{course.lectures}</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
