@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import chineseChars from '@/public/chinese_chars.png'
+import chineseChars from '@/public/welcome.png'
 import chineseBooks from '@/public/chinesebooks.png'
 import Button from './Button'
 import Link from 'next/link'
