@@ -19,7 +19,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
     const [name,setName] = useState("")
     const [email,setEmail] = useState("")
     const [message,setMessage] = useState("")
-    const [selectedDate,setSelectedDate] = useState("")
+    const [selectedDate,setSelectedDate] = useState<string[]>([])
     const [agreeTerms,setAgreeTerms] = useState(false)
 
     const formatDate = (datetime:string) => {
@@ -35,6 +35,17 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
     const handleCheckAgreeTerms = (event:React.ChangeEvent<HTMLInputElement>):void => {
         setAgreeTerms(event.target.checked)
     }
+    const selectDate = (event:React.ChangeEvent<HTMLInputElement>):void => {
+        if (event.target.checked) {
+            setSelectedDate(pre=>[...selectedDate,event.target.value])
+        }else{
+            setSelectedDate(pre=>pre.filter(item=>item!==event.target.value))
+        }    
+    }
+    React.useEffect(() => {
+        console.log(selectedDate); // selectedDate 会反映最新的值
+      }, [selectedDate]);
+
     const handleSubmit = async(event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         if(!name){
@@ -45,7 +56,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
             toast.error(`${lang==="hu"?"kérlek írd meg a email":lang==="en"?"please write your email":"请填写您的邮箱"}`)
             return
         }
-        if(type==="course" && !selectedDate){
+        if(type==="course" && selectedDate.length === 0){
             toast.error(`${lang==="hu"?"kérem válasszon kezdési dátumot":lang==="en"?"please pick a start date":"请选择一个开课日期"}`)
             return
         }
@@ -65,7 +76,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
                     message,
                     type,
                     activityName,
-                    startDate:selectedDate
+                    startDate:selectedDate.join(",")
                 })
             })
             if(res.status === 500){
@@ -81,10 +92,27 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
         <Toaster />
         <form action="" className='flex flex-col gap-5' onSubmit={handleSubmit}>
             <div className='flex flex-col items-stretch md:flex-row md:items-center gap-1 md:gap-5'>
-                <label htmlFor="course_name" className='w-[100px] block'>{lang==="hu"?"Címe":lang==="en"?"Course Name":"课程名称"}:</label>
+                <label htmlFor="course_name" className='w-[100px] block'>{lang==="hu"?"Címe":lang==="en"?"Course Name":"名称"}:</label>
                 <input type="email" id='course_name' className='border border-1 border-ternary-color flex-1 p-2' value={activityName} disabled />
             </div>
             {
+                type === "course" && (
+                    <div className='flex flex-col items-stretch md:flex-row md:items-start gap-1 md:gap-5'>
+                        <label htmlFor="date" className='w-[100px] block'>{lang==="hu"?"dátuma":lang==="en"?"Date":"课程日期"}:</label>
+                        <div className='flex flex-col'>
+                        {
+                                dates.map((date,index)=>(
+                                    <div key={index} className='flex gap-3 items-center'>
+                                        <input className='appearance-none cursor-pointer border-red-500 border w-5 h-5 checked:w-5 checked:h-5 checked:bg-red-500' type="checkbox" value={formatDate(date)} onChange={selectDate} />
+                                        <h2 className=' text-lg'>{formatDate(date)}</h2>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                )
+            }
+            {/* {
                 type === "course" && (
                     <div className='flex flex-col items-stretch md:flex-row md:items-center gap-1 md:gap-5'>
                         <label htmlFor="date" className='w-[100px] block'>{lang==="hu"?"dátuma":lang==="en"?"Date":"课程日期"}:</label>
@@ -98,7 +126,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
                         </select>
                     </div>
                 )
-            }
+            } */}
             
             <div className='flex flex-col items-stretch md:flex-row md:items-center gap-1 md:gap-5'>
                 <label htmlFor="email" className='w-[100px]'>Email:</label>
