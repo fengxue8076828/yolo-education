@@ -18,16 +18,20 @@ const CourseDetailBody = ({course,lang}:{course:CourseType,lang:string}) => {
         
         <CourseDetailTagsContainer course={course} lang={lang} />
         <div>
-
-        <div id='register' className='flex flex-col gap-1  my-16'>
-          
-          <h1 className='text-2xl font-extrabold mb-3'>{lang==="hu"?"Regisztráljon erre a tanfolyamra":lang==="en"?"Register for this course":"注册该课程"}</h1>
-          <span className='w-[50px] h-[2px] bg-ternary-color'></span>
-        </div>
-          <RegisterForm type='course' dates={course.startDate} activityName={course.name.find((item)=>item._key===lang)?.value || "hu"} lang={lang} />
+        {
+          course.status &&
+          <>
+            <div id='register' className='flex flex-col gap-1  my-16'>
+              <h1 className='text-2xl font-extrabold mb-3'>{lang==="hu"?"Regisztráljon erre a tanfolyamra":lang==="en"?"Register for this course":"注册该课程"}</h1>
+              <span className='w-[50px] h-[2px] bg-ternary-color'></span>
+            </div>
+            <RegisterForm type='course' dates={course.startDate} activityName={course.name.find((item)=>item._key===lang)?.value || "hu"} lang={lang} />
+          </>
+        }
+        
       </div>
     </div>           
-    <PriceBox price={course.price} lang={lang} />
+    <PriceBox price={course.price} status={course.status} lang={lang} />
 </div>
   )
 }

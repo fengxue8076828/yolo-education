@@ -41,6 +41,7 @@ export interface CourseType {
     duration:number,
     teacher:TeacherType,
     location:{_key:string,value:"string"}[],
+    status:boolean,
 
 }
 export interface ChapterType {
@@ -272,6 +273,7 @@ export async function getCoursesOnWindow():Promise<CourseType[]> {
             name,
             image
         },
+        status,
     }`
     const data = await client.fetch(query)
 
@@ -295,6 +297,7 @@ export async function getCoursesByName(keyword:string,lang:string):Promise<Cours
             name,
             image
         },
+        status,
     }`
     
     const data = await client.fetch(query)
@@ -320,6 +323,7 @@ export async function getCoursesByTeacher(id:string):Promise<CourseType[]>{
             name,
             image
         },
+        status,
     }`
     const data = await client.fetch(query)
     return data
@@ -338,6 +342,7 @@ export async function getCoursesByCategory(id:string):Promise<CourseType[]>{
             name,
             image
         },
+        status,
     }`
     const data = await client.fetch(query)
     return data
@@ -370,7 +375,8 @@ export async function getCourseById(id:string):Promise<CourseType>{
         },
         "category":category->{
             name
-        }
+        },
+        status,
     }`
     const data = await client.fetch(query)
     return data[0]

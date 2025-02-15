@@ -94,7 +94,9 @@ const CourseDetailTagsContainer = ({course,lang}:{course:CourseType,lang:string}
                     <div className='text-base md:text-xl flex flex-col gap-3'>
                         <h4><span className='font-extrabold'>{lang==="hu"?"Kategória":lang==="en"?"Category":"课程目录"} : </span>{course.category.name.find((item)=>item._key===lang)?.value}</h4>
                     </div>
-                    <div className='flex flex-col md:flex-row items-stretch gap-3'>
+                    {
+                        course.status&&
+                        <div className='flex flex-col md:flex-row items-stretch gap-3'>
                         <Button text={lang==="hu"?"Regisztráció":lang==="en"?"Register":"注册课程"} clickHandler={()=>{router.push("#register")}}/>
                         {/* <select className='border p-3' onChange={(e)=>setSelectedDate(e.target.value)}>
                             <option value="">A tanfolyam kezdési dátuma</option>
@@ -105,6 +107,9 @@ const CourseDetailTagsContainer = ({course,lang}:{course:CourseType,lang:string}
                             }
                         </select> */}
                     </div>
+
+                    }
+                    
                 </div>
                 <div className='w-full h-[1px] bg-slate-500 my-16'>
                 </div>

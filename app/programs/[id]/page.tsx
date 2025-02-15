@@ -146,12 +146,12 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
                     {
                         program.status&&
                         <div id='program-register' className='mt-16'>
-                        <div className='flex flex-col gap-1  my-16'>
-                        <h1 className='text-2xl font-extrabold mb-3'>{language==="hu"?"Regisztrálja ezt a programot":language==="en"?"Register the program":"注册这个活动"}</h1>
-                        <span className='w-[50px] h-[2px] bg-ternary-color'></span>
+                            <div className='flex flex-col gap-1  my-16'>
+                            <h1 className='text-2xl font-extrabold mb-3'>{language==="hu"?"Regisztrálja ezt a programot":language==="en"?"Register the program":"注册这个活动"}</h1>
+                            <span className='w-[50px] h-[2px] bg-ternary-color'></span>
+                            </div>
+                            <RegisterForm type='program' dates={["program"]} activityName={program.name.find((item)=>item._key===language)?.value || program.name[0].value} lang={language} />
                         </div>
-                        <RegisterForm type='program' dates={["program"]} activityName={program.name.find((item)=>item._key===language)?.value || program.name[0].value} lang={language} />
-                    </div>
                     }
                     
                     

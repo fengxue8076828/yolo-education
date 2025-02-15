@@ -21,12 +21,18 @@ const CourseCard = ({course,lang}:{course:CourseType,lang:string}) => {
           <Image className='object-cover' src={urlFor(course.image).url()} alt='course' layout='fill' />
         </div>
         
-        <div className='px-5 pt-8 pb-4 min-h-[130px]'>
+        <div className='px-5 pt-8 pb-4 min-h-[130px] flex flex-col'>
             <h4 className='font-bold'>{course.name.find((item)=>item._key===lang)?.value}</h4>
-            <p className='font-thin text-xs'>{course.subTitle.find((item)=>item._key===lang)?.value}</p>
+            <p className='font-thin text-xs min-h-[50px]'>{course.subTitle.find((item)=>item._key===lang)?.value}</p>
+            {
+              course.status?
+              <div className='bg-green-500 px-3 py-2 rounded text-xs mt-3 self-start'>{lang==="hu"?"Regisztráció":lang==="en"?"Enrollment in progress":"报名中"}</div>
+              :
+              <div className='bg-gray-300 px-3 py-2 rounded text-xs text-gray-500 mt-3 self-start'>{lang==="hu"?"A regisztráció véget ért":lang==="en"?"Enrollment ended":"报名已结束"}</div>
+          }
         </div>
 
-        <div className='px-5'>
+        <div className='px-5 min-h-[60px]'>
           <h4 className='font-bold text-sm'>
             <span className='font-extrabold'>{lang==="hu"?"Osztály ideje":lang==="en"?"Class Time":"上课时间"} :</span>
             {course.classTime.find((item)=>item._key===lang)?.value || course.classTime[0].value}

@@ -159,6 +159,13 @@ export const Course =  {
             title:"Elhelyezkedés",
             type:"internationalizedArrayString",
             validation:(Rule:Rule)=>Rule.required()
+        },
+        {
+            name:"status",
+            title:"Nyissa meg a regisztrációt",
+            type:"boolean",
+            initialValue:true,
+            validation:(Rule:Rule)=>Rule.required()
         }
     ],
     preview:{
