@@ -79,7 +79,7 @@ const CourseDetailTagsContainer = ({course,lang}:{course:CourseType,lang:string}
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />
-                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Időtartam":lang==="en"?"Period":"课程周期"} : </span>{course.duration}hét(ig)</h4>
+                        <h4 className='text-sm md:text-base'><span className='font-extrabold'>{lang==="hu"?"Időtartam":lang==="en"?"Period":"课程周期"} : </span>{course.duration}nap</h4>
                     </div>
                     <div className='flex items-center gap-3'>
                         <LuPencil className='text-xl text-ternary-color' />

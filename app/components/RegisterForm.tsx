@@ -21,6 +21,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
     const [message,setMessage] = useState("")
     const [selectedDate,setSelectedDate] = useState<string[]>([])
     const [agreeTerms,setAgreeTerms] = useState(false)
+    const [submitting,setSubmitting] = useState(false)
 
     const formatDate = (datetime:string) => {
         const date = new Date(datetime);
@@ -64,6 +65,8 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
             toast.error(`${lang==="hu"?"kérjük, fogadja el a feltételeket":lang==="en"?"please agree with the terms":"请勾选同意条款"}`)
             return
         }
+        setSubmitting(true)
+        toast.loading(`${lang==="hu"?"Beküldés...":lang==="en"?"Submitting...":"正在提交..."}`)
         try{
             const res = await fetch("/api/register",{
                 method:"post",
@@ -82,9 +85,17 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
             if(res.status === 500){
                 throw new Error("something went wrong")
             }
+            toast.dismiss()
             toast.success(`${lang==="hu"?"Sikeres beküldés":lang==="en"?"Submit successfully":"提交成功！"}`)
         }catch(error){
+            toast.dismiss()
             toast.error("something went wrong!")
+        }finally{
+            setName("")
+            setEmail("")
+            setMessage("")
+            setAgreeTerms(false)
+            setSubmitting(false)
         }
     }
   return (
@@ -150,7 +161,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
                 
             </div>
             <div className='self-stretch md:self-center flex flex-col items-stretch'>
-                <button className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color'>{lang==="hu"?" Beküldés":lang==="en"?"submit":"提交"}</button>
+                <button disabled={submitting} className='px-3 py-2 text-sm md:text-base md:px-10 md:py-3 bg-ternary-color font-inherit text-white rounded-md hover:bg-dark-ternary-color'>{lang==="hu"?" Beküldés":lang==="en"?"submit":"提交"}</button>
             </div>
             
         </form>
