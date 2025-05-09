@@ -78,7 +78,7 @@ const ProgramCard = ({program,lang}:{program:ProgramType,lang:string}) => {
                 <Image src={urlFor(program.image).url()} width={500} height={300} alt='student' />
             </div>
             <div className='w-full md:w-2/3 flex flex-col gap-20'>
-                <div>
+                <div className='line-clamp-5'>
                     <PortableText 
                         value={program[descriptionName]}
                         components={PortableTextComponent}

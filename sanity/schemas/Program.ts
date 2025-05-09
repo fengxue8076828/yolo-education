@@ -1,4 +1,6 @@
 import { Rule } from "@sanity/types"
+import StartDateInput from "../components/StartDateInput";
+import { title } from "process";
 
 export const Program = {
     name:"program",
@@ -40,6 +42,11 @@ export const Program = {
             type:"reference",
             to:[{type:"teacher"}],
             validation:(Rule:Rule)=>Rule.required()
+        },
+        {
+            name:"teachers",
+            title:"Tanárok",
+            type:"string",
         },
         {
             name:"descriptionhu",
@@ -126,6 +133,23 @@ export const Program = {
             type:"reference",
             to:[{type:"programCategory"}],
             validation:(Rule:Rule) => Rule.required()
+        },
+        {
+            name:"startDate",
+            title:"Kezdő dátum",
+            type:"array",
+            of:[
+                {
+                    type:"date",
+                    options: {
+                        dateFormat: 'YYYY-MM-DD',
+                        calendarTodayLabel: 'Today'
+                      }
+                }
+            ],
+            components:{
+                field:StartDateInput,
+            }
         },
         {
             name:"status",

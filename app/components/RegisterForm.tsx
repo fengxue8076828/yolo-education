@@ -9,7 +9,7 @@ export interface RegisterFormPropsType {
     selectedDate?:string,
     type:string,
     activityName:string,
-    dates:string[],
+    dates?:string[],
     lang:string,
 }
 
@@ -23,7 +23,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
     const [agreeTerms,setAgreeTerms] = useState(false)
     const [submitting,setSubmitting] = useState(false)
 
-    const formatDate = (datetime:string) => {
+    const formatDateTime = (datetime:string) => {
         const date = new Date(datetime);
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始
@@ -32,6 +32,14 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
         const minutes = String(date.getMinutes()).padStart(2, '0');
         
         return `${year}-${month}-${day} ${hours}:${minutes}`;
+    };
+    const formatDate = (datetime:string) => {
+        const date = new Date(datetime);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始
+        const day = String(date.getDate()).padStart(2, '0');
+        
+        return `${year}-${month}-${day}`;
     };
     const handleCheckAgreeTerms = (event:React.ChangeEvent<HTMLInputElement>):void => {
         setAgreeTerms(event.target.checked)
@@ -57,7 +65,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
             toast.error(`${lang==="hu"?"kérlek írd meg a email":lang==="en"?"please write your email":"请填写您的邮箱"}`)
             return
         }
-        if(type==="course" && selectedDate.length === 0){
+        if(dates && selectedDate.length === 0){
             toast.error(`${lang==="hu"?"kérem válasszon kezdési dátumot":lang==="en"?"please pick a start date":"请选择一个开课日期"}`)
             return
         }
@@ -107,15 +115,15 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
                 <input type="email" id='course_name' className='border border-1 border-ternary-color flex-1 p-2' value={activityName} disabled />
             </div>
             {
-                type === "course" && (
+                dates && (
                     <div className='flex flex-col items-stretch md:flex-row md:items-start gap-1 md:gap-5'>
-                        <label htmlFor="date" className='w-[100px] block'>{lang==="hu"?"dátuma":lang==="en"?"Date":"课程日期"}:</label>
+                        <label htmlFor="date" className='w-[100px] block'>{lang==="hu"?"dátuma":lang==="en"?"Date":"开始日期"}:</label>
                         <div className='flex flex-col'>
                         {
                                 dates.map((date,index)=>(
                                     <div key={index} className='flex gap-3 items-center'>
-                                        <input className='appearance-none cursor-pointer border-red-500 border w-5 h-5 checked:w-5 checked:h-5 checked:bg-red-500' type="checkbox" value={formatDate(date)} onChange={selectDate} />
-                                        <h2 className=' text-lg'>{formatDate(date)}</h2>
+                                        <input className='appearance-none cursor-pointer border-red-500 border w-5 h-5 checked:w-5 checked:h-5 checked:bg-red-500' type="checkbox" value={type === "course"?formatDateTime(date):formatDate(date)} onChange={selectDate} />
+                                        <h2 className=' text-lg'>{type === "course"?formatDateTime(date):formatDate(date)}</h2>
                                     </div>
                                 ))
                             }

@@ -82,6 +82,11 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
                                 </div>
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
+                                    <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"Tanárok":language==="en"?"Teachers":"所有老师"}:</span>{program.teachers}
+                                    </h3>
+                                </div>
+                                <div className='flex gap-3 items-center'>
+                                    <LuPencil className='text-xl' />
                                     <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"Név":language==="en"?"Name":"活动名称"}: </span>{program.name.find((item)=>item._key===language)?.value || program.name[0].value}
                                     </h3>
                                 </div>
@@ -95,6 +100,23 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
                                     <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"Elhelyezkedés":language==="en"?"Location":"活动地点"}: </span>{program.location}
                                     </h3>
                                 </div>
+                            {
+                                program.startDate&&program.startDate.map((date,index)=>{
+                                    const endDate = new Date(date)
+                                    endDate.setDate(endDate.getDate() + 14)
+                                    return <div key={index} className='flex gap-3 items-center'>
+                                            <LuPencil className='text-xl' />
+                                            <h3 className='text-lg'>
+                                                <span className='font-extrabold'>{language==="hu"?`${index+1}. időszak`:language==="en"?`Period ${index+1}`:`第${index+1}期`}: </span>
+                                                {
+                                                    language==="hu"?`${date}-től ${format(endDate,"yyyy-MM-dd")}-ig`:
+                                                    language==="en"?`from ${date} to ${format(endDate,"yyyy-MM-dd")}`:`从 ${date} 到 ${format(endDate,"yyyy-MM-dd")}`
+                                                }
+                                            </h3>`                                      
+                                        </div>
+                                            
+                                })
+                            }
                                 <div className='flex gap-3 items-center'>
                                     <LuPencil className='text-xl' />
                                     <h3 className='text-lg'><span className='font-extrabold'>{language==="hu"?"Regisztráció állapota":language==="en"?"Registration Status":"报名状态"}: </span>
@@ -150,7 +172,7 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
                             <h1 className='text-2xl font-extrabold mb-3'>{language==="hu"?"Regisztrálja ezt a programot":language==="en"?"Register the program":"注册这个活动"}</h1>
                             <span className='w-[50px] h-[2px] bg-ternary-color'></span>
                             </div>
-                            <RegisterForm type='program' dates={["program"]} activityName={program.name.find((item)=>item._key===language)?.value || program.name[0].value} lang={language} />
+                            <RegisterForm type='program' dates={program.startDate} activityName={program.name.find((item)=>item._key===language)?.value || program.name[0].value} lang={language} />
                         </div>
                     }
                     

@@ -61,13 +61,15 @@ export interface ProgramType {
     time:string,
     location:string,
     teacher:TeacherType,
+    teachers:string
     image:string,
     price:string,
     tiktokLink:string,
     xiaohongshuLink:string,
     facebookLink:string,
     youtubeLink:string,
-    status:boolean
+    status:boolean,
+    startDate:string[]
 }
 export interface ArticleType {
     title:{_key:string,value:string}[],
@@ -414,7 +416,9 @@ export async function getPrograms():Promise<ProgramType[]>{
             name,
             image   
         },
-        status
+        teachers,
+        status,
+        startDate,
     }`
     const data = await client.fetch(query)
     return data  
@@ -439,7 +443,9 @@ export async function getProgramsByName(keyword:string,lang:string):Promise<Prog
             name,
             image   
         },
+        teachers,
         status,
+        startDate,
     }`
     const data = await client.fetch(query)
     return data 
@@ -460,7 +466,9 @@ export async function getProgramsByCategory(id:string):Promise<ProgramType[]>{
             name,
             image   
         },
-        status
+        teachers,
+        status,
+        startDate,
     }`
     const data = await client.fetch(query)
     return data
@@ -485,7 +493,9 @@ export async function getProgramById(id:string):Promise<ProgramType>{
             name,
             image   
         },
-        status
+        teachers,
+        status,
+        startDate,
     }`
     const data = await client.fetch(query)
     return data[0]  
