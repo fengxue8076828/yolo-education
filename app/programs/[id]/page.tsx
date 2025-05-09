@@ -112,7 +112,7 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
                                                     language==="hu"?`${date}-től ${format(endDate,"yyyy-MM-dd")}-ig`:
                                                     language==="en"?`from ${date} to ${format(endDate,"yyyy-MM-dd")}`:`从 ${date} 到 ${format(endDate,"yyyy-MM-dd")}`
                                                 }
-                                            </h3>`                                      
+                                            </h3>                              
                                         </div>
                                             
                                 })
