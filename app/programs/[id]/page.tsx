@@ -33,8 +33,9 @@ enum Description {
 const ProgramDetail = async({params,searchParams}:{params:{id:string},searchParams:{lang?:string}}) => {
     const program = await getProgramById(params.id)
     const programTime = new Date(program.time)
-    const formattedDate = format(programTime,'yyyy-MM-dd')
-    const formattedTime = format(programTime,'HH:mm')
+    const formattedDate = format(programTime,'yyyy-MM-dd').toLocaleString()
+    const formattedTime = format(programTime,'HH:mm').toLocaleString()
+    console.log(formattedTime)
     const language = searchParams.lang?searchParams.lang:"hu"
 
     const descriptionName:Description="description".concat(language) as Description
