@@ -12,6 +12,7 @@ import { getProgramById } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/client'
 import { PortableText } from '@portabletext/react'
 import  {format} from 'date-fns'
+import { toZonedTime} from 'date-fns-tz'
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
@@ -33,8 +34,10 @@ enum Description {
 const ProgramDetail = async({params,searchParams}:{params:{id:string},searchParams:{lang?:string}}) => {
     const program = await getProgramById(params.id)
     const programTime = new Date(program.time)
-    const formattedDate = format(programTime,'yyyy-MM-dd').toLocaleString()
-    const formattedTime = format(programTime,'HH:mm').toLocaleString()
+    const timeZone = 'Europe/Budapest'
+    const programLocalTime = toZonedTime(programTime,timeZone)
+    const formattedDate = format(programLocalTime,'yyyy-MM-dd').toLocaleString()
+    const formattedTime = format(programLocalTime,'HH:mm').toLocaleString()
     console.log(formattedTime)
     const language = searchParams.lang?searchParams.lang:"hu"
 
