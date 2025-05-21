@@ -501,6 +501,33 @@ export async function getProgramById(id:string):Promise<ProgramType>{
     return data[0]  
 }
 
+export async function getProgramsForHome():Promise<ProgramType[]>{
+    const query = `*[_type=="program" && status==true]{
+        _id,
+        name,
+        subject,
+        time,
+        location,
+        image,
+        descriptionhu,
+        descriptionen,
+        descriptioncn,
+        tiktokLink,
+        xiaohongshuLink,
+        facebookLink,
+        youtubeLink,
+        "teacher":teacher->{
+            name,
+            image   
+        },
+        teachers,
+        status,
+        startDate,
+    }`
+    const data = await client.fetch(query)
+    return data
+}
+
 export async function getArticleBySlug(slug:string):Promise<ArticleType>{
     const query = `*[_type=="article" && slug.current == "${slug}"]`
     const data = await client.fetch(query)

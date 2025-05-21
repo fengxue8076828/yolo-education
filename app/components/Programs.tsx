@@ -2,13 +2,13 @@
 import React,{useEffect,useState} from 'react'
 import ProgramCard from './ProgramCard'
 import {motion} from "framer-motion"
-import { ProgramType, getPrograms } from '@/sanity/lib/queries'
+import { ProgramType, getProgramsForHome } from '@/sanity/lib/queries'
 
 const Programs = ({lang}:{lang:string}) => {
   const [programs,setPrograms] = useState<ProgramType[] | null>(null)
   useEffect(()=>{
     const fetchPrograms = async() => {
-      let p = await getPrograms()
+      let p = await getProgramsForHome()
       if(p.length > 3){
         p = p.slice(0,3)
       }

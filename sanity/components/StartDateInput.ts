@@ -26,7 +26,7 @@ export default function StartDateInput(props:Props) {
                         {id:categoryRef._ref}
                     )
                     const localizedCategory = getLocalizedValue(result?.name,'en')
-                    setShowField(localizedCategory === "Camps")
+                    setShowField(localizedCategory === "Camps" || localizedCategory === "Clubs")
 
                 }catch(error){
                     console.error("error fetching category",error)
