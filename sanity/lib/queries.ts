@@ -69,7 +69,8 @@ export interface ProgramType {
     facebookLink:string,
     youtubeLink:string,
     status:boolean,
-    startDate:string[]
+    startDate:string[],
+    duration:number,
 }
 export interface ArticleType {
     title:{_key:string,value:string}[],
@@ -221,7 +222,7 @@ export async function getGalleryPictures():Promise<GalleryPicture[]> {
     
 
 export async function getForeignStudyCovers():Promise<ForeignStudyCoverType[]> {
-    const query = `*[_type=="foreignStudyCover"]`
+    const query = `*[_type=="foreignStudyCover"] | order(createAt desc)`
     const data = await client.fetch(query)
     return data
 }
@@ -419,6 +420,7 @@ export async function getPrograms():Promise<ProgramType[]>{
         teachers,
         status,
         startDate,
+        duration,
     }`
     const data = await client.fetch(query)
     return data  
@@ -446,6 +448,7 @@ export async function getProgramsByName(keyword:string,lang:string):Promise<Prog
         teachers,
         status,
         startDate,
+        duration,
     }`
     const data = await client.fetch(query)
     return data 
@@ -469,6 +472,7 @@ export async function getProgramsByCategory(id:string):Promise<ProgramType[]>{
         teachers,
         status,
         startDate,
+        duration,
     }`
     const data = await client.fetch(query)
     return data
@@ -496,6 +500,7 @@ export async function getProgramById(id:string):Promise<ProgramType>{
         teachers,
         status,
         startDate,
+        duration,
     }`
     const data = await client.fetch(query)
     return data[0]  
@@ -523,6 +528,7 @@ export async function getProgramsForHome():Promise<ProgramType[]>{
         teachers,
         status,
         startDate,
+        duration,
     }`
     const data = await client.fetch(query)
     return data

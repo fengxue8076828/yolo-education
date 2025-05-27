@@ -107,7 +107,9 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
                             {
                                 program.startDate&&program.startDate.map((date,index)=>{
                                     const endDate = new Date(date)
-                                    endDate.setDate(endDate.getDate() + 14)
+                                    if(program.duration)
+                                        endDate.setDate(endDate.getDate() + program.duration * 7)
+                                    
                                     return <div key={index} className='flex gap-3 items-center'>
                                             <LuPencil className='text-xl' />
                                             <h3 className='text-lg'>

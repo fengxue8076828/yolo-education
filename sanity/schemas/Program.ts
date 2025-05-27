@@ -152,6 +152,13 @@ export const Program = {
             }
         },
         {
+            name:"duration",
+            title:"időtartam",
+            type:"number",
+            description:"Hány hétig tart a tevékenység",
+            validation:(Rule:Rule)=>Rule.min(0).error("This number cannot be negative!")
+        },
+        {
             name:"status",
             title:"Nyissa meg a regisztrációt",
             type:"boolean",
@@ -170,5 +177,8 @@ export const Program = {
               title: title,
             };
           },     
-    }
+    },
+    initialValue: {
+        duration: 0,
+      },
 }
