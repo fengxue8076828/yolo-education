@@ -501,6 +501,7 @@ export async function getProgramById(id:string):Promise<ProgramType>{
         status,
         startDate,
         duration,
+        price,
     }`
     const data = await client.fetch(query)
     return data[0]  

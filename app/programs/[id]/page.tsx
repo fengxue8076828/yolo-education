@@ -41,6 +41,8 @@ const ProgramDetail = async({params,searchParams}:{params:{id:string},searchPara
     console.log(formattedTime)
     const language = searchParams.lang?searchParams.lang:"hu"
 
+    console.log(program.location)
+
     const descriptionName:Description="description".concat(language) as Description
 
   return (
