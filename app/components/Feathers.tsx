@@ -8,14 +8,15 @@ import { SlBadge } from "react-icons/sl";
 import { FiAward } from "react-icons/fi";
 import { LuTrophy } from "react-icons/lu";
 import { FaRegStar } from "react-icons/fa";
+import Image from 'next/image'
 
 export const revalidate = 60
 
 
 const Feathers = async({lang}:{lang:string}) => {
-    const features = await getFeatures()
+    const features = await (await getFeatures()).slice(0,2)
   return (
-    <div className='flex gap-3 items-start justify-around px-2 py-5 bg-gray-color md:py-8'>
+    <div className='flex gap-3 items-center justify-around px-2 py-5 bg-gray-color md:py-8 md:flex-row'>
         {
             features.map((feature,index)=>(
                 <div key={feature._id} className='flex gap-2 items-start flex-col-reverse lg:flex-row lg:items-center lg:gap-5'>
@@ -27,11 +28,13 @@ const Feathers = async({lang}:{lang:string}) => {
                     </div>
                     {
                         index == 0?<FiAward className='text-2xl md:text-4xl text-golden' />:index == 1?<LuTrophy className='text-2xl md:text-4xl text-golden' />:<FaRegStar className='text-2xl md:text-4xl text-golden' />
-                    }
-                    
-                </div>                
+                    }                          
+                </div>                               
             ))
         }
+        <div className='flex gap-2 items-start flex-col-reverse lg:flex-row lg:items-center lg:gap-5'>
+            <Image src={"/cambridge.jpg"} alt='cambridge' width={180} height={150} />      
+        </div> 
     </div>
   )
 }
