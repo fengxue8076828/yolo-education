@@ -14,7 +14,7 @@ export const revalidate = 60
 
 
 const Feathers = async({lang}:{lang:string}) => {
-    const features = await (await getFeatures()).slice(0,2)
+    const features = await (await getFeatures()).slice(0,3)
   return (
     <div className='flex gap-3 items-center justify-around px-2 py-5 bg-gray-color md:py-8 md:flex-row'>
         {
@@ -32,9 +32,9 @@ const Feathers = async({lang}:{lang:string}) => {
                 </div>                               
             ))
         }
-        <div className='flex gap-2 items-start flex-col-reverse lg:flex-row lg:items-center lg:gap-5'>
+        {/* <div className='flex gap-2 items-start flex-col-reverse lg:flex-row lg:items-center lg:gap-5'>
             <Image src={"/cambridge.jpg"} alt='cambridge' width={180} height={150} />      
-        </div> 
+        </div>  */}
     </div>
   )
 }

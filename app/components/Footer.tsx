@@ -98,7 +98,13 @@ const Footer = async({lang}:{lang:string}) => {
                     <BsInstagram className='text-2xl'  />
                 </Link>
                 
-            </span>  
+            </span> 
+            <span className='cursor-pointer'>
+                <Link href={"https://www.british-council.org"} target='_blank'>
+                <Image src={"/british-council.jpg"} alt='cambridge' width={180} height={150} />
+                </Link>
+                
+            </span>            
         </div>
         <div className='w-4/5 my-5 h-[1px] bg-gray-500'></div>
         <p className='text-gray-500'>Copyrights © All Rights Reserved </p>
