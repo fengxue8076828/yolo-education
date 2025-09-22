@@ -66,8 +66,23 @@ const Footer = async({lang}:{lang:string}) => {
                 </div>
             </div>
             <div className='flex flex-row lg:flex-col gap-3 w-full lg:w-[300px] items-center lg:items-start'>
-                <div className='min-w-32 bg-white p-1 flex'>
-                    <Image src={urlFor(footer.wechat).url()} width={150} height={150} alt='qrcode' className='m-auto' />
+                <div className='min-w-32 bg-white p-3 flex gap-5'>
+                    <div>
+                        <Image src={urlFor(footer.wechat).url()} width={180} height={180} alt='qrcode' className='m-auto' />
+                    </div>
+                    <div className='flex flex-col gap-3'>
+                        <span className='cursor-pointer'>
+                            <Link href={"https://www.british-council.org"} target='_blank'>
+                            <Image src={"/cambridge.jpg"} alt='cambridge' width={180} height={150} />
+                            </Link>
+                        </span>
+                        <span className='cursor-pointer'>
+                            <Link href={"https://www.british-council.org"} target='_blank'>
+                            <Image src={"/british-council.jpg"} alt='cambridge' width={180} height={150} />
+                            </Link>
+                        </span>
+                    </div>
+                    
                 </div>
                 <p className='text-sm w-full'>
                 {footer.description.find((item)=>item._key===lang)?.value}
@@ -97,14 +112,7 @@ const Footer = async({lang}:{lang:string}) => {
                 <Link href={footer.instagram} target='_blank'>
                     <BsInstagram className='text-2xl'  />
                 </Link>
-                
-            </span> 
-            <span className='cursor-pointer'>
-                <Link href={"https://www.british-council.org"} target='_blank'>
-                <Image src={"/british-council.jpg"} alt='cambridge' width={180} height={150} />
-                </Link>
-                
-            </span>            
+            </span>             
         </div>
         <div className='w-4/5 my-5 h-[1px] bg-gray-500'></div>
         <p className='text-gray-500'>Copyrights © All Rights Reserved </p>
