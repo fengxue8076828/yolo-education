@@ -66,11 +66,11 @@ const Footer = async({lang}:{lang:string}) => {
                 </div>
             </div>
             <div className='flex flex-row lg:flex-col gap-3 w-full lg:w-[300px] items-center lg:items-start'>
-                <div className='min-w-32 bg-white p-3 flex gap-5'>
-                    <div>
+                <div className='min-w-32 flex gap-5 gap-x-5'>
+                    <div className='flex p-3 bg-white rounded-sm'>
                         <Image src={urlFor(footer.wechat).url()} width={180} height={180} alt='qrcode' className='m-auto' />
                     </div>
-                    <div className='flex flex-col gap-3'>
+                    <div className='flex flex-col bg-white gap-3 p-3 rounded-sm'>
                         <span className='cursor-pointer'>
                             <Link href={"https://www.british-council.org"} target='_blank'>
                             <Image src={"/cambridge.jpg"} alt='cambridge' width={180} height={150} />
