@@ -19,11 +19,17 @@ export default function Home({searchParams}:{searchParams:{lang?:string}}) {
     <>
     <Menubar lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
     <main>
-      <Navigator />     
+      <Navigator />
+      <div className="sm:block md:hidden">
+        <Courses lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+      </div>     
       <Header lang={`${searchParams.lang?searchParams.lang:"hu"}`}/>
       <Feathers lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
       <Introduction lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
-      <Courses lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+      <div className="sm:hidden md:block">
+        <Courses lang={`${searchParams.lang?searchParams.lang:"hu"}`}  />
+      </div>
+      
       <YoutubeChannel lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
       <Programs lang={`${searchParams.lang?searchParams.lang:"hu"}`} />
       <Teachers lang={`${searchParams.lang?searchParams.lang:"hu"}`} />

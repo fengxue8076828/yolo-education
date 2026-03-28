@@ -45,8 +45,8 @@ const CourseCard = ({course,lang}:{course:CourseType,lang:string}) => {
 
         <div className='px-5 pt-8 pb-3 flex justify-between items-center'>
             <div className='flex justify-between items-center gap-1'>
-                <HiMiniCurrencyDollar className="text-3xl text-golden" />
-                <p className='text-xs'>{course.price} HUF</p>
+                {/* <HiMiniCurrencyDollar className="text-3xl text-golden" />
+                <p className='text-xs'>{course.price} HUF</p> */}
             </div>
             <div className='flex items-center gap-3 rounded-full pr-5 bg-ternary-color overflow-hidden'>
               <div className='rounded-full overflow-hidden relative w-[40px] h-[40px]'>
