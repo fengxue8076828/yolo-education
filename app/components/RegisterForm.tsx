@@ -21,6 +21,8 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
     const [message,setMessage] = useState("")
     const [selectedDate,setSelectedDate] = useState<string[]>([])
     const [agreeTerms,setAgreeTerms] = useState(false)
+    const [agreeEmails,setAgreeEmails] = useState(false)
+    const [agreePhotoes,setAgreePhotoes] = useState(false)
     const [submitting,setSubmitting] = useState(false)
 
     const formatDateTime = (datetime:string) => {
@@ -44,6 +46,12 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
     const handleCheckAgreeTerms = (event:React.ChangeEvent<HTMLInputElement>):void => {
         setAgreeTerms(event.target.checked)
     }
+    const handleCheckAgreeEmails = (event:React.ChangeEvent<HTMLInputElement>):void => {
+        setAgreeEmails(event.target.checked)
+    }
+    const handleCheckAgreePhotoes = (event:React.ChangeEvent<HTMLInputElement>):void => {
+        setAgreePhotoes(event.target.checked)
+    }   
     const selectDate = (event:React.ChangeEvent<HTMLInputElement>):void => {
         if (event.target.checked) {
             setSelectedDate(pre=>[...selectedDate,event.target.value])
@@ -70,6 +78,14 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
             return
         }
         if(!agreeTerms){
+            toast.error(`${lang==="hu"?"kérjük, fogadja el a feltételeket":lang==="en"?"please agree with the terms":"请勾选同意条款"}`)
+            return
+        }
+        if(!agreeEmails){
+            toast.error(`${lang==="hu"?"kérjük, fogadja el a feltételeket":lang==="en"?"please agree with the terms":"请勾选同意条款"}`)
+            return
+        }
+        if(!agreePhotoes){
             toast.error(`${lang==="hu"?"kérjük, fogadja el a feltételeket":lang==="en"?"please agree with the terms":"请勾选同意条款"}`)
             return
         }
@@ -103,6 +119,8 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
             setEmail("")
             setMessage("")
             setAgreeTerms(false)
+            setAgreeEmails(false)
+            setAgreePhotoes(false)
             setSubmitting(false)
         }
     }
@@ -162,10 +180,23 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
             <div className='flex flex-col items-stretch md:flex-row md:items-center gap-1 md:gap-5'>
                 <div className='w-[100px]'>
                 </div>
-                <div className='flex gap-2 text-sm'>
-                    <input type='checkbox' checked={agreeTerms} className='border-ternary-color' onChange={handleCheckAgreeTerms} />
-                    <p>{lang==="hu"?"ezekkel egyetértek":lang==="en"?"I agree with these":"我同意"}</p><Link className='text-dark-blue underline' href={`/articles/terms?lang=${lang}`} target='_blank'>{lang==="hu"?" feltételeket":lang==="en"?" these conditions":"这些条款"}</Link>
+                <div className='flex flex-col items-start gap-3'>
+                    <div className='flex gap-2 text-sm'>
+                        <input type='checkbox' checked={agreeEmails} className='border-ternary-color' onChange={handleCheckAgreeEmails} />
+                        <p>{lang==="hu"?"Szeretnék e-mailben értesülni a következő eseményekről és lehetőségekről.":lang==="en"?"I’d like to be notified about upcoming events and opportunities via email.":"我想通过电子邮件了解以下课程和活动。"}</p>
+                    </div>
+
+                    <div className='flex gap-2 text-sm items-start'>
+                        <input type='checkbox' checked={agreePhotoes} className='border-ternary-color' onChange={handleCheckAgreePhotoes} />
+                        <p>{lang==="hu"?"Beleegyezek, hogy a foglalkozáson készült felvételeket a YOLO Education Kft. promóciós célra felhasználja":lang==="en"?"I agree that YOLO Education Kft. may use the photographs and recordings made during the session for promotional purposes.":"我同意YOLO Education Kft.将课程中拍摄的照片用于宣传目的。"}</p>
+                    </div>
+
+                    <div className='flex gap-2 text-sm'>
+                        <input type='checkbox' checked={agreeTerms} className='border-ternary-color' onChange={handleCheckAgreeTerms} />
+                        <p>{lang==="hu"?"Elfogadom a felhasználási feltételeket.":lang==="en"?"I accept the Terms and Conditions.":"条款与条件："}</p><Link className='text-dark-blue underline' href={`/articles/terms?lang=${lang}`} target='_blank'>{lang==="hu"?" feltételeket":lang==="en"?" terms and conditions":"服务条款"}</Link>
+                    </div>
                 </div>
+                
                 
             </div>
             <div className='self-stretch md:self-center flex flex-col items-stretch'>

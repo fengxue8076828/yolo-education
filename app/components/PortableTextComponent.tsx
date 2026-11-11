@@ -5,6 +5,7 @@ import { urlFor } from '@/sanity/lib/client'
 const PortableTextComponent:PortableTextComponents = {
     types: {
       image: ({ value }) => {
+        console.log(value)
         return (
           <img
             src={urlFor(value.asset).url()}
