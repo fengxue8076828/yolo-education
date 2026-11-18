@@ -112,6 +112,7 @@ const RegisterForm = ({type,activityName,dates,lang}:RegisterFormPropsType) => {
             toast.dismiss()
             toast.success(`${lang==="hu"?"Sikeres beküldés":lang==="en"?"Submit successfully":"提交成功！"}`)
         }catch(error){
+            console.log(error)
             toast.dismiss()
             toast.error("something went wrong!")
         }finally{
